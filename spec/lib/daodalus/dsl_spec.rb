@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-class TestDAO
+class DSLTestDAO
   extend Daodalus::DSL
 
   def self.test_where
@@ -16,7 +16,7 @@ module Daodalus
 
     describe '#where' do
       it 'builds a where query' do
-        TestDAO.test_where.
+        DSLTestDAO.test_where.
           where_clause.
           should eq ({'$or' => [{'cats'=>3},{'dogs'=>2}]})
       end

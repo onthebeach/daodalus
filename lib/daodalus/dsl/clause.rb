@@ -104,11 +104,11 @@ module Daodalus
       end
 
       def chain(field)
-        Where.new(dao, field, where_clause, select_clause)
+        raise NotImplementedError, "Including classe must provide a chain method"
       end
 
       def add_clause(where_clause)
-        Where.new(dao, field, where_clause, select_clause)
+        raise NotImplementedError, "Including classe must provide an add clause method"
       end
     end
   end
