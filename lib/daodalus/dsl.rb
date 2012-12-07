@@ -6,7 +6,11 @@ module Daodalus
     end
 
     def match(field=nil)
-      Match.new(self, field)
+      Aggregation::Match.new(self, field)
+    end
+
+    def group(*keys)
+      Aggregation::Group.new(self, keys)
     end
 
   end

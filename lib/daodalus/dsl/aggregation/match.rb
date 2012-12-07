@@ -4,7 +4,7 @@ module Daodalus
       class Match
         include Clause
         include Command
-        attr_reader :query, :criteria
+        attr_reader :criteria
 
         def initialize(dao, field, query=[], criteria={})
           @dao = dao
@@ -17,9 +17,13 @@ module Daodalus
           '$match'
         end
 
+        def to_query
+          criteria.empty? ? query : query + [{ operator => criteria }]
+        end
+
         private
 
-        attr_reader :dao, :field
+        attr_reader :dao, :field, :query
 
         def chain(field)
           Match.new(dao, field, query, criteria)

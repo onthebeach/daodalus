@@ -100,7 +100,11 @@ module Daodalus
       end
 
       def with_condition(op, value)
-        add_clause(criteria.merge(field => { op => value}))
+        add_clause(build_clause(op,value))
+      end
+
+      def build_clause(op, value)
+        criteria.merge(field => { op => value}) { |k,a,b| a.merge(b) }
       end
 
       def chain(field)

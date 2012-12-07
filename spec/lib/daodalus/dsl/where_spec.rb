@@ -179,6 +179,12 @@ module Daodalus
         end
       end
 
+      context 'multiple criteria for the same field' do
+        it 'correctly merges the criteria' do
+          query.gt(3).lt(5).criteria.should eq ({'cats' => {'$gt' => 3, '$lt' => 5}})
+        end
+      end
+
     end
   end
 end

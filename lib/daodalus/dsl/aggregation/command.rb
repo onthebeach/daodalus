@@ -7,10 +7,18 @@ module Daodalus
           Match.new(dao, field, to_query)
         end
 
+        def group(*keys)
+          Group.new(dao, keys, to_query)
+        end
+
         private
 
+        def field_as_operator(field)
+          "$#{field}"
+        end
+
         def to_query
-          criteria.empty? ? query : query + { operator => criteria }
+          raise NotImplementedError, "Including classes must implement this"
         end
 
         def operator
