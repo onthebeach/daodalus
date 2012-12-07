@@ -9,7 +9,7 @@ module Daodalus
     end
 
     def db
-      Daodalus::ConnectionPool.instance[connection_name].db
+      Daodalus::Pool.instance[connection_name].db
     end
 
     def collection

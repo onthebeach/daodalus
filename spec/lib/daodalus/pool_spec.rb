@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 module Daodalus
-  describe ConnectionPool do
+  describe Pool do
 
-    let (:pool) { ConnectionPool.instance }
+    let (:pool) { Pool.instance }
 
     describe "#connection" do
 

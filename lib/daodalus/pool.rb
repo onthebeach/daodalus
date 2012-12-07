@@ -1,7 +1,7 @@
 require 'singleton'
 
 module Daodalus
-  class ConnectionPool
+  class Pool
     include Singleton
 
     def [](conn)
