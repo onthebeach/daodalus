@@ -17,7 +17,7 @@ module Daodalus
     describe '#where' do
       it 'builds a where query' do
         DSLTestDAO.test_where.
-          where_clause.
+          criteria.
           should eq ({'$or' => [{'cats'=>3},{'dogs'=>2}]})
       end
     end

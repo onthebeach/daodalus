@@ -62,31 +62,31 @@ module Daodalus
         if field_arg?(args)
           chain(args.first)
         elsif args.all?{ |a| a.is_a?(Clause) }
-          add_clause('$and' => args.map(&:where_clause))
+          add_clause('$and' => args.map(&:criteria))
         else
           raise ArgumentError, "Not an accepted argument of #and #{args.inspect}"
         end
       end
 
       def not(clause)
-        add_clause('$not' => clause.where_clause)
+        add_clause('$not' => clause.criteria)
       end
 
       def nor(*clauses)
-        add_clause('$nor' => clauses.map(&:where_clause))
+        add_clause('$nor' => clauses.map(&:criteria))
       end
 
       def or(*clauses)
-        add_clause('$or' => clauses.map(&:where_clause))
+        add_clause('$or' => clauses.map(&:criteria))
       end
 
       def elem_match(clause)
-        with_condition('$elemMatch', clause.where_clause)
+        with_condition('$elemMatch', clause.criteria)
       end
       alias_method :element_match, :elem_match
 
       def eq(value)
-        add_clause(where_clause.merge(field => value))
+        add_clause(criteria.merge(field => value))
       end
       alias_method :equals, :eq
 
@@ -100,14 +100,14 @@ module Daodalus
       end
 
       def with_condition(op, value)
-        add_clause(where_clause.merge(field => { op => value}))
+        add_clause(criteria.merge(field => { op => value}))
       end
 
       def chain(field)
         raise NotImplementedError, "Including classe must provide a chain method"
       end
 
-      def add_clause(where_clause)
+      def add_clause(criteria)
         raise NotImplementedError, "Including classe must provide an add clause method"
       end
     end
