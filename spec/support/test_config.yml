@@ -1,0 +1,17 @@
+test:
+  conn1:
+    host: localhost
+    database: daodalus_test_1
+    pool_size: 5
+    timeout: 5
+    replicate_set_name: daodalus_test
+    servers:
+     - { host: localhost, port: 27017 }
+  conn2:
+    host: localhost
+    database: daodalus_test_2
+    pool_size: 5
+    timeout: 5
+    replicate_set_name: daodalus_test
+    servers:
+     - { host: localhost, port: 27017 }
