@@ -5,11 +5,11 @@ module Daodalus
         include Command
         attr_reader :criteria
 
-        def initialize(dao, keys, query=[], aggregates={})
+        def initialize(dao, keys, aggregates={}, query=[])
           @dao = dao
           @keys = keys
-          @query = query
           @aggregates = aggregates
+          @query = query
         end
 
         def operator
@@ -48,8 +48,8 @@ module Daodalus
           with_aggregate_key('$push', field)
         end
 
-        def to_query
-          query + [{ operator => {'_id' => group_key}.merge(aggregates) }]
+        def to_mongo
+          { operator => {'_id' => group_key}.merge(aggregates) }
         end
 
         private
@@ -57,7 +57,7 @@ module Daodalus
         attr_reader :dao, :keys, :query, :aggregates
 
         def with_aggregate_key(op, field)
-          Group.new(dao, keys, query, aggregates.merge(build_aggregate_key(op, field)))
+          Group.new(dao, keys, aggregates.merge(build_aggregate_key(op, field)), query)
         end
 
         def build_aggregate_key(op, field)

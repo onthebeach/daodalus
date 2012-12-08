@@ -6,19 +6,19 @@ module Daodalus
         include Command
         attr_reader :criteria
 
-        def initialize(dao, field, query=[], criteria={})
+        def initialize(dao, field, criteria={}, query=[])
           @dao = dao
           @field = field.to_s
-          @query = query
           @criteria = criteria
+          @query = query
         end
 
         def operator
           '$match'
         end
 
-        def to_query
-          criteria.empty? ? query : query + [{ operator => criteria }]
+        def to_mongo
+          { operator => criteria }
         end
 
         private
@@ -26,11 +26,11 @@ module Daodalus
         attr_reader :dao, :field, :query
 
         def chain(field)
-          Match.new(dao, field, query, criteria)
+          Match.new(dao, field, criteria, query)
         end
 
         def add_clause(criteria)
-          Match.new(dao, field, query, criteria)
+          Match.new(dao, field, criteria, query)
         end
 
       end

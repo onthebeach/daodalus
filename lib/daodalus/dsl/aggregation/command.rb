@@ -4,11 +4,15 @@ module Daodalus
       module Command
 
         def match(field=nil)
-          Match.new(dao, field, to_query)
+          Match.new(dao, field, {}, to_query)
         end
 
         def group(*keys)
-          Group.new(dao, keys, to_query)
+          Group.new(dao, keys, {}, to_query)
+        end
+
+        def to_query
+          if to_mongo.empty? then query else query + [to_mongo] end
         end
 
         private
@@ -17,7 +21,7 @@ module Daodalus
           "$#{field}"
         end
 
-        def to_query
+        def to_mongo
           raise NotImplementedError, "Including classes must implement this"
         end
 
