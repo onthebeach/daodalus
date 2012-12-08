@@ -21,6 +21,10 @@ module Daodalus
         Select.new(dao, [], criteria, slice_clause(number))
       end
 
+      def where(field)
+        Where.new(dao, field, criteria, select_clause)
+      end
+
       private
 
       def slice_clause(number)

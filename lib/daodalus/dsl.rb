@@ -5,6 +5,14 @@ module Daodalus
       Where.new(self, field)
     end
 
+    def select(*fields)
+      Select.new(self, fields)
+    end
+
+    def set(field, value)
+      Update.new(dao).set(field, value)
+    end
+
     def match(field=nil)
       Aggregation::Match.new(self, field)
     end
