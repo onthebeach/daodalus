@@ -27,6 +27,10 @@ module Daodalus
           Unwind.new(dao, field, to_query)
         end
 
+        def project(*fields)
+          Project.new(dao, fields, to_query)
+        end
+
         def to_query
           if to_mongo.empty? then query else query + [to_mongo] end
         end
