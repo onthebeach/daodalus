@@ -3,7 +3,6 @@ module Daodalus
     module Aggregation
       class Group
         include Command
-        attr_reader :criteria
 
         def initialize(dao, keys, aggregates={}, query=[])
           @dao = dao

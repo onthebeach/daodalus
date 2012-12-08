@@ -1,27 +1,38 @@
 module Daodalus
   module DSL
     module Aggregation
-      class Limit
+      class Sort
         include Command
-        attr_reader :criteria
 
-        def initialize(dao, total, query=[])
+        def initialize(dao, fields, query=[])
           @dao = dao
-          @total = total
+          @fields = fields
           @query = query
         end
 
         def operator
-          '$limit'
+          '$sort'
         end
 
         def to_mongo
-          {operator => total}
+          {operator => sort_fields}
         end
 
         private
 
-        attr_reader :dao, :total, :query
+        def sort_fields
+          fields.reduce({}) { |acc, f| acc.merge(sort_field(f)) }
+        end
+
+        def sort_field(f)
+          f.is_a?(Array) ? {f.first.to_s => direction(f.last)} : {f.to_s => 1}
+        end
+
+        def direction(d)
+          [false, :desc, :descending, -1].include?(d) ? -1 : 1
+        end
+
+        attr_reader :dao, :fields, :query
 
       end
     end

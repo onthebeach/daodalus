@@ -19,6 +19,14 @@ module Daodalus
           Skip.new(dao, total, to_query)
         end
 
+        def sort(*fields)
+          Sort.new(dao, fields, to_query)
+        end
+
+        def unwind(field)
+          Unwind.new(dao, field, to_query)
+        end
+
         def to_query
           if to_mongo.empty? then query else query + [to_mongo] end
         end

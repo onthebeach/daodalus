@@ -3,12 +3,13 @@ require 'spec_helper'
 module Daodalus
   module DSL
     module Aggregation
-      describe Limit do
+      describe Sort do
         let (:dao) { stub }
-        let (:limit) { ->(number) { Limit.new(dao, 30) } }
+        let (:sort) { ->(*fields) { Sort.new(dao, fields) } }
 
         it 'can take a number to limit by' do
-          limit.(30).to_query.should eq [{'$limit' => 30}]
+          sort.(:cats, [:dogs, :desc]).to_query.
+            should eq [{'$sort' => {'cats' => 1, 'dogs' => -1}}]
         end
       end
     end

@@ -3,7 +3,6 @@ module Daodalus
     module Aggregation
       class Limit
         include Command
-        attr_reader :criteria
 
         def initialize(dao, total, query=[])
           @dao = dao
