@@ -3,12 +3,12 @@ require 'spec_helper'
 module Daodalus
   module DSL
     module Aggregation
-      describe Limit do
+      describe Skip do
         let (:dao) { stub }
-        let (:limit) { ->(number) { Limit.new(dao, number) } }
+        let (:skip) { ->(number) { Skip.new(dao, number) } }
 
         it 'can take a number to limit by' do
-          limit.(30).to_query.should eq [{'$limit' => 30}]
+          skip.(30).to_query.should eq [{'$skip' => 30}]
         end
       end
     end

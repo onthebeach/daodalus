@@ -4,7 +4,6 @@ module Daodalus
       class Match
         include Clause
         include Command
-        attr_reader :criteria
 
         def initialize(dao, field, criteria={}, query=[])
           @dao = dao
@@ -23,7 +22,7 @@ module Daodalus
 
         private
 
-        attr_reader :dao, :field, :query
+        attr_reader :dao, :field, :criteria, :query
 
         def chain(field)
           Match.new(dao, field, criteria, query)

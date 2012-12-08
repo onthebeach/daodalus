@@ -5,10 +5,10 @@ module Daodalus
     module Aggregation
       describe Match do
         let (:dao) { stub }
-        let (:query) { Match.new(dao, nil) }
+        let (:match) { ->(field) { Match.new(dao, field) } }
 
         it 'builds up a match query' do
-          query.match(:cats).eq(4).criteria.should eq ({'cats' => 4})
+          match.(:cats).eq(4).to_query.should eq ([{'$match' => {'cats' => 4}}])
         end
       end
     end

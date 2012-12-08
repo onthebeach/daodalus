@@ -11,6 +11,14 @@ module Daodalus
           Group.new(dao, keys, {}, to_query)
         end
 
+        def limit(total)
+          Limit.new(dao, total, to_query)
+        end
+
+        def skip(total)
+          Skip.new(dao, total, to_query)
+        end
+
         def to_query
           if to_mongo.empty? then query else query + [to_mongo] end
         end
@@ -34,10 +42,6 @@ module Daodalus
         end
 
         def query
-          raise NotImplementedError, "Including classes must implement this"
-        end
-
-        def criteria
           raise NotImplementedError, "Including classes must implement this"
         end
 
