@@ -107,13 +107,14 @@ module Daodalus
         criteria.merge(field => { op => value}) { |k,a,b| a.merge(b) }
       end
 
-      def chain(field)
-        raise NotImplementedError, "Including classe must provide a chain method"
-      end
-
-      def add_clause(criteria)
-        raise NotImplementedError, "Including classe must provide an add clause method"
-      end
+      ##
+      # Classes that include this module are required to implement the
+      # following methods:
+      #
+      # chain - move to the next clause in the chain
+      # add_clause - add a clause for the current field
+      ##
+      #
     end
   end
 end

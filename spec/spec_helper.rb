@@ -1,11 +1,11 @@
 require 'simplecov'
-require 'rspec'
-require 'daodalus'
-require_relative 'support/all'
-
 SimpleCov.start do
   add_filter '/spec'
 end
+
+require 'rspec'
+require 'daodalus'
+require_relative 'support/all'
 
 Daodalus::Configuration.load('spec/support/test_config.yml', :test)
 

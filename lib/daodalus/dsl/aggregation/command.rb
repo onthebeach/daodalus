@@ -28,7 +28,7 @@ module Daodalus
         end
 
         def project(*fields)
-          Project.new(dao, fields, 1, {'_id' => 0}, to_query)
+          Project.new(dao, fields, 1, {}, to_query)
         end
 
         def to_query
@@ -43,21 +43,15 @@ module Daodalus
           else field end
         end
 
-        def to_mongo
-          raise NotImplementedError, "Including classes must implement this"
-        end
-
-        def operator
-          raise NotImplementedError, "Including classes must implement this"
-        end
-
-        def dao
-          raise NotImplementedError, "Including classes must implement this"
-        end
-
-        def query
-          raise NotImplementedError, "Including classes must implement this"
-        end
+        ##
+        # Classes that include this module are required to implement the
+        # following methods:
+        #
+        # to_mongo - return the command in mongo format
+        # operator - the mongo operator for the command
+        # dao      - the original dao that started the chain
+        # query    - the current query (not including the current operator)
+        ##
 
       end
     end

@@ -17,7 +17,7 @@ module Daodalus
         end
 
         def to_mongo
-          {operator => projection}
+          {operator => {'_id' => 0}.merge(projection) }
         end
 
         def as(*values)
