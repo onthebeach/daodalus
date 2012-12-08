@@ -1,5 +1,6 @@
 require_relative 'clause'
 require_relative 'aggregation/all'
+require_relative 'select'
 require_relative 'where'
 require_relative 'queries'
 require_relative 'updates'
