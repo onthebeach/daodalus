@@ -28,7 +28,7 @@ module Daodalus
         end
 
         def project(*fields)
-          Project.new(dao, fields, to_query)
+          Project.new(dao, fields, 1, {'_id' => 0}, to_query)
         end
 
         def to_query
@@ -38,7 +38,9 @@ module Daodalus
         private
 
         def field_as_operator(field)
-          "$#{field}"
+          if field.is_a?(Fixnum) then field
+          elsif field.is_a?(String) || field.is_a?(Symbol) then "$#{field}"
+          else field end
         end
 
         def to_mongo
