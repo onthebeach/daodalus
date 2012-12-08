@@ -70,19 +70,16 @@ module Daodalus
           end
         end
 
+        it 'can create nested documents' do
+          query.
+            project(:pets).as(
+              Project.new(dao, [:cats], 1, {}).as('animals.cats'),
+              Project.new(dao, [:dogs], 1, {}).as('animals.dogs').plus(1),
+            ).projection.
+            should eq ({'_id' => 0, 'pets' => { 'cats' => '$animals.cats', 'dogs' => {'$add' => ['$animals.dogs', 1]}}})
+        end
+
       end
     end
   end
 end
-          #query.
-            #project(:title).
-            #with(:stats).as(
-              #project(:pv).as('pageViews'),
-              #project(:foo).as('other.foo'),
-              #project(:dpv).as('pageViews').plus(10),
-              #project(:dpv).as('pageViews').minus('cats'),
-              #project(:dpv).as('pageViews').divided_by(10),
-              #project(:dpv).as('pageViews').mod(10),
-              #project(:dpv).as('pageViews').multiplied_by(10, 'cats')
-            #).
-            #with(:cats).as('animals.cats')

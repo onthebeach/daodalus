@@ -17,11 +17,15 @@ module Daodalus
         end
 
         def to_mongo
-          {operator => total}
+          {operator => projection}
         end
 
-        def as(value)
-          Project.new(dao, fields, value, projection, query)
+        def as(*values)
+          if values.all? { |v| v.is_a?(Project) }
+            Project.new(dao, fields, values.map(&:projection).reduce(:merge), projection, query)
+          else
+            Project.new(dao, fields, values.first, projection, query)
+          end
         end
 
         def with(*fields)
