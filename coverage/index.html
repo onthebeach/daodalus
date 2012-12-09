@@ -14,27 +14,27 @@
       <img src="./assets/0.7.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2012-12-08T15:56:41+00:00">2012-12-08T15:56:41+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2012-12-09T09:23:38+00:00">2012-12-09T09:23:38+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">98.93%</span></span>
+    (<span class="covered_percent"><span class="green">96.93%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.83
+         3.82
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>26</b> files in total.
-    <b>469</b> relevant lines. 
-    <span class="green"><b>464</b> lines covered</span> and
-    <span class="red"><b>5</b> lines missed </span>
+    <b>489</b> relevant lines. 
+    <span class="green"><b>474</b> lines covered</span> and
+    <span class="red"><b>15</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -102,12 +102,12 @@
       
       <tr>
         <td class="strong"><a href="#dc5eabf73ff811ec6c6b1e9353351154cab2722a" class="src_link" title="lib/daodalus/dsl.rb">lib/daodalus/dsl.rb</a></td>
-        <td class="green strong">90.91 %</td>
-        <td>45</td>
-        <td>22</td>
-        <td>20</td>
-        <td>2</td>
-        <td>1.1</td>
+        <td class="red strong">71.43 %</td>
+        <td>85</td>
+        <td>42</td>
+        <td>30</td>
+        <td>12</td>
+        <td>0.8</td>
       </tr>
       
       <tr>
@@ -1229,11 +1229,11 @@
         <div class="source_table" id="dc5eabf73ff811ec6c6b1e9353351154cab2722a">
   <div class="header">
     <h3>lib/daodalus/dsl.rb</h3>
-    <h4><span class="green">90.91 %</span> covered</h4>
+    <h4><span class="red">71.43 %</span> covered</h4>
     <div>
-      <b>22</b> relevant lines. 
-      <span class="green"><b>20</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
+      <b>42</b> relevant lines. 
+      <span class="green"><b>30</b> lines covered</span> and
+      <span class="red"><b>12</b> lines missed.</span>
     </div>
   </div>
   
@@ -1333,13 +1333,13 @@
         <li class="covered" data-hits="1" data-linenumber="16">
           <span class="hits">1</span>
           
-          <code class="ruby">    def match(field=nil)</code>
+          <code class="ruby">    def unset(field)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="17">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="17">
           
-          <code class="ruby">      Aggregation::Match.new(self, field)</code>
+          
+          <code class="ruby">      Update.new(dao).unset(field)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="18">
@@ -1357,13 +1357,13 @@
         <li class="covered" data-hits="1" data-linenumber="20">
           <span class="hits">1</span>
           
-          <code class="ruby">    def group(*keys)</code>
+          <code class="ruby">    def inc(field, amount=1)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="21">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="21">
           
-          <code class="ruby">      Aggregation::Group.new(self, keys)</code>
+          
+          <code class="ruby">      Update.new(dao).inc(field, amount)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="22">
@@ -1381,13 +1381,13 @@
         <li class="covered" data-hits="1" data-linenumber="24">
           <span class="hits">1</span>
           
-          <code class="ruby">    def limit(total)</code>
+          <code class="ruby">    def rename(field, value)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="25">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="25">
           
-          <code class="ruby">      Aggregation::Limit.new(self, total)</code>
+          
+          <code class="ruby">      Update.new(dao).rename(field, value)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="26">
@@ -1405,13 +1405,13 @@
         <li class="covered" data-hits="1" data-linenumber="28">
           <span class="hits">1</span>
           
-          <code class="ruby">    def skip(total)</code>
+          <code class="ruby">    def push(field, *values)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="29">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="29">
           
-          <code class="ruby">      Aggregation::Skip.new(self, total)</code>
+          
+          <code class="ruby">      Update.new(dao).push(field, *values)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
@@ -1429,13 +1429,13 @@
         <li class="covered" data-hits="1" data-linenumber="32">
           <span class="hits">1</span>
           
-          <code class="ruby">    def sort(*fields)</code>
+          <code class="ruby">    def push_all(field, *values)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="33">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="33">
           
-          <code class="ruby">      Aggregation::Sort.new(self, fields)</code>
+          
+          <code class="ruby">      Update.new(dao).push_all(field, *values)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="34">
@@ -1453,13 +1453,13 @@
         <li class="covered" data-hits="1" data-linenumber="36">
           <span class="hits">1</span>
           
-          <code class="ruby">    def unwind(field)</code>
+          <code class="ruby">    def add_to_set(field, *values)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="37">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="37">
           
-          <code class="ruby">      Aggregation::Unwind.new(self, field)</code>
+          
+          <code class="ruby">      Update.new(dao).add_to_set(field, *values)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="38">
@@ -1477,13 +1477,13 @@
         <li class="covered" data-hits="1" data-linenumber="40">
           <span class="hits">1</span>
           
-          <code class="ruby">    def project(*fields)</code>
+          <code class="ruby">    def pop_first(field)</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="41">
-          <span class="hits">3</span>
+        <li class="missed" data-hits="0" data-linenumber="41">
           
-          <code class="ruby">      Aggregation::Project.new(self, fields, 1, {})</code>
+          
+          <code class="ruby">      Update.new(dao).pop_first(field)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="42">
@@ -1498,13 +1498,253 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="44">
+        <li class="covered" data-hits="1" data-linenumber="44">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def pop_last(field)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="45">
+          
+          
+          <code class="ruby">      Update.new(dao).pop_last(field)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="46">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="47">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="48">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def pull(field, *values)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="49">
+          
+          
+          <code class="ruby">      Update.new(dao).pull(field, *values)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="50">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="51">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="52">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def pull_all(field, *values)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="53">
+          
+          
+          <code class="ruby">      Update.new(dao).pull_all(field, *values)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="54">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="55">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="56">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def match(field=nil)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="57">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      Aggregation::Match.new(self, field)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="58">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="59">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="60">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def group(*keys)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="61">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      Aggregation::Group.new(self, keys)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="62">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="63">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="64">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def limit(total)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="65">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      Aggregation::Limit.new(self, total)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="66">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="67">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="68">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def skip(total)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="69">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      Aggregation::Skip.new(self, total)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="70">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="71">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="72">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def sort(*fields)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="73">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      Aggregation::Sort.new(self, fields)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="75">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="76">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def unwind(field)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="77">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      Aggregation::Unwind.new(self, field)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="78">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="79">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="80">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def project(*fields)</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="81">
+          <span class="hits">3</span>
+          
+          <code class="ruby">      Aggregation::Project.new(self, fields, 1, {})</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="82">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="83">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="84">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="45">
+        <li class="never" data-hits="" data-linenumber="85">
           
           
           <code class="ruby">end</code>

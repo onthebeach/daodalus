@@ -13,6 +13,46 @@ module Daodalus
       Update.new(dao).set(field, value)
     end
 
+    def unset(field)
+      Update.new(dao).unset(field)
+    end
+
+    def inc(field, amount=1)
+      Update.new(dao).inc(field, amount)
+    end
+
+    def rename(field, value)
+      Update.new(dao).rename(field, value)
+    end
+
+    def push(field, *values)
+      Update.new(dao).push(field, *values)
+    end
+
+    def push_all(field, *values)
+      Update.new(dao).push_all(field, *values)
+    end
+
+    def add_to_set(field, *values)
+      Update.new(dao).add_to_set(field, *values)
+    end
+
+    def pop_first(field)
+      Update.new(dao).pop_first(field)
+    end
+
+    def pop_last(field)
+      Update.new(dao).pop_last(field)
+    end
+
+    def pull(field, *values)
+      Update.new(dao).pull(field, *values)
+    end
+
+    def pull_all(field, *values)
+      Update.new(dao).pull_all(field, *values)
+    end
+
     def match(field=nil)
       Aggregation::Match.new(self, field)
     end
