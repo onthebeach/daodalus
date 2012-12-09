@@ -1,12 +1,13 @@
 module Daodalus
   module DSL
     class Update
-      attr_reader :criteria, :update_clauses
+      attr_reader :criteria, :select_clause, :update_clause
 
-      def initialize(dao, criteria={}, update_clauses={})
+      def initialize(dao, criteria={}, select_clause={}, update_clause={})
         @dao = dao
         @criteria = criteria
-        @update_clauses = update_clauses
+        @select_clause = select_clause
+        @update_clause = update_clause
       end
 
       def set(field, value)
@@ -66,16 +67,20 @@ module Daodalus
         with_update('$pullAll', {field.to_s => values})
       end
 
+      def where(field)
+        Where.new(dao, field, criteria, select_clause, update_clause)
+      end
+
       private
 
       attr_reader :dao
 
       def with_update(op, value)
-        Update.new(dao, criteria, build_update(op, value))
+        Update.new(dao, criteria, select_clause, build_update(op, value))
       end
 
       def build_update(op, value)
-        update_clauses.merge(op => value) { |k,a,b| a.merge(b) }
+        update_clause.merge(op => value) { |k,a,b| a.merge(b) }
       end
     end
   end
