@@ -7,9 +7,13 @@ module Daodalus
       def initialize(dao, field=nil, criteria={}, select_clause={}, update_clause={})
         @dao           = dao
         @field         = field.to_s
-        @criteria  = criteria
+        @criteria      = criteria
         @select_clause = select_clause
         @update_clause = update_clause
+      end
+
+      def update
+        dao.update(criteria, update_clause)
       end
 
       private

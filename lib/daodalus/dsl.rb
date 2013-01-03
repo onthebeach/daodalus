@@ -1,5 +1,6 @@
 module Daodalus
   module DSL
+    include DAO
 
     def where(field=nil)
       Where.new(self, field)
@@ -10,47 +11,47 @@ module Daodalus
     end
 
     def set(field, value)
-      Update.new(dao).set(field, value)
+      Update.new(self).set(field, value)
     end
 
     def unset(field)
-      Update.new(dao).unset(field)
+      Update.new(self).unset(field)
     end
 
     def inc(field, amount=1)
-      Update.new(dao).inc(field, amount)
+      Update.new(self).inc(field, amount)
     end
 
     def rename(field, value)
-      Update.new(dao).rename(field, value)
+      Update.new(self).rename(field, value)
     end
 
     def push(field, *values)
-      Update.new(dao).push(field, *values)
+      Update.new(self).push(field, *values)
     end
 
     def push_all(field, *values)
-      Update.new(dao).push_all(field, *values)
+      Update.new(self).push_all(field, *values)
     end
 
     def add_to_set(field, *values)
-      Update.new(dao).add_to_set(field, *values)
+      Update.new(self).add_to_set(field, *values)
     end
 
     def pop_first(field)
-      Update.new(dao).pop_first(field)
+      Update.new(self).pop_first(field)
     end
 
     def pop_last(field)
-      Update.new(dao).pop_last(field)
+      Update.new(self).pop_last(field)
     end
 
     def pull(field, *values)
-      Update.new(dao).pull(field, *values)
+      Update.new(self).pull(field, *values)
     end
 
     def pull_all(field, *values)
-      Update.new(dao).pull_all(field, *values)
+      Update.new(self).pull_all(field, *values)
     end
 
     def match(field=nil)
