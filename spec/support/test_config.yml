@@ -1,15 +1,15 @@
 test:
-  conn1:
+  cathouse:
     host: localhost
-    database: daodalus_test_1
+    database: daodalus
     pool_size: 5
     timeout: 5
     replicate_set_name: daodalus_test
     servers:
      - { host: localhost, port: 27017 }
-  conn2:
+  doghouse:
     host: localhost
-    database: daodalus_test_2
+    database: daodalus_2
     pool_size: 5
     timeout: 5
     replicate_set_name: daodalus_test

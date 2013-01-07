@@ -1,21 +1,6 @@
 module Daodalus
   module DAO
 
-    private
-
-    def target(conn, coll)
-      @connection_name = conn.to_s
-      @collection_name = coll.to_s
-    end
-
-    def db
-      Daodalus::Pool.instance[connection_name].db
-    end
-
-    def collection
-      db[collection_name]
-    end
-
     def find_one(*args)
       collection.find_one(*args)
     end
@@ -36,6 +21,10 @@ module Daodalus
       collection.remove(*args)
     end
 
+    def remove_all
+      collection.remove
+    end
+
     def count(*args)
       collection.find(*args).count
     end
@@ -50,6 +39,21 @@ module Daodalus
 
     def aggregate(*args)
       collection.aggregate(*args)
+    end
+
+    private
+
+    def target(conn, coll)
+      @connection_name = conn.to_s
+      @collection_name = coll.to_s
+    end
+
+    def db
+      Daodalus::Pool.instance[connection_name].db
+    end
+
+    def collection
+      db[collection_name]
     end
 
     attr_reader :collection_name

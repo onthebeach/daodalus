@@ -16,6 +16,10 @@ module Daodalus
         dao.update(criteria, update_clause)
       end
 
+      def find_one
+        dao.find_one(criteria, {'project' => select_clause})
+      end
+
       private
 
       attr_reader :dao, :field
