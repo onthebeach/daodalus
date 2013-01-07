@@ -10,10 +10,6 @@ module Daodalus
         dao.find_one(criteria, options.merge(fields: select_clause))
       end
 
-      def count(options = {})
-        dao.count(options.merge(query: criteria))
-      end
-
       ##
       # Including classes must implement the following methods
       #

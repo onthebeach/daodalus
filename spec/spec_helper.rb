@@ -17,6 +17,8 @@ class DBCleaner
   end
 end
 
+require_relative 'support/cat_dao'
+
 RSpec.configure do |config|
   config.order = :rand
   config.color_enabled = true

@@ -3,6 +3,7 @@ module Daodalus
     class Where
       include Clause
       include Queries
+      include Updates
 
       attr_reader :criteria, :select_clause, :update_clause
 
@@ -14,8 +15,12 @@ module Daodalus
         @update_clause = update_clause
       end
 
-      def select(*fields)
-        Select.new(dao, fields)
+      def count(options = {})
+        dao.count(criteria, options)
+      end
+
+      def remove(options = {})
+        dao.remove(criteria, options)
       end
 
       private

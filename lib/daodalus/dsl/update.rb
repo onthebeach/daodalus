@@ -1,6 +1,7 @@
 module Daodalus
   module DSL
     class Update
+      include Updates
       attr_reader :criteria, :select_clause, :update_clause
 
       def initialize(dao, criteria={}, select_clause={}, update_clause={})
