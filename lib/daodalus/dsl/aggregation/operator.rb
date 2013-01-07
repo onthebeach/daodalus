@@ -31,6 +31,10 @@ module Daodalus
           Project.new(dao, fields, 1, {}, to_query)
         end
 
+        def aggregate
+          dao.aggregate(to_query)
+        end
+
         def to_query
           if to_mongo.empty? then query else query + [to_mongo] end
         end
