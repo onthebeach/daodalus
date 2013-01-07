@@ -2,7 +2,7 @@ module Daodalus
   module DSL
     module Aggregation
       class Skip
-        include Command
+        include Operator
 
         def initialize(dao, total, query=[])
           @dao = dao

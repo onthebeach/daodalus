@@ -9,7 +9,7 @@ module Daodalus
 
       context "when given a valid connection name" do
         it "returns the specified connection" do
-          pool['conn1'].should be_a Connection
+          pool['cathouse'].should be_a Connection
         end
       end
 

@@ -2,7 +2,7 @@ module Daodalus
   module DSL
     module Aggregation
       class Unwind
-        include Command
+        include Operator
 
         def initialize(dao, field, query=[])
           @dao = dao

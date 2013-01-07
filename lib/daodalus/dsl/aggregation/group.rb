@@ -2,7 +2,7 @@ module Daodalus
   module DSL
     module Aggregation
       class Group
-        include Command
+        include Operator
 
         def initialize(dao, keys, aggregates={}, query=[])
           @dao = dao

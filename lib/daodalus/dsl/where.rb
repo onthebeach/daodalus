@@ -16,8 +16,8 @@ module Daodalus
         dao.update(criteria, update_clause)
       end
 
-      def find_one
-        dao.find_one(criteria, {'project' => select_clause})
+      def find
+        dao.find(criteria, select_clause)
       end
 
       private

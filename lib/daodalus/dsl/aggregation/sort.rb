@@ -2,7 +2,7 @@ module Daodalus
   module DSL
     module Aggregation
       class Sort
-        include Command
+        include Operator
 
         def initialize(dao, fields, query=[])
           @dao = dao

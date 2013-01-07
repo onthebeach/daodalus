@@ -3,7 +3,7 @@ module Daodalus
     module Aggregation
       class Match
         include Clause
-        include Command
+        include Operator
 
         def initialize(dao, field, criteria={}, query=[])
           @dao = dao

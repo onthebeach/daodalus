@@ -153,11 +153,11 @@
         1,
         null,
         1,
-        1,
-        null,
-        null,
-        1,
         0,
+        null,
+        null,
+        1,
+        1,
         null,
         null,
         1,
@@ -213,9 +213,6 @@
         null
       ],
       "/Users/russell.dunphy/Code/Gems/daodalus/lib/daodalus/dsl/all.rb": [
-        1,
-        1,
-        1,
         1,
         1,
         1,
@@ -846,12 +843,6 @@
         null,
         null
       ],
-      "/Users/russell.dunphy/Code/Gems/daodalus/lib/daodalus/dsl/update/all.rb": [
-        1
-      ],
-      "/Users/russell.dunphy/Code/Gems/daodalus/lib/daodalus/dsl/update/set.rb": [
-
-      ],
       "/Users/russell.dunphy/Code/Gems/daodalus/lib/daodalus/dsl/select.rb": [
         1,
         1,
@@ -926,24 +917,6 @@
         1,
         null,
         null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/russell.dunphy/Code/Gems/daodalus/lib/daodalus/dsl/queries.rb": [
-        1,
-        1,
-        1,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/russell.dunphy/Code/Gems/daodalus/lib/daodalus/dsl/updates.rb": [
-        1,
-        1,
-        1,
         null,
         null,
         null,
@@ -1046,6 +1019,6 @@
         null
       ]
     },
-    "timestamp": 1357545255
+    "timestamp": 1357546204
   }
 }

@@ -1,7 +1,7 @@
 module Daodalus
   module DSL
     module Aggregation
-      module Command
+      module Operator
 
         def match(field=nil)
           Match.new(dao, field, {}, to_query)

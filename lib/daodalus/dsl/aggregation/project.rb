@@ -2,7 +2,7 @@ module Daodalus
   module DSL
     module Aggregation
       class Project
-        include Command
+        include Operator
 
         def initialize(dao, fields, value, projection, query=[])
           @dao = dao
