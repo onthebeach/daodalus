@@ -13,6 +13,10 @@ module Daodalus
       @config
     end
 
+    def drop_database
+      connection.drop_database(database_name)
+    end
+
     def database_name
       config['database']
     end
@@ -37,7 +41,7 @@ module Daodalus
     end
 
     def replica_set_options
-      servers.map { |s| [s['host'], s['port']] } << {
+      servers.map { |s| "#{s['host']}:#{s['port']}" } << {
         :pool_size => pool_size,
         :pool_timeout => timeout,
         :read => :primary
@@ -54,11 +58,11 @@ module Daodalus
     end
 
     def replica_set_connection
-      Mongo::ReplSetConnection.new(*replica_set_options)
+      Mongo::MongoReplicaSetClient.new(*replica_set_options)
     end
 
     def connection
-      Mongo::Connection.new(*single_server_options)
+      Mongo::MongoClient.new(*single_server_options)
     end
 
   end

@@ -29,10 +29,6 @@ module Daodalus
       collection.find(*args).count
     end
 
-    def find_or_create(*args)
-      find_one(*args) || insert(*args)
-    end
-
     def find_and_modify(*args)
       collection.find_and_modify(*args)
     end

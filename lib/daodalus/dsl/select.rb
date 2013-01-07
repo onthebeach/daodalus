@@ -1,6 +1,7 @@
 module Daodalus
   module DSL
     class Select
+      include Queries
 
       def initialize(dao, fields, criteria={}, select_clause={'_id' => 0})
         @dao = dao

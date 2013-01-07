@@ -2,6 +2,8 @@ module Daodalus
   module DSL
     class Where
       include Clause
+      include Queries
+
       attr_reader :criteria, :select_clause, :update_clause
 
       def initialize(dao, field=nil, criteria={}, select_clause={}, update_clause={})
@@ -12,12 +14,8 @@ module Daodalus
         @update_clause = update_clause
       end
 
-      def update
-        dao.update(criteria, update_clause)
-      end
-
-      def find
-        dao.find(criteria, select_clause)
+      def select(*fields)
+        Select.new(dao, fields)
       end
 
       private

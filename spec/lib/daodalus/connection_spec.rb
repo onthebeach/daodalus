@@ -65,7 +65,7 @@ module Daodalus
         context 'when there is a successful connection' do
 
           before do
-            Mongo::Connection.should_receive(:new).
+            Mongo::MongoClient.should_receive(:new).
               once.
               with(*connection.single_server_options).
               and_return(pool)
@@ -84,7 +84,7 @@ module Daodalus
 
         context "when there is a connection failure" do
           before do
-            Mongo::Connection.should_receive(:new).and_raise(Mongo::ConnectionFailure)
+            Mongo::MongoClient.should_receive(:new).and_raise(Mongo::ConnectionFailure)
           end
 
           it 'raises any connection failures' do
@@ -112,9 +112,9 @@ module Daodalus
 
         it "returns an options array with the correct elements" do
           connection.replica_set_options.should eq [
-            ["127.0.0.1", 27017],
-            ["127.0.0.2", 27017],
-            ["127.0.0.3", 27017],
+            "127.0.0.1:27017",
+            "127.0.0.2:27017",
+            "127.0.0.3:27017",
             {
               :pool_size => 10,
               :pool_timeout => 5,
@@ -133,17 +133,17 @@ module Daodalus
         context 'when there is a successful connection' do
 
           before do
-            Mongo::ReplSetConnection.should_receive(:new).
+            Mongo::MongoReplicaSetClient.should_receive(:new).
               once.
               with(*connection.replica_set_options).
               and_return(pool)
           end
 
-          it 'creates a new Mongo::Connection' do
+          it 'creates a new Mongo::MongoClient' do
             subject
           end
 
-          it 'does not create a new Mongo::Connection on subsequent calls' do
+          it 'does not create a new Mongo::MongoClient on subsequent calls' do
             subject
             subject
           end
@@ -152,7 +152,7 @@ module Daodalus
 
         context "when there is a connection failure" do
           before do
-            Mongo::ReplSetConnection.should_receive(:new).and_raise(Mongo::ConnectionFailure)
+            Mongo::MongoReplicaSetClient.should_receive(:new).and_raise(Mongo::ConnectionFailure)
           end
 
           it 'raises any connection failures' do
@@ -163,4 +163,3 @@ module Daodalus
     end
   end
 end
-
