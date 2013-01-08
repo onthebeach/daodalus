@@ -42,6 +42,7 @@ module Daodalus
         def avg(field)
           with_aggregate_key('$avg', field)
         end
+        alias_method :average, :avg
 
         def push(field)
           with_aggregate_key('$push', field)

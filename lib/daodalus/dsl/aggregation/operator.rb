@@ -39,6 +39,10 @@ module Daodalus
           if to_mongo.empty? then query else query + [to_mongo] end
         end
 
+        def transform(&block)
+          Transform.new(self, block)
+        end
+
         private
 
         def field_as_operator(field)
