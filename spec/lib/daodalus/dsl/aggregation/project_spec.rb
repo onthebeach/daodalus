@@ -16,7 +16,7 @@ module Daodalus
         end
 
         it 'is possible to project multiple fields' do
-          query.project(:cats, :mice).with(:dogs, :fish).projection.
+          query.project(:cats, :mice).and(:dogs, :fish).projection.
             should eq ({'cats' => 1, 'dogs' => 1, 'mice' => 1, 'fish' => 1})
         end
 
@@ -25,9 +25,9 @@ module Daodalus
             should eq ({'cats' => '$animals.cats'})
         end
 
-        it 'is possible to chain projects using with' do
+        it 'is possible to chain projects using and' do
           query.project('animals.cats').as(:cats).
-            with(:dogs, :fish).projection.
+            and(:dogs, :fish).projection.
             should eq ({'cats' => '$animals.cats', 'dogs' => 1, 'fish' => 1})
         end
 
@@ -38,7 +38,7 @@ module Daodalus
           end
 
           it 'allows chaining with other projects' do
-            query.project(:cats).plus(:dogs, 3).as(:pets).with(:fish).projection.
+            query.project(:cats).plus(:dogs, 3).as(:pets).and(:fish).projection.
               should eq ({'pets' => { '$add' => ['$cats', '$dogs', 3]}, 'fish' => 1})
           end
         end

@@ -24,7 +24,7 @@ module Daodalus
           Project.new(dao, [key], fields_as_value, @projection, query)
         end
 
-        def with(*fields)
+        def and(*fields)
           Project.new(dao, fields, 1, projection, query)
         end
 
