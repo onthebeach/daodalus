@@ -14,7 +14,7 @@ module Daodalus
         fields.reduce(@select_clause){ |acc, f| acc.merge(f.to_s => 1) }
       end
 
-      def with(*fields)
+      def and(*fields)
         Select.new(dao, fields, criteria, select_clause)
       end
 

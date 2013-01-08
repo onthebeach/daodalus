@@ -49,7 +49,9 @@ module Daodalus
         end
 
         def projection
-          fields.reduce(@projection) { |acc, f| acc.merge(f.to_s => value) }
+          fields.reduce(@projection) do |acc, f|
+            acc.merge(f.to_s => value == 1 ? field_as_operator(f) : value)
+          end
         end
 
         def value

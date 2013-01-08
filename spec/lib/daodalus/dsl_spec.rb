@@ -102,7 +102,7 @@ module Daodalus
       it 'builds a project query' do
         DSLTestDAO.test_project.to_query.
           should eq [
-            {"$project"=> {"_id"=>1, "total"=>1, "pets"=>{"cats"=>1, "fish"=>{"$add"=>["$koi", "$goldfish"]}}}},
+            {"$project"=> {"_id"=>'$_id', "total"=>'$total', "pets"=>{"cats"=>'$cats', "fish"=>{"$add"=>["$koi", "$goldfish"]}}}},
             {'$unwind' => '$total'}]
       end
     end

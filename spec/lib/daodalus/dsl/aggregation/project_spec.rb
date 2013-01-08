@@ -8,16 +8,16 @@ module Daodalus
         let (:query) { Limit.new(dao, 30) }
 
         it 'takes a field to project (the _id field is excluded by default)' do
-          query.project(:cats).to_mongo.should eq ({'$project' => {'_id'=> 0, 'cats' => 1}})
+          query.project(:cats).to_mongo.should eq ({'$project' => {'_id'=> 0, 'cats' => '$cats'}})
         end
 
         it 'is possible to select the _id field in the project' do
-          query.project(:_id).to_mongo.should eq ({'$project' => {'_id' => 1}})
+          query.project(:_id).to_mongo.should eq ({'$project' => {'_id' => '$_id'}})
         end
 
         it 'is possible to project multiple fields' do
           query.project(:cats, :mice).and(:dogs, :fish).projection.
-            should eq ({'cats' => 1, 'dogs' => 1, 'mice' => 1, 'fish' => 1})
+            should eq ({'cats' => '$cats', 'dogs' => '$dogs', 'mice' => '$mice', 'fish' => '$fish'})
         end
 
         it 'can take new names for fields' do
@@ -28,7 +28,7 @@ module Daodalus
         it 'is possible to chain projects using and' do
           query.project('animals.cats').as(:cats).
             and(:dogs, :fish).projection.
-            should eq ({'cats' => '$animals.cats', 'dogs' => 1, 'fish' => 1})
+            should eq ({'cats' => '$animals.cats', 'dogs' => '$dogs', 'fish' => '$fish'})
         end
 
         describe "#plus" do
@@ -39,7 +39,7 @@ module Daodalus
 
           it 'allows chaining with other projects' do
             query.project(:cats).plus(:dogs, 3).as(:pets).and(:fish).projection.
-              should eq ({'pets' => { '$add' => ['$cats', '$dogs', 3]}, 'fish' => 1})
+              should eq ({'pets' => { '$add' => ['$cats', '$dogs', 3]}, 'fish' => '$fish'})
           end
         end
 

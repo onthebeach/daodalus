@@ -12,13 +12,13 @@ module Daodalus
       end
 
       it 'allows chaining using with' do
-        select.(:cats).with(:dogs).select_clause.
+        select.(:cats).and(:dogs).select_clause.
           should eq ({'_id' => 0, 'cats' => 1, 'dogs' => 1})
       end
 
       describe "#slice" do
         it 'creates a slice clause' do
-          select.(:cats).with(:dogs).slice(3).
+          select.(:cats).and(:dogs).slice(3).
             select_clause.
             should eq ({'_id' => 0, 'cats' => 1, 'dogs' => {'$slice' => 3}})
         end
