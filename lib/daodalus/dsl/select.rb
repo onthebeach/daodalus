@@ -3,6 +3,8 @@ module Daodalus
     class Select
       include Queries
 
+      attr_reader :dao
+
       def initialize(dao, fields, criteria={}, select_clause={'_id' => 0})
         @dao = dao
         @fields = fields
@@ -26,8 +28,8 @@ module Daodalus
         Where.new(dao, field, criteria, select_clause)
       end
 
-      def transform(&block)
-        Transform.new(self, block)
+      def transform(f=nil, &block)
+        Transform.new(self, f.nil? ? block : dao.method(f))
       end
 
       private
@@ -35,7 +37,7 @@ module Daodalus
       def slice_clause(number)
         fields.reduce(@select_clause){ |acc, f| acc.merge(f.to_s => {'$slice' => number}) }
       end
-      attr_reader :dao, :fields, :criteria
+      attr_reader :fields, :criteria
 
     end
   end

@@ -22,7 +22,7 @@ module Daodalus
 
         private
 
-        attr_reader :dao, :field, :criteria, :query
+        attr_reader :field, :criteria, :query
 
         def chain(field)
           Match.new(dao, field, criteria, query)

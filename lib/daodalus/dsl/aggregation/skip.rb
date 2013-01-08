@@ -20,7 +20,7 @@ module Daodalus
 
         private
 
-        attr_reader :dao, :total, :query
+        attr_reader :total, :query
 
       end
     end

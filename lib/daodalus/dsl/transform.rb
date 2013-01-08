@@ -25,8 +25,12 @@ module Daodalus
         block.call(result) if result
       end
 
-      def transform(&block)
-        Transform.new(self, block)
+      def transform(f=nil, &block)
+        Transform.new(self, f.nil? ? block : dao.method(f))
+      end
+
+      def dao
+        operator.dao
       end
 
       private

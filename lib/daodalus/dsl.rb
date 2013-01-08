@@ -86,9 +86,12 @@ module Daodalus
       Aggregation::Project.new(self, fields, 1, {})
     end
 
-    def transform(&block)
-      Transform.new(self, block)
+    def transform(f=nil, &block)
+      Transform.new(self, f.nil? ? block : method(f))
     end
 
+    def dao
+      self
+    end
   end
 end

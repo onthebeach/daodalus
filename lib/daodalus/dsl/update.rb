@@ -2,7 +2,7 @@ module Daodalus
   module DSL
     class Update
       include Updates
-      attr_reader :criteria, :select_clause, :update_clause
+      attr_reader :dao, :criteria, :select_clause, :update_clause
 
       def initialize(dao, criteria={}, select_clause={}, update_clause={})
         @dao = dao
@@ -76,13 +76,11 @@ module Daodalus
         Where.new(dao, field, criteria, select_clause, update_clause)
       end
 
-      def transform(&block)
-        Transform.new(self, block)
+      def transform(f=nil, &block)
+        Transform.new(self, f.nil? ? block : dao.method(f))
       end
 
       private
-
-      attr_reader :dao
 
       def with_update(op, field, value)
         Update.new(dao, criteria, select_clause, build_update(op, field.to_s => value))

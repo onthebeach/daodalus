@@ -32,7 +32,7 @@ module Daodalus
           [false, :desc, :descending, -1].include?(d) ? -1 : 1
         end
 
-        attr_reader :dao, :fields, :query
+        attr_reader :fields, :query
 
       end
     end

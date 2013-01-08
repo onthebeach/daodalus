@@ -5,7 +5,7 @@ module Daodalus
       include Queries
       include Updates
 
-      attr_reader :criteria, :select_clause, :update_clause
+      attr_reader :dao, :criteria, :select_clause, :update_clause
 
       def initialize(dao, field=nil, criteria={}, select_clause={}, update_clause={})
         @dao           = dao
@@ -23,13 +23,13 @@ module Daodalus
         dao.remove(criteria, options)
       end
 
-      def transform(&block)
-        Transform.new(self, block)
+      def transform(f=nil, &block)
+        Transform.new(self, f.nil? ? block : dao.method(f))
       end
 
       private
 
-      attr_reader :dao, :field
+      attr_reader :field
 
       def chain(field)
         Where.new(dao, field, criteria, select_clause, update_clause)

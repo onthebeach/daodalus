@@ -3,6 +3,8 @@ module Daodalus
     module Aggregation
       module Operator
 
+        attr_reader :dao
+
         def match(field=nil)
           Match.new(dao, field, {}, to_query)
         end
@@ -39,8 +41,8 @@ module Daodalus
           if to_mongo.empty? then query else query + [to_mongo] end
         end
 
-        def transform(&block)
-          Transform.new(self, block)
+        def transform(f=nil, &block)
+          Transform.new(self, f.nil? ? block : dao.method(f))
         end
 
         private

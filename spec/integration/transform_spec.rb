@@ -5,15 +5,27 @@ module Daodalus
 
     describe Transform do
 
+      CatDAO.instance_eval do
+        def square(x)
+          x * x
+        end
+      end
+
       before :each do
         CatDAO.remove_all
+        subject.insert(name: 'Felix', paws: 4)
       end
 
       subject { CatDAO }
 
-      it 'works when doing a find with no parameters' do
-        subject.insert(name: 'Felix', paws: 4)
+      it 'can accept a symbol instead of a block' do
+        subject.
+          transform{ |r| r.fetch('paws') }.
+          transform(:square).find.
+          should eq [16]
+      end
 
+      it 'works when doing a find with no parameters' do
         subject.
           transform{ |r| r.fetch('paws') }.
           find.
@@ -21,8 +33,6 @@ module Daodalus
       end
 
       it 'works when doing a find with a where as the last element' do
-        subject.insert(name: 'Felix', paws: 4)
-
         subject.
           where(:paws).eq(4).
           transform{ |r| r.fetch('paws') }.
@@ -31,8 +41,6 @@ module Daodalus
       end
 
       it 'works when doing a find with a select as the last element' do
-        subject.insert(name: 'Felix', paws: 4)
-
         subject.
           select(:paws).
           transform{ |r| r.fetch('paws') }.
@@ -41,8 +49,6 @@ module Daodalus
       end
 
       it 'works when doing a find_and_modify with an update as the last element' do
-        subject.insert(name: 'Felix', paws: 4)
-
         subject.
           set(:paws, 3).
           transform{ |r| r.fetch('paws') }.

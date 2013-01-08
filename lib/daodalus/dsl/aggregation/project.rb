@@ -78,7 +78,7 @@ module Daodalus
           ([fields.first] + args).map{|a| field_as_operator(a) }
         end
 
-        attr_reader :dao, :fields, :query
+        attr_reader :fields, :query
 
       end
     end

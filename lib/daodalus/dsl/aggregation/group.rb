@@ -54,7 +54,7 @@ module Daodalus
 
         private
 
-        attr_reader :dao, :keys, :query, :aggregates
+        attr_reader :keys, :query, :aggregates
 
         def with_aggregate_key(op, field)
           Group.new(dao, keys, aggregates.merge(build_aggregate_key(op, field)), query)
