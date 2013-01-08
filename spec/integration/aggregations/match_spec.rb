@@ -97,9 +97,102 @@ module Daodalus
           ]
         end
 
+        it 'can match using an "all" criteria' do
+          subject.insert(name: 'Russell', scarves: ['yellow', 'purple', 'long'])
+          subject.
+            match(:scarves).all('yellow', 'long').
+            transform{|r| r.delete('_id'); r }.
+            aggregate.should eq [
+              {'name' => 'Russell', 'scarves' => ["yellow", "purple", "long"]}
+          ]
+        end
+
+        it 'can match on the size of an array' do
+          subject.insert(name: 'Russell', scarves: ['yellow', 'purple', 'long'])
+          subject.
+            match(:scarves).size(3).
+            transform{|r| r.delete('_id'); r }.
+            aggregate.should eq [
+              {'name' => 'Russell', 'scarves' => ["yellow", "purple", "long"]}
+          ]
+        end
+
+        it 'can match on the existence of fields' do
+          subject.insert(name: 'Russell', scarves: ['yellow', 'purple', 'long'])
+          subject.
+            match(:scarves).exists.
+            transform{|r| r.delete('_id'); r }.
+            aggregate.should eq [
+              {'name' => 'Russell', 'scarves' => ["yellow", "purple", "long"]}
+          ]
+        end
+
+        it 'can match on the non-existence of fields' do
+          subject.insert(name: 'Russell', scarves: ['yellow', 'purple', 'long'])
+          subject.
+            match(:scarves).does_not_exist.
+            sort([:name, -1]).
+            transform{|r| r.delete('_id'); r }.
+            aggregate.should eq [
+              {'name' => 'Louise', 'stray' => false, 'paws' => 3},
+              {'name' => 'Jeffrey', 'stray' => false, 'paws' => 3},
+              {'name' => 'Felix', 'stray' => false, 'paws' => 4},
+              {'name' => 'Cat', 'stray' => true, 'paws' => 3}
+          ]
+        end
+
+        it 'can match on the result of a modulus function' do
+          subject.match(:paws).
+            mod(3,1).
+            transform{|r| r.delete('_id'); r }.
+            aggregate.should eq [
+              {'name' => 'Felix', 'stray' => false, 'paws' => 4}
+          ]
+        end
+
+        it 'can negate clauses' do
+          subject.
+            match(:paws).not.lt(4).
+            transform{|r| r.delete('_id'); r }.
+            aggregate.should eq [{'name' => 'Felix', 'stray' => false, 'paws' => 4}]
+        end
+
+        it 'can run nor clauses' do
+          subject.insert(name: 'Russell', scarves: ['yellow', 'purple', 'long'])
+          subject.
+            match.nor(
+              subject.match(:paws).lt(4),
+              subject.match(:scarves).exists
+            ).
+            transform{|r| r.delete('_id'); r }.
+            aggregate.should eq [{'name' => 'Felix', 'stray' => false, 'paws' => 4}]
+        end
+
+        it 'can run or clauses' do
+          subject.insert(name: 'Russell', scarves: ['yellow', 'purple', 'long'])
+          subject.
+            match.or(
+              subject.match(:paws).gte(4),
+              subject.match(:scarves).exists
+            ).
+            transform{|r| r.delete('_id'); r }.
+            aggregate.should eq [
+              {'name' => 'Felix', 'stray' => false, 'paws' => 4},
+              {'name' => 'Russell', 'scarves' => ["yellow", "purple", "long"]}]
+        end
+
+        it 'can run elemMatch clauses' do
+          subject.insert(name: 'Russell', hats: [{ flat: true, top: false}])
+          subject.
+            match(:hats).elem_match(
+              subject.match(:flat).eq(true).
+              and(:top).eq(false)
+            ).
+            tap{|x| puts x.to_query.inspect}.
+            transform{|r| r.delete('_id'); r }.
+            aggregate.should eq [{"name"=>"Russell", "hats"=>[{"flat"=>true, "top"=>false}]}]
+        end
       end
     end
   end
 end
-
-

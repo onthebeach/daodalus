@@ -155,9 +155,9 @@ module Daodalus
 
       describe "#not" do
         it 'adds a logical not clause to the where' do
-          query.not(Where.new(dao, :cats).eq(5)).
+          query.not.lt(5).
             criteria.
-            should eq ({'$not' => {'cats' => 5}})
+            should eq ({'cats' => { '$not' => { '$lt' => 5 }}})
         end
       end
 

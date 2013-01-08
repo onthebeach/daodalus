@@ -34,18 +34,18 @@ module Daodalus
     end
 
     def single_server_options
-      servers.flat_map { |s| [s['host'], s['port']] } << {
+      servers.flat_map { |s| [s['host'], s['port']] } + [{
         :pool_size => pool_size,
         :pool_timeout => timeout,
-      }
+      }]
     end
 
     def replica_set_options
-      servers.map { |s| "#{s['host']}:#{s['port']}" } << {
+      servers.map { |s| "#{s['host']}:#{s['port']}" } + [{
         :pool_size => pool_size,
         :pool_timeout => timeout,
         :read => :primary
-      }
+      }]
     end
 
     private

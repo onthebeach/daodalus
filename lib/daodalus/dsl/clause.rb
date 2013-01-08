@@ -68,8 +68,16 @@ module Daodalus
         end
       end
 
-      def not(clause)
-        add_clause('$not' => clause.criteria)
+      def not
+        define_singleton_method :build_clause do |op, value|
+          criteria.merge(field => { '$not' => { op => value}}) { |k,a,b| a.merge(b) }
+        end
+
+        define_singleton_method :eq do |value|
+          raise ArgumentError, "'not' cannot be used with 'eq' - use 'ne'"
+        end
+
+        self
       end
 
       def nor(*clauses)
@@ -100,7 +108,7 @@ module Daodalus
       end
 
       def with_condition(op, value)
-        add_clause(build_clause(op,value))
+        add_clause(build_clause(op, value))
       end
 
       def build_clause(op, value)
