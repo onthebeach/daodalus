@@ -86,5 +86,9 @@ module Daodalus
       Aggregation::Project.new(self, fields, 1, {})
     end
 
+    def transform(&block)
+      Transform.new(self, block)
+    end
+
   end
 end
