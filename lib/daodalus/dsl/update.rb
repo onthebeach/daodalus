@@ -31,11 +31,11 @@ module Daodalus
         if values.length == 1
           with_update('$push', field, values.first)
         else
-          push_all(field, *values)
+          push_all(field, values)
         end
       end
 
-      def push_all(field, *values)
+      def push_all(field, values)
         with_update('$pushAll', field, values)
       end
 
@@ -43,8 +43,12 @@ module Daodalus
         if values.length == 1
           with_update('$addToSet', field, values.first)
         else
-          with_update('$addToSet', field, { '$each' => values })
+          add_each_to_set(field, values)
         end
+      end
+
+      def add_each_to_set(field, values)
+        with_update('$addToSet', field, { '$each' => values })
       end
 
       def pop_first(field)
@@ -60,11 +64,11 @@ module Daodalus
         if values.length == 1
           with_update('$pull', field, values.first)
         else
-          pull_all(field, *values)
+          pull_all(field, values)
         end
       end
 
-      def pull_all(field, *values)
+      def pull_all(field, values)
         with_update('$pullAll', field, values)
       end
 

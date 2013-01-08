@@ -51,7 +51,7 @@ module Daodalus
 
       describe "#push_all" do
         it 'adds a pushAll command to the update clause' do
-          update.push_all(:cats, "Binx", "Caramel").update_clause.
+          update.push_all(:cats, ["Binx", "Caramel"]).update_clause.
             should eq ({'$pushAll' => {'cats' => ['Binx', 'Caramel']}})
         end
       end
@@ -63,6 +63,13 @@ module Daodalus
         end
         it 'also works with multiple values' do
           update.add_to_set(:cats, "Binx", "Caramel").update_clause.
+            should eq ({'$addToSet' => {'cats' => { '$each' => ['Binx', 'Caramel']}}})
+        end
+      end
+
+      describe "#add_each_to_set" do
+        it 'adds a addToSet command to the update clause' do
+          update.add_each_to_set(:cats, ["Binx", "Caramel"]).update_clause.
             should eq ({'$addToSet' => {'cats' => { '$each' => ['Binx', 'Caramel']}}})
         end
       end
@@ -94,7 +101,7 @@ module Daodalus
 
       describe "#pull_all" do
         it 'adds a pullAll command to the update clause' do
-          update.pull_all(:cats, "Binx", "Caramel").update_clause.
+          update.pull_all(:cats, ["Binx", "Caramel"]).update_clause.
             should eq ({'$pullAll' => {'cats' => ['Binx', 'Caramel']}})
         end
       end

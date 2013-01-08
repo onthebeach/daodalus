@@ -30,12 +30,16 @@ module Daodalus
       Update.new(self).push(field, *values)
     end
 
-    def push_all(field, *values)
-      Update.new(self).push_all(field, *values)
+    def push_all(field, values)
+      Update.new(self).push_all(field, values)
     end
 
     def add_to_set(field, *values)
       Update.new(self).add_to_set(field, *values)
+    end
+
+    def add_each_to_set(field, values)
+      Update.new(self).add_each_to_set(field, values)
     end
 
     def pop_first(field)
@@ -50,8 +54,8 @@ module Daodalus
       Update.new(self).pull(field, *values)
     end
 
-    def pull_all(field, *values)
-      Update.new(self).pull_all(field, *values)
+    def pull_all(field, values)
+      Update.new(self).pull_all(field, values)
     end
 
     def match(field=nil)
