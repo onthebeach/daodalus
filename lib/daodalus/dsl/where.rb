@@ -23,6 +23,10 @@ module Daodalus
         dao.remove(criteria, options)
       end
 
+      def transform(&block)
+        Transform.new(self, block)
+      end
+
       private
 
       attr_reader :dao, :field

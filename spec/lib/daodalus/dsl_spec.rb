@@ -35,10 +35,11 @@ class DSLTestDAO
   end
 
   def self.test_project
-    project(:_id, :total).with(:pets).as(
+    project(:_id, :total).with(
       project(:cats),
-      project(:fish).as(:koi).plus(:goldfish)
-    ).unwind(:total)
+      project(:koi).plus(:goldfish).as(:fish)
+    ).as(:pets).
+      unwind(:total)
   end
 end
 

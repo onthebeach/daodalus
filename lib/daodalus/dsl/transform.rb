@@ -12,7 +12,8 @@ module Daodalus
       end
 
       def find_one(options = {})
-        block.call(operator.find_one(options))
+        result = operator.find_one(options)
+        block.call(result) if result
       end
 
       def find(options = {})
@@ -20,7 +21,8 @@ module Daodalus
       end
 
       def find_and_modify(options = {})
-        block.call(operator.find_and_modify(options))
+        result = operator.find_and_modify(options)
+        block.call(result) if result
       end
 
       def transform(&block)

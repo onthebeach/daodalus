@@ -76,6 +76,10 @@ module Daodalus
         Where.new(dao, field, criteria, select_clause, update_clause)
       end
 
+      def transform(&block)
+        Transform.new(self, block)
+      end
+
       private
 
       attr_reader :dao

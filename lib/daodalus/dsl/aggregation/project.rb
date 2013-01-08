@@ -20,12 +20,8 @@ module Daodalus
           {operator => {'_id' => 0}.merge(projection) }
         end
 
-        def as(*values)
-          if values.all? { |v| v.is_a?(Project) }
-            Project.new(dao, fields, values.map(&:projection).reduce(:merge), projection, query)
-          else
-            Project.new(dao, fields, values.first, projection, query)
-          end
+        def as(key)
+          Project.new(dao, [key], fields_as_value, @projection, query)
         end
 
         def with(*fields)
@@ -53,7 +49,7 @@ module Daodalus
         end
 
         def projection
-          fields.reduce(@projection){ |acc, f| acc.merge(f.to_s => value) }
+          fields.reduce(@projection) { |acc, f| acc.merge(f.to_s => value) }
         end
 
         def value
@@ -62,12 +58,22 @@ module Daodalus
 
         private
 
+        def fields_as_value
+          if fields.all? {|f| f.is_a?(Project) }
+            fields.map(&:projection).reduce(:merge)
+          elsif fields.is_a?(Array) && fields.length == 1
+            fields.first
+          else
+            fields
+          end
+        end
+
         def with_array_operator(op, args)
-          Project.new(dao, fields, {op => arg_array(args)}, projection, query)
+          Project.new(dao, {op => arg_array(args)}, nil, @projection, query)
         end
 
         def arg_array(args)
-          [value] + args.map{|a| field_as_operator(a) }
+          ([fields.first] + args).map{|a| field_as_operator(a) }
         end
 
         attr_reader :dao, :fields, :query

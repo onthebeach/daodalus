@@ -26,6 +26,10 @@ module Daodalus
         Where.new(dao, field, criteria, select_clause)
       end
 
+      def transform(&block)
+        Transform.new(self, block)
+      end
+
       private
 
       def slice_clause(number)

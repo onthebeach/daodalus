@@ -3,11 +3,18 @@ module Daodalus
     module Queries
 
       def find(options = {})
-        dao.find(criteria, options.merge(fields: select_clause))
+        dao.find(criteria, select_options.merge(options))
       end
 
       def find_one(options = {})
-        dao.find_one(criteria, options.merge(fields: select_clause))
+        dao.find_one(criteria, select_options.merge(options))
+      end
+
+      private
+
+      def select_options
+        if select_clause.empty? then {}
+        else { fields: select_clause } end
       end
 
       ##
