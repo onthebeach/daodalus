@@ -23,6 +23,14 @@ module Daodalus
             should eq ({'_id' => 0, 'cats' => 1, 'dogs' => {'$slice' => 3}})
         end
       end
+
+      describe "#elem_match" do
+        it 'creates an elemMatch clause' do
+          select.(:cats).elem_match(:paws, 3).
+            select_clause.
+            should eq ({'_id' => 0, 'cats' => {'$elemMatch' => {'paws' => 3}}})
+        end
+      end
     end
   end
 end

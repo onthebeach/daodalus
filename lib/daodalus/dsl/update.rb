@@ -23,6 +23,10 @@ module Daodalus
         with_update('$inc', field, amount)
       end
 
+      def dec(field, amount=1)
+        inc(field, -amount)
+      end
+
       def rename(field, value)
         with_update('$rename', field, value.to_s)
       end

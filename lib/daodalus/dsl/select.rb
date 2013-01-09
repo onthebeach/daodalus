@@ -24,6 +24,10 @@ module Daodalus
         Select.new(dao, [], criteria, slice_clause(number))
       end
 
+      def elem_match(field, value)
+        Select.new(dao, [], criteria, elem_match_clause(field, value))
+      end
+
       def where(field)
         Where.new(dao, field, criteria, select_clause)
       end
@@ -37,6 +41,13 @@ module Daodalus
       def slice_clause(number)
         fields.reduce(@select_clause){ |acc, f| acc.merge(f.to_s => {'$slice' => number}) }
       end
+
+      def elem_match_clause(field, value)
+        fields.reduce(@select_clause) do |acc, f|
+          acc.merge(f.to_s => {'$elemMatch' => { field.to_s => value }})
+        end
+      end
+
       attr_reader :fields, :criteria
 
     end
