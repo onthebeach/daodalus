@@ -2,6 +2,7 @@ module Daodalus
   module DSL
     module Aggregation
       module Operator
+        include With
 
         attr_reader :dao
 

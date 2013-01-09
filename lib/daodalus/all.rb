@@ -1,6 +1,7 @@
 require_relative 'configuration'
 require_relative 'connection'
 require_relative 'pool'
+require_relative 'with'
 require_relative 'dao'
 require_relative 'dsl/all'
 require_relative 'dsl'

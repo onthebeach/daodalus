@@ -31,6 +31,13 @@ module Daodalus
         end
       end
 
+      describe "#dec" do
+        it 'adds an inc command to the update clause with the negated value' do
+          update.dec(:cats).update_clause.
+            should eq ({'$inc' => {'cats' => -1}})
+        end
+      end
+
       describe "#rename" do
         it 'adds a rename command to the update clause' do
           update.rename(:cats, :kittehs).update_clause.

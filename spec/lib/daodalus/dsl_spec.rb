@@ -41,10 +41,41 @@ class DSLTestDAO
     ).as(:pets).
       unwind(:total)
   end
+
+  def self.test_clause(query, cats)
+    query.match(:cats).eq(cats)
+  end
+
 end
 
 module Daodalus
   describe DSL do
+
+    describe '#with' do
+      it 'allows clauses built elsewhere to be added to the chain' do
+        DSLTestDAO.test_unwind.with(:test_clause, 4).to_query.should eq [
+          {"$unwind"=>"$cats"},
+          {"$sort"=>{"cats.paws"=>1}},
+          {"$match"=>{"cats"=>4}}
+        ]
+      end
+    end
+
+    describe '#with_optional' do
+      it 'allows clauses built elsewhere to be added to the chain' do
+        DSLTestDAO.test_unwind.with_optional(:test_clause, 4).to_query.should eq [
+          {"$unwind"=>"$cats"},
+          {"$sort"=>{"cats.paws"=>1}},
+          {"$match"=>{"cats"=>4}}
+        ]
+      end
+      it 'allows clauses built elsewhere to be optionally not added to the chain' do
+        DSLTestDAO.test_unwind.with_optional(:test_clause, nil).to_query.should eq [
+          {"$unwind"=>"$cats"},
+          {"$sort"=>{"cats.paws"=>1}}
+        ]
+      end
+    end
 
     describe '#where' do
       it 'builds a where query' do

@@ -2,6 +2,7 @@ module Daodalus
   module DSL
     class Select
       include Queries
+      include With
 
       attr_reader :dao
 

@@ -188,7 +188,6 @@ module Daodalus
               subject.match(:flat).eq(true).
               and(:top).eq(false)
             ).
-            tap{|x| puts x.to_query.inspect}.
             transform{|r| r.delete('_id'); r }.
             aggregate.should eq [{"name"=>"Russell", "hats"=>[{"flat"=>true, "top"=>false}]}]
         end

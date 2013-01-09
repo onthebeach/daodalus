@@ -1,6 +1,7 @@
 module Daodalus
   module DSL
     include DAO
+    include With
 
     def where(field=nil)
       Where.new(self, field)

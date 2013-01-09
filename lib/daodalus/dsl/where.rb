@@ -4,6 +4,7 @@ module Daodalus
       include Clause
       include Queries
       include Updates
+      include With
 
       attr_reader :dao, :criteria, :select_clause, :update_clause
 

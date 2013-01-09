@@ -159,6 +159,9 @@ module Daodalus
             criteria.
             should eq ({'cats' => { '$not' => { '$lt' => 5 }}})
         end
+        it 'cannot be used with eq' do
+          expect{ query.not.eq(5) }.to raise_error ArgumentError
+        end
       end
 
       describe "#nor" do
