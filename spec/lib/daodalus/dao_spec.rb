@@ -13,6 +13,18 @@ module Daodalus
         TestDAO
       end
 
+      class TestDAOInstance
+        include DAO
+        target :cathouse, :kittens
+      end
+
+      it 'also allows creating instances of a dao' do
+        dao = TestDAOInstance.new
+        dao.remove_all
+        dao.insert(name: 'Felix')
+        dao.find_one.fetch('name').should eq 'Felix'
+      end
+
       before :each do
         TestDAO.remove_all
         TestDAO.insert(name: 'Felix', paws: 4)

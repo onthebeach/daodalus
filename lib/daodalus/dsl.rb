@@ -1,6 +1,5 @@
 module Daodalus
   module DSL
-    include DAO
     include With
 
     def where(field=nil)
@@ -88,7 +87,7 @@ module Daodalus
     end
 
     def transform(f=nil, &block)
-      Transform.new(self, f.nil? ? block : method(f))
+      Transform.new(self, f.nil? ? block : dao.method(f))
     end
 
     def dao

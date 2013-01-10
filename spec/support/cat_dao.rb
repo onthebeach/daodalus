@@ -1,4 +1,4 @@
 class CatDAO
-  extend Daodalus::DSL
+  extend Daodalus::DAO
   target :cathouse, :cats
 end

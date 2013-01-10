@@ -1,5 +1,6 @@
 module Daodalus
   module DAO
+    include DSL
 
     def find_one(*args)
       collection.find_one(*args)
@@ -37,11 +38,15 @@ module Daodalus
       collection.aggregate(*args)
     end
 
+
     private
 
-    def target(conn, coll)
-      @connection_name = conn.to_s
-      @collection_name = coll.to_s
+    def connection_name
+      @connection_name || self.class.connection_name
+    end
+
+    def collection_name
+      @collection_name || self.class.collection_name
     end
 
     def db
@@ -52,7 +57,19 @@ module Daodalus
       db[collection_name]
     end
 
-    attr_reader :collection_name
-    attr_reader :connection_name
+    module Targetable
+      def target(conn, coll)
+        @connection_name = conn.to_s
+        @collection_name = coll.to_s
+      end
+      attr_reader :collection_name
+      attr_reader :connection_name
+    end
+
+    def self.included(base)
+      base.extend(Targetable)
+    end
+    include Targetable
+
   end
 end
