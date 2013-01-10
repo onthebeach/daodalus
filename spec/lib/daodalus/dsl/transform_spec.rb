@@ -19,6 +19,14 @@ module Daodalus
         end
       end
 
+      describe "#extract" do
+        let (:block) { ->(r){ r } }
+        it 'extracts a specific key from the result' do
+          operator.should_receive(:find).and_return([{'a' => 1},{'a' => 2}])
+          transform.extract(:a).find.should eq [1,2]
+        end
+      end
+
       describe "#aggregate" do
         it 'applies the block to each result' do
           operator.should_receive(:aggregate).and_return([2,4])

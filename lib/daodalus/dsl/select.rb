@@ -2,7 +2,7 @@ module Daodalus
   module DSL
     class Select
       include Queries
-      include With
+      include Chainable
 
       attr_reader :dao
 
@@ -31,10 +31,6 @@ module Daodalus
 
       def where(field)
         Where.new(dao, field, criteria, select_clause)
-      end
-
-      def transform(f=nil, &block)
-        Transform.new(self, f.nil? ? block : dao.method(f))
       end
 
       private

@@ -1,6 +1,6 @@
 module Daodalus
   module DSL
-    class Transform
+    class Pipe
       include Chainable
 
       def initialize(operator, block)
@@ -9,7 +9,7 @@ module Daodalus
       end
 
       def aggregate
-        operator.aggregate.map(&block)
+        block.call(operator.aggregate)
       end
 
       def find_one(options = {})
@@ -18,7 +18,7 @@ module Daodalus
       end
 
       def find(options = {})
-        operator.find(options).map(&block)
+        block.call(operator.find(options))
       end
 
       def find_and_modify(options = {})
@@ -36,3 +36,4 @@ module Daodalus
     end
   end
 end
+

@@ -2,7 +2,7 @@ module Daodalus
   module DSL
     class Update
       include Updates
-      include With
+      include Chainable
       attr_reader :dao, :criteria, :select_clause, :update_clause
 
       def initialize(dao, criteria={}, select_clause={}, update_clause={})
@@ -79,10 +79,6 @@ module Daodalus
 
       def where(field)
         Where.new(dao, field, criteria, select_clause, update_clause)
-      end
-
-      def transform(f=nil, &block)
-        Transform.new(self, f.nil? ? block : dao.method(f))
       end
 
       private

@@ -2,7 +2,7 @@ module Daodalus
   module DSL
     module Aggregation
       module Operator
-        include With
+        include Chainable
 
         attr_reader :dao
 
@@ -40,10 +40,6 @@ module Daodalus
 
         def to_query
           if to_mongo.empty? then query else query + [to_mongo] end
-        end
-
-        def transform(f=nil, &block)
-          Transform.new(self, f.nil? ? block : dao.method(f))
         end
 
         private

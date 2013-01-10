@@ -4,7 +4,7 @@ module Daodalus
       include Clause
       include Queries
       include Updates
-      include With
+      include Chainable
 
       attr_reader :dao, :criteria, :select_clause, :update_clause
 
@@ -26,6 +26,10 @@ module Daodalus
 
       def transform(f=nil, &block)
         Transform.new(self, f.nil? ? block : dao.method(f))
+      end
+
+      def extract(key)
+        transform {|result| result.fetch(key.to_s) }
       end
 
       private

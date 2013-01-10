@@ -1,6 +1,6 @@
 module Daodalus
   module DSL
-    include With
+    include Chainable
 
     def where(field=nil)
       Where.new(self, field)
@@ -84,10 +84,6 @@ module Daodalus
 
     def project(*fields)
       Aggregation::Project.new(self, fields, 1, {})
-    end
-
-    def transform(f=nil, &block)
-      Transform.new(self, f.nil? ? block : dao.method(f))
     end
 
     def dao
