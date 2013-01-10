@@ -6,7 +6,7 @@ module Daodalus
       let (:operator) { stub }
       let (:block) { ->(result){ result * 2 } }
 
-      let (:transform) { Transform.new(operator, block) }
+      let (:transform) { Transform.new(operator, block, []) }
 
       it 'takes an operator and block' do
         transform

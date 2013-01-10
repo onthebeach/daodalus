@@ -24,14 +24,6 @@ module Daodalus
         dao.remove(criteria, options)
       end
 
-      def transform(f=nil, &block)
-        Transform.new(self, f.nil? ? block : dao.method(f))
-      end
-
-      def extract(key)
-        transform {|result| result.fetch(key.to_s) }
-      end
-
       private
 
       attr_reader :field

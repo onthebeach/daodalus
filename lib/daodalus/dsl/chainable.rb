@@ -6,12 +6,12 @@ module Daodalus
         dao.method(args.first).call(self, *args.drop(1))
       end
 
-      def pipe(f=nil, &block)
-        Pipe.new(self, f.nil? ? block : dao.method(f))
+      def pipe(f=nil, *args, &block)
+        Pipe.new(self, f.nil? ? block : dao.method(f), args)
       end
 
-      def transform(f=nil, &block)
-        Transform.new(self, f.nil? ? block : dao.method(f))
+      def transform(f=nil, *args, &block)
+        Transform.new(self, f.nil? ? block : dao.method(f), args)
       end
 
       def extract(key)

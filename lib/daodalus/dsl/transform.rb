@@ -3,27 +3,32 @@ module Daodalus
     class Transform
       include Chainable
 
-      def initialize(operator, block)
+      def initialize(operator, block, args)
         @operator = operator
         @block = block
+        @args = args
       end
 
       def aggregate
-        operator.aggregate.map(&block)
+        operator.aggregate.map do |result|
+          block.call(result, *args)
+        end
       end
 
       def find_one(options = {})
         result = operator.find_one(options)
-        block.call(result) if result
+        block.call(result, *args) if result
       end
 
       def find(options = {})
-        operator.find(options).map(&block)
+        operator.find(options).map do |result|
+          block.call(result, *args)
+        end
       end
 
       def find_and_modify(options = {})
         result = operator.find_and_modify(options)
-        block.call(result) if result
+        block.call(result, *args) if result
       end
 
       def dao
@@ -32,7 +37,7 @@ module Daodalus
 
       private
 
-      attr_reader :operator, :block
+      attr_reader :operator, :block, :args
     end
   end
 end
