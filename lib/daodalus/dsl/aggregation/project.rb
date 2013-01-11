@@ -28,6 +28,10 @@ module Daodalus
           Project.new(dao, fields, 1, projection, query)
         end
 
+        def eq(arg)
+          with_array_operator('$eq', [arg])
+        end
+
         def plus(*args)
           with_array_operator('$add', args)
         end

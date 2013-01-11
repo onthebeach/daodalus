@@ -31,6 +31,18 @@ module Daodalus
             should eq ({'cats' => '$animals.cats', 'dogs' => '$dogs', 'fish' => '$fish'})
         end
 
+        describe "#eq" do
+          it 'builds an eq operator' do
+            query.project(:cats).eq(:dogs).as(:pets).projection.
+              should eq ({'pets' => { '$eq' => ['$cats', '$dogs']}})
+          end
+
+          it 'allows chaining with other projects' do
+            query.project(:cats).eq(:dogs).as(:pets).and(:fish).projection.
+              should eq ({'pets' => { '$eq' => ['$cats', '$dogs']}, 'fish' => '$fish'})
+          end
+        end
+
         describe "#plus" do
           it 'builds an add operator' do
             query.project(:cats).plus(:dogs, 3).as(:pets).projection.

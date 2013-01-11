@@ -54,6 +54,14 @@ module Daodalus
         it "allows fields to be added together" do
           subject.
             project('favourite_foods.mice').
+            eq('favourite_foods.fish').
+            as(:same_points).aggregate.
+            should eq [{'same_points' => false}]
+        end
+
+        it "allows fields to be compared for equality" do
+          subject.
+            project('favourite_foods.mice').
             plus('favourite_foods.fish').
             as(:food_total).aggregate.
             should eq [{'food_total' => 5}]
