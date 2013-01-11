@@ -22,6 +22,10 @@ module Daodalus
           { operator => criteria }
         end
 
+        def match(field = nil)
+          if field.nil? then self else self.and(field) end
+        end
+
         private
 
         attr_reader :field, :query

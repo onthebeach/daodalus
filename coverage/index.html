@@ -14,7 +14,7 @@
       <img src="./assets/0.7.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2013-01-10T15:36:11+00:00">2013-01-10T15:36:11+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2013-01-11T13:11:26+00:00">2013-01-11T13:11:26+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -32,8 +32,8 @@
   <a name="AllFiles"></a>
   <div>
     <b>26</b> files in total.
-    <b>628</b> relevant lines. 
-    <span class="green"><b>617</b> lines covered</span> and
+    <b>630</b> relevant lines. 
+    <span class="green"><b>619</b> lines covered</span> and
     <span class="red"><b>11</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -143,11 +143,11 @@
       <tr>
         <td class="strong"><a href="#e681d3e3409ce90fe5ff80562d7846dc7f43b5b6" class="src_link" title="lib/daodalus/dsl/aggregation/match.rb">lib/daodalus/dsl/aggregation/match.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>40</td>
-        <td>22</td>
-        <td>22</td>
+        <td>44</td>
+        <td>24</td>
+        <td>24</td>
         <td>0</td>
-        <td>16.6</td>
+        <td>16.3</td>
       </tr>
       
       <tr>
@@ -157,7 +157,7 @@
         <td>29</td>
         <td>29</td>
         <td>0</td>
-        <td>25.0</td>
+        <td>25.1</td>
       </tr>
       
       <tr>
@@ -227,7 +227,7 @@
         <td>64</td>
         <td>64</td>
         <td>0</td>
-        <td>5.1</td>
+        <td>5.2</td>
       </tr>
       
       <tr>
@@ -2935,8 +2935,8 @@
     <h3>lib/daodalus/dsl/aggregation/match.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>22</b> relevant lines. 
-      <span class="green"><b>22</b> lines covered</span> and
+      <b>24</b> relevant lines. 
+      <span class="green"><b>24</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -3004,26 +3004,26 @@
           <code class="ruby">        def initialize(dao, field, criteria={}, query=[])</code>
         </li>
       
-        <li class="covered" data-hits="58" data-linenumber="11">
-          <span class="hits">58</span>
+        <li class="covered" data-hits="62" data-linenumber="11">
+          <span class="hits">62</span>
           
           <code class="ruby">          @dao = dao</code>
         </li>
       
-        <li class="covered" data-hits="58" data-linenumber="12">
-          <span class="hits">58</span>
+        <li class="covered" data-hits="62" data-linenumber="12">
+          <span class="hits">62</span>
           
           <code class="ruby">          @field = field.to_s</code>
         </li>
       
-        <li class="covered" data-hits="58" data-linenumber="13">
-          <span class="hits">58</span>
+        <li class="covered" data-hits="62" data-linenumber="13">
+          <span class="hits">62</span>
           
           <code class="ruby">          @criteria = criteria</code>
         </li>
       
-        <li class="covered" data-hits="58" data-linenumber="14">
-          <span class="hits">58</span>
+        <li class="covered" data-hits="62" data-linenumber="14">
+          <span class="hits">62</span>
           
           <code class="ruby">          @query = query</code>
         </li>
@@ -3046,8 +3046,8 @@
           <code class="ruby">        def operator</code>
         </li>
       
-        <li class="covered" data-hits="44" data-linenumber="18">
-          <span class="hits">44</span>
+        <li class="covered" data-hits="46" data-linenumber="18">
+          <span class="hits">46</span>
           
           <code class="ruby">          '$match'</code>
         </li>
@@ -3070,8 +3070,8 @@
           <code class="ruby">        def to_mongo</code>
         </li>
       
-        <li class="covered" data-hits="44" data-linenumber="22">
-          <span class="hits">44</span>
+        <li class="covered" data-hits="46" data-linenumber="22">
+          <span class="hits">46</span>
           
           <code class="ruby">          { operator =&gt; criteria }</code>
         </li>
@@ -3091,19 +3091,19 @@
         <li class="covered" data-hits="1" data-linenumber="25">
           <span class="hits">1</span>
           
-          <code class="ruby">        private</code>
+          <code class="ruby">        def match(field = nil)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="26">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="27">
+        <li class="covered" data-hits="1" data-linenumber="26">
           <span class="hits">1</span>
           
-          <code class="ruby">        attr_reader :field, :query</code>
+          <code class="ruby">          if field.nil? then self else self.and(field) end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="27">
+          
+          
+          <code class="ruby">        end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="28">
@@ -3115,19 +3115,19 @@
         <li class="covered" data-hits="1" data-linenumber="29">
           <span class="hits">1</span>
           
-          <code class="ruby">        def chain(field)</code>
+          <code class="ruby">        private</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="30">
-          <span class="hits">2</span>
+        <li class="never" data-hits="" data-linenumber="30">
           
-          <code class="ruby">          Match.new(dao, field, criteria, query)</code>
+          
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="31">
+        <li class="covered" data-hits="1" data-linenumber="31">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">        end</code>
+          <code class="ruby">        attr_reader :field, :query</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="32">
@@ -3139,11 +3139,11 @@
         <li class="covered" data-hits="1" data-linenumber="33">
           <span class="hits">1</span>
           
-          <code class="ruby">        def add_clause(criteria)</code>
+          <code class="ruby">        def chain(field)</code>
         </li>
       
-        <li class="covered" data-hits="29" data-linenumber="34">
-          <span class="hits">29</span>
+        <li class="covered" data-hits="3" data-linenumber="34">
+          <span class="hits">3</span>
           
           <code class="ruby">          Match.new(dao, field, criteria, query)</code>
         </li>
@@ -3160,25 +3160,49 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="37">
+        <li class="covered" data-hits="1" data-linenumber="37">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">      end</code>
+          <code class="ruby">        def add_clause(criteria)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="38">
+        <li class="covered" data-hits="31" data-linenumber="38">
+          <span class="hits">31</span>
           
-          
-          <code class="ruby">    end</code>
+          <code class="ruby">          Match.new(dao, field, criteria, query)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="39">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">        end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="40">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="41">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="42">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="43">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="44">
           
           
           <code class="ruby">end</code>
@@ -3448,8 +3472,8 @@
           <code class="ruby">        def to_query</code>
         </li>
       
-        <li class="covered" data-hits="109" data-linenumber="42">
-          <span class="hits">109</span>
+        <li class="covered" data-hits="110" data-linenumber="42">
+          <span class="hits">110</span>
           
           <code class="ruby">          if to_mongo.empty? then query else query + [to_mongo] end</code>
         </li>
@@ -5080,8 +5104,8 @@
           <code class="ruby">      def lt(value)</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="12">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="17" data-linenumber="12">
+          <span class="hits">17</span>
           
           <code class="ruby">        with_condition('$lt', value)</code>
         </li>
@@ -5380,14 +5404,14 @@
           <code class="ruby">      def and(*args)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="62">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="62">
+          <span class="hits">7</span>
           
           <code class="ruby">        if field_arg?(args)</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="63">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="5" data-linenumber="63">
+          <span class="hits">5</span>
           
           <code class="ruby">          chain(args.first)</code>
         </li>
@@ -5590,8 +5614,8 @@
           <code class="ruby">      def eq(value)</code>
         </li>
       
-        <li class="covered" data-hits="43" data-linenumber="97">
-          <span class="hits">43</span>
+        <li class="covered" data-hits="44" data-linenumber="97">
+          <span class="hits">44</span>
           
           <code class="ruby">        add_clause(criteria.merge(field =&gt; value))</code>
         </li>
@@ -5650,8 +5674,8 @@
           <code class="ruby">        args.length == 1 &amp;&amp;</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="107">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="107">
+          <span class="hits">7</span>
           
           <code class="ruby">          (args.first.is_a?(String) || args.first.is_a?(Symbol))</code>
         </li>
@@ -5674,8 +5698,8 @@
           <code class="ruby">      def with_condition(op, value)</code>
         </li>
       
-        <li class="covered" data-hits="67" data-linenumber="111">
-          <span class="hits">67</span>
+        <li class="covered" data-hits="68" data-linenumber="111">
+          <span class="hits">68</span>
           
           <code class="ruby">        add_clause(build_clause(op, value))</code>
         </li>
@@ -5698,8 +5722,8 @@
           <code class="ruby">      def build_clause(op, value)</code>
         </li>
       
-        <li class="covered" data-hits="65" data-linenumber="115">
-          <span class="hits">65</span>
+        <li class="covered" data-hits="66" data-linenumber="115">
+          <span class="hits">66</span>
           
           <code class="ruby">        criteria.merge(field =&gt; { op =&gt; value}) { |k,a,b| a.merge(b) }</code>
         </li>
