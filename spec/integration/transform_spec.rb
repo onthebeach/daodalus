@@ -9,6 +9,9 @@ module Daodalus
         def square(x)
           x * x
         end
+        def double(x)
+          x + x
+        end
       end
 
       before :each do
@@ -23,6 +26,15 @@ module Daodalus
           transform{ |r| r.fetch('paws') }.
           transform(:square).find.
           should eq [16]
+      end
+
+      it 'can be chained with pipe' do
+        subject.
+          extract(:paws).
+          transform(:square).
+          pipe(&:first).
+          pipe(:double).
+          find.should eq 32
       end
 
       it 'works when doing a find with no parameters' do
