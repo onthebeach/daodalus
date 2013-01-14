@@ -33,6 +33,28 @@ module Daodalus
       config['servers']
     end
 
+    def read
+      config['read'].to_sym
+    end
+
+    def refresh_mode
+      if config.fetch('refresh_mode', false) == 'sync'
+        :sync
+      else
+        false
+      end
+    end
+
+    def refresh_interval
+      config.fetch('refresh_interval', 90).to_i
+    end
+
+    def safe
+      config['safe'].each_with_object({}) do |(key, value), hash|
+        hash[key.to_sym] = value
+      end
+    end
+
     def single_server_options
       servers.flat_map { |s| [s['host'], s['port']] } + [{
         :pool_size => pool_size,
@@ -44,7 +66,10 @@ module Daodalus
       servers.map { |s| "#{s['host']}:#{s['port']}" } + [{
         :pool_size => pool_size,
         :pool_timeout => timeout,
-        :read => :primary
+        :refresh_mode => refresh_mode,
+        :refresh_interval => refresh_interval,
+        :read => read,
+        :safe => safe
       }]
     end
 

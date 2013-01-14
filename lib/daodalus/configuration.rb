@@ -1,6 +1,5 @@
 require 'singleton'
 require 'yaml'
-require 'erb'
 
 module Daodalus
   class Configuration

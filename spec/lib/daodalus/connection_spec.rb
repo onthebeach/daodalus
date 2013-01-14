@@ -20,7 +20,11 @@ module Daodalus
         "host"=>"localhost",
         "servers"=>[{"host"=>"localhost", "port"=>27017}],
         "replicate_set_name"=>"daodalus",
-        "timeout"=> 5
+        "timeout"=> 5,
+        "read"=>"primary",
+        "refresh_mode"=>"sync",
+        "refresh_interval"=>"60",
+        "safe"=>{"w" => 2, "wtimeout" => 200, "j" => true}
       }}
 
       describe "#database_name" do
@@ -41,9 +45,33 @@ module Daodalus
         end
       end
 
+      describe "#refresh_mode" do
+        it "returns the 'refresh_mode' value from the config" do
+          connection.refresh_mode.should eq :sync
+        end
+      end
+
+      describe "#refresh_interval" do
+        it "returns the 'refresh_interval' value from the config" do
+          connection.refresh_interval.should eq 60
+        end
+      end
+
       describe "#servers" do
         it "returns the 'servers' value from the config" do
           connection.servers.should eq [{"host"=>"localhost", "port"=>27017}]
+        end
+      end
+
+      describe "#read" do
+        it "returns the 'read' value from the config" do
+          connection.read.should eq :primary
+        end
+      end
+
+      describe "#safe" do
+        it "returns the 'safe' value from the config" do
+          connection.safe.should eq({:w => 2, :wtimeout => 200, :j => true})
         end
       end
 
@@ -101,11 +129,13 @@ module Daodalus
         "pool_size"=>10,
         "database"=>"daodalus_test",
         "host"=>"localhost",
+        "read"=>"primary",
         "servers"=>[
           {"port"=>27017, "host"=>"127.0.0.1"},
           {"port"=>27017, "host"=>"127.0.0.2"},
           {"port"=>27017, "host"=>"127.0.0.3"}
-        ]
+        ],
+        "safe"=>{"w" => 2, "wtimeout" => 200, "j" => true}
       }}
 
       describe '#replica_set_options' do
@@ -118,7 +148,10 @@ module Daodalus
             {
               :pool_size => 10,
               :pool_timeout => 5,
-              :read => :primary
+              :refresh_mode => false,
+              :refresh_interval => 90,
+              :read => :primary,
+              :safe=>{:w => 2, :wtimeout => 200, :j => true}
             }
           ]
         end
