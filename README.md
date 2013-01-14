@@ -38,7 +38,7 @@
           and(:address).exists.
           unwind(:favourite_foods).
           group(:favourite_foods).
-          min(:paws).as(:min_paws).
+          min(min_paws: 'paws').
           sort(:_id).
           limit(10).
           project(:_id).as(:food).and(:min_paws).

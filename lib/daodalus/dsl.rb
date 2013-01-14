@@ -22,6 +22,10 @@ module Daodalus
       Update.new(self).inc(field, amount)
     end
 
+    def dec(field, amount=1)
+      Update.new(self).dec(field, amount)
+    end
+
     def rename(field, value)
       Update.new(self).rename(field, value)
     end

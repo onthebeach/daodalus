@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 class DSLTestDAO
-  extend Daodalus::DSL
+  extend Daodalus::DAO
 
   def self.test_where
     where.or(
