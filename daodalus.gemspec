@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |gem|
   gem.authors       = ["Russell Dunphy"]
-  gem.email         = ["russell@rsslldnphy.com"]
+  gem.email         = ["russell.dunphy@onthebeach.co.uk"]
   gem.description   = %q{Manages connections to MongoDB.}
   gem.summary       = gem.description
-  gem.homepage      = "http://github.com/rsslldnphy/daodalus"
+  gem.homepage      = "http://github.com/onthebeach/daodalus"
 
   gem.add_runtime_dependency 'mongo', '~> 1.8.0'
   gem.add_runtime_dependency 'bson_ext', '~> 1.8.0'
