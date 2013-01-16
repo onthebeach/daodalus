@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    daodalus (0.0.1)
+    daodalus (0.0.3)
       bson_ext (~> 1.8.0)
       mongo (~> 1.8.0)
       wendy
@@ -9,7 +9,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (3.2.9)
+    activesupport (3.2.11)
       i18n (~> 0.6)
       multi_json (~> 1.0)
     bson (1.8.0)

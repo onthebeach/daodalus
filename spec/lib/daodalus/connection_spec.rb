@@ -142,17 +142,18 @@ module Daodalus
 
         it "returns an options array with the correct elements" do
           connection.replica_set_options.should eq [
-            "127.0.0.1:27017",
-            "127.0.0.2:27017",
-            "127.0.0.3:27017",
+            ["127.0.0.1:27017",
+              "127.0.0.2:27017",
+              "127.0.0.3:27017"
+          ],
             {
-              :pool_size => 10,
-              :pool_timeout => 5,
-              :refresh_mode => false,
-              :refresh_interval => 90,
-              :read => :primary,
-              :safe=>{:w => 2, :wtimeout => 200, :j => true}
-            }
+            :pool_size => 10,
+            :pool_timeout => 5,
+            :refresh_mode => false,
+            :refresh_interval => 90,
+            :read => :primary,
+            :safe=>{:w => 2, :wtimeout => 200, :j => true}
+          }
           ]
         end
       end

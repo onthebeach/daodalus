@@ -2,7 +2,7 @@
 Gem::Specification.new do |gem|
   gem.authors       = ["Russell Dunphy"]
   gem.email         = ["russell.dunphy@onthebeach.co.uk"]
-  gem.description   = %q{Manages connections to MongoDB.}
+  gem.description   = %q{Build MongoDB queries, updates and aggregations.}
   gem.summary       = gem.description
   gem.homepage      = "http://github.com/onthebeach/daodalus"
 
@@ -18,5 +18,5 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "daodalus"
   gem.require_paths = ["lib"]
-  gem.version       = "0.0.1"
+  gem.version       = "0.0.3"
 end

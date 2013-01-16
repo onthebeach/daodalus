@@ -63,7 +63,7 @@ module Daodalus
     end
 
     def replica_set_options
-      servers.map { |s| "#{s['host']}:#{s['port']}" } + [{
+      [servers.map { |s| "#{s['host']}:#{s['port']}" }] + [{
         :pool_size => pool_size,
         :pool_timeout => timeout,
         :refresh_mode => refresh_mode,
