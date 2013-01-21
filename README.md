@@ -2,11 +2,29 @@
 
 ### Construct complex MongoDB queries, updates and aggregations.
 
+### Configuration:
+
+    # config/mongo.yml
+    development:
+      animals:
+        database: animals_development
+        host: localhost
+        pool_size: 5
+        timeout: 5
+        replicate_set_name: animals_development
+        servers:
+          - { host: localhost, port: 27017 }
+
+### Initialisation:
+
+    # config/initializers/daodalus.rb
+    Daodalus::Configuration.load('config/mongo.yml', Rails.root)
+
 ##### Examples:
 
     #!ruby
     class CatDAO
-      extend Daodalus::DSL
+      extend Daodalus::DAO # or `include` if you want an instance of a DAO
       target :animals, :cats # or overide `connection` to supply your own
 
       def self.example_find
