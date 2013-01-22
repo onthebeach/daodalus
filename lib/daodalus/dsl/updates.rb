@@ -6,8 +6,8 @@ module Daodalus
         dao.update(criteria, update_clause, options)
       end
 
-      def upsert
-        update(upsert: true)
+      def upsert(options = {})
+        update(options.merge(upsert: true))
       end
 
       def find_and_modify(options = {})
