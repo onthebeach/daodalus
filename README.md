@@ -18,7 +18,7 @@
 ### Initialisation:
 
     # config/initializers/daodalus.rb
-    Daodalus::Configuration.load('config/mongo.yml', Rails.root)
+    Daodalus::Configuration.load('config/mongo.yml', Rails.env)
 
 ##### Examples:
 
