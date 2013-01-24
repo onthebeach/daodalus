@@ -1,8 +1,8 @@
 # DAODALUS
 
-### Construct complex MongoDB queries, updates and aggregations.
-
 [![Build Status](https://travis-ci.org/onthebeach/daodalus.png?branch=master)](https://travis-ci.org/onthebeach/daodalus)
+
+### Construct complex MongoDB queries, updates and aggregations.
 
 ### Configuration:
 
