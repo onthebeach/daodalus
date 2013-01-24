@@ -1,4 +1,4 @@
-Copyright (c) 2012 On The Beach
+Copyright (c) 2012 On The Beach Ltd
 
 MIT License
 

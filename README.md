@@ -65,3 +65,8 @@
           aggregate
       end
     end
+
+## License
+
+Daodalus is Copyright © 2012 On The Beach Ltd.
+It is free software, and may be redistributed under the terms specified in the LICENSE file.
