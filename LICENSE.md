@@ -1,4 +1,4 @@
-Copyright (c) 2012 Charles J Hardy
+Copyright (c) 2012 On The Beach
 
 MIT License
 
