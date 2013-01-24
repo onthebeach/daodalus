@@ -1,6 +1,4 @@
-# DAODALUS
-
-[![Build Status](https://travis-ci.org/onthebeach/daodalus.png?branch=master)](https://travis-ci.org/onthebeach/daodalus)
+# DAODALUS  [![Build Status](https://travis-ci.org/onthebeach/daodalus.png?branch=master)](http://travis-ci.org/onthebeach/daodalus) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/onthebeach/daodalus)
 
 ### Construct complex MongoDB queries, updates and aggregations.
 
