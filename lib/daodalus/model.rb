@@ -1,8 +1,10 @@
 module Daodalus
   module Model
-    def initialize(result)
-      @result = result
+    def initialize(data)
+      @data = data
     end
+
+    attr_reader :data
 
     def self.included(base)
       base.extend(DocumentDescriptor)
@@ -23,7 +25,7 @@ module Daodalus
 
       def define_field(f, key, type)
         define_method f do
-          value = result.fetch(key.to_s)
+          value = data.fetch(key.to_s)
           if type.nil? then value else apply_conversion(value, type) end
         end
       end
@@ -31,7 +33,7 @@ module Daodalus
       def define_field_with_default(f, key, type, options)
         default = options.fetch(:default)
         define_method f do
-          value = result.fetch(key.to_s, default)
+          value = data.fetch(key.to_s, default)
           if type.nil? then value else apply_conversion(value, type) end
         end
       end
@@ -39,8 +41,6 @@ module Daodalus
     end
 
     private
-
-    attr_reader :result
 
     def apply_conversion(value, type)
       case type.to_s
