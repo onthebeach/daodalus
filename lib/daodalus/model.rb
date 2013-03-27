@@ -4,7 +4,9 @@ module Daodalus
       @data = data
     end
 
-    attr_reader :data
+    def data
+      @data.has_key?(:_id) ? @data : @data.merge!(_id: BSON::ObjectId.new)
+    end
 
     def self.included(base)
       base.extend(DocumentDescriptor)
