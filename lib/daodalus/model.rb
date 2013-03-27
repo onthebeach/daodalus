@@ -15,7 +15,7 @@ module Daodalus
     module DocumentDescriptor
 
       def has_one(f, options={})
-        type = options.fetch(:type, nil) || const_get(f.to_s.classify) || f.to_s.camelize.constantize
+        type = options.fetch(:type, nil) || association_class(f)
         key = options.fetch(:key, nil) || f
         define_method f do
           instance_variable_get(:"@#{f}") ||
@@ -25,7 +25,7 @@ module Daodalus
 
       def has_many(f, options={})
         puts f.to_s.camelize.singularize
-        type = options.fetch(:type, nil) || const_get(f.to_s.classify) || f.to_s.camelize.singularize.constantize
+        type = options.fetch(:type, nil) || association_class(f)
         key = options.fetch(:key, nil) || f
         define_method f do
           instance_variable_get(:"@#{f}") ||
@@ -43,6 +43,12 @@ module Daodalus
       end
 
       private
+
+      def association_class(f)
+        class_name = f.to_s.classify
+        if const_defined? class_name then const_get(class_name)
+        else class_name.constantize end
+      end
 
       def define_field(f, key)
         define_method f do
