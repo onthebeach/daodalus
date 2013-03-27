@@ -24,7 +24,6 @@ module Daodalus
       end
 
       def has_many(f, options={})
-        puts f.to_s.camelize.singularize
         type = options.fetch(:type, nil) || association_class(f)
         key = options.fetch(:key, nil) || f
         define_method f do
@@ -46,9 +45,15 @@ module Daodalus
 
       def association_class(f)
         class_name = f.to_s.classify
-        if const_defined? class_name then const_get(class_name)
-        else class_name.constantize end
+        hierarchy = name.split("::").reduce([]) do |acc, name|
+          acc + ["#{acc.last + '::' unless acc.last.nil?}#{name}"]
+        end.map(&:constantize)
+        module_name = hierarchy.find{ |m| m.const_defined? class_name }
+        if const_defined?(class_name) then const_get(class_name)
+        elsif module_name.nil? then class_name.constantize
+        else module_name.const_get(class_name) end
       end
+
 
       def define_field(f, key)
         define_method f do
