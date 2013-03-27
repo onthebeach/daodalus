@@ -13,12 +13,8 @@ class TestModel
   field :x
   field :y, key: 'the_y_field'
   field :z, default: 5
-  field :n, type: Integer
-  field :f, type: Float
-  field :s, type: String
+  field :zz, default: lambda { 5 }
   field :sym, type: Symbol
-  field :date, type: Date
-  field :time, type: Time
   field :nested, type: NestedTestModel
 end
 
@@ -53,28 +49,12 @@ module Daodalus
       model.z.should eq 5
     end
 
-    it 'can convert fields to integers' do
-      model.n.should be_a Integer
+    it 'allows lambdas as defaults' do
+      model.zz.should eq 5
     end
 
-    it 'can convert fields to float' do
-      model.f.should be_a Float
-    end
-
-    it 'can convert fields to integers' do
-      model.s.should be_a String
-    end
-
-    it 'can convert fields to integers' do
+    it 'can convert fields to symbols' do
       model.sym.should be_a Symbol
-    end
-
-    it 'can convert fields to integers' do
-      model.date.should be_a Date
-    end
-
-    it 'can convert fields to integers' do
-      model.time.should be_a Time
     end
 
     it 'can have nested model fields' do

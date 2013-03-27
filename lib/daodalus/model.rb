@@ -32,8 +32,9 @@ module Daodalus
 
       def define_field_with_default(f, key, type, options)
         default = options.fetch(:default)
+        default_proc = default.is_a?(Proc) ? default : lambda { default }
         define_method f do
-          value = data.fetch(key.to_s, default)
+          value = data.fetch(key.to_s, default_proc.call)
           if type.nil? then value else apply_conversion(value, type) end
         end
       end
@@ -44,12 +45,7 @@ module Daodalus
 
     def apply_conversion(value, type)
       case type.to_s
-      when 'Integer' then value.to_i
-      when 'Float' then value.to_f
-      when 'String' then value.to_s
       when 'Symbol' then value.to_sym
-      when 'Date' then Date.parse(value)
-      when 'Time' then Time.parse(value)
       else type.new(value)
       end
     end
