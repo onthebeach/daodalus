@@ -14,8 +14,8 @@ class TestModel
   field :y, key: 'the_y_field'
   field :z, default: 5
   field :zz, default: lambda { 5 }
-  field :sym, type: Symbol
-  field :nested, type: NestedTestModel
+  has_one :single_nested, type: NestedTestModel
+  has_many :multiple_nested, type: NestedTestModel
 end
 
 module Daodalus
@@ -28,10 +28,20 @@ module Daodalus
                                  'sym' => 'oeu',
                                  'date' => '20120405',
                                  'time' => '1123',
-                                 'nested' => {
+                                 'single_nested' => {
                                    'foo' => 1,
                                    'bar' => 2
-                                 }) }
+                                 },
+                                 'multiple_nested' => [
+                                   {
+                                     'foo' => 1,
+                                     'bar' => 2
+                                   },
+                                   {
+                                     'foo' => 3,
+                                     'bar' => 4
+                                   }
+                                 ]) }
 
     it 'takes a result' do
       model
@@ -53,14 +63,23 @@ module Daodalus
       model.zz.should eq 5
     end
 
-    it 'can convert fields to symbols' do
-      model.sym.should be_a Symbol
+    it 'can have nested model fields' do
+      model.single_nested.should be_a NestedTestModel
+      model.single_nested.foo.should eq 1
+      model.single_nested.bar.should eq 2
     end
 
-    it 'can have nested model fields' do
-      model.nested.should be_a NestedTestModel
-      model.nested.foo.should eq 1
-      model.nested.bar.should eq 2
+    it 'can have has_many associations' do
+      model.multiple_nested.should be_a Array
+      model.multiple_nested.first.should be_a NestedTestModel
+      model.multiple_nested.last.bar.should eq 4
+    end
+
+    it 'memoizes nested model fields' do
+      NestedTestModel.should_receive(:new).with({"foo"=>1, "bar"=>2}).once.and_return(stub)
+      model.single_nested
+      model.single_nested
+      model.single_nested
     end
   end
 end
