@@ -15,17 +15,21 @@ module Daodalus
     module DocumentDescriptor
 
       def has_one(f, options={})
+        type = options.fetch(:type, nil) || f.to_s.classify.constantize
+        key = options.fetch(:key, nil) || f
         define_method f do
           instance_variable_get(:"@#{f}") ||
-            instance_variable_set(:"@#{f}", options.fetch(:type).new(data.fetch(f.to_s)))
+            instance_variable_set(:"@#{f}", type.new(data.fetch(key.to_s)))
         end
       end
 
       def has_many(f, options={})
-        type = options.fetch(:type)
+        puts f.to_s.camelize.singularize
+        type = options.fetch(:type, nil) || f.to_s.camelize.singularize.constantize
+        key = options.fetch(:key, nil) || f
         define_method f do
           instance_variable_get(:"@#{f}") ||
-            instance_variable_set(:"@#{f}", data.fetch(f.to_s).map {|x| type.new(x) } )
+            instance_variable_set(:"@#{f}", data.fetch(key.to_s).map {|x| type.new(x) } )
         end
       end
 

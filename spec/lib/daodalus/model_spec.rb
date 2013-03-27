@@ -14,8 +14,9 @@ class TestModel
   field :y, key: 'the_y_field'
   field :z, default: 5
   field :zz, default: lambda { 5 }
-  has_one :single_nested, type: NestedTestModel
+  has_one :nested_test_model, key: 'single_nested'
   has_many :multiple_nested, type: NestedTestModel
+  has_many :nested_test_models, key: 'multiple_nested'
 end
 
 module Daodalus
@@ -64,9 +65,9 @@ module Daodalus
     end
 
     it 'can have nested model fields' do
-      model.single_nested.should be_a NestedTestModel
-      model.single_nested.foo.should eq 1
-      model.single_nested.bar.should eq 2
+      model.nested_test_model.should be_a NestedTestModel
+      model.nested_test_model.foo.should eq 1
+      model.nested_test_model.bar.should eq 2
     end
 
     it 'can have has_many associations' do
@@ -75,11 +76,17 @@ module Daodalus
       model.multiple_nested.last.bar.should eq 4
     end
 
+    it 'can have has_many associations and infer class names' do
+      model.nested_test_models.should be_a Array
+      model.nested_test_models.first.should be_a NestedTestModel
+      model.nested_test_models.last.bar.should eq 4
+    end
+
     it 'memoizes nested model fields' do
       NestedTestModel.should_receive(:new).with({"foo"=>1, "bar"=>2}).once.and_return(stub)
-      model.single_nested
-      model.single_nested
-      model.single_nested
+      model.nested_test_model
+      model.nested_test_model
+      model.nested_test_model
     end
   end
 end
