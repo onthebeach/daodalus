@@ -62,7 +62,7 @@ module Daodalus
       }]
     end
 
-    def replica_set_options
+    def multi_server_options
       [servers.map { |s| "#{s['host']}:#{s['port']}" }] + [{
         :pool_size => pool_size,
         :pool_timeout => timeout,
@@ -73,17 +73,25 @@ module Daodalus
       }]
     end
 
+    def sharded?
+      config.fetch('sharded', false)
+    end
+
     private
 
     def pool
-      @pool ||= servers.count > 1 ? replica_set_connection : connection
+      @pool ||= servers.count > 1 ? multi_server_connection : connection
     rescue Mongo::ConnectionFailure => e
       @pool = nil
       raise e
     end
 
-    def replica_set_connection
-      Mongo::MongoReplicaSetClient.new(*replica_set_options)
+    def multi_server_connection
+      multi_server_client.new(*multi_server_options)
+    end
+
+    def multi_server_client
+      sharded? ? Mongo::MongoShardedClient : Mongo::MongoReplicaSetClient
     end
 
     def connection
