@@ -138,10 +138,10 @@ module Daodalus
         "safe"=>{"w" => 2, "wtimeout" => 200, "j" => true}
       }}
 
-      describe '#replica_set_options' do
+      describe '#multi_server_options' do
 
         it "returns an options array with the correct elements" do
-          connection.replica_set_options.should eq [
+          connection.multi_server_options.should eq [
             ["127.0.0.1:27017",
               "127.0.0.2:27017",
               "127.0.0.3:27017"
@@ -169,7 +169,7 @@ module Daodalus
           before do
             Mongo::MongoReplicaSetClient.should_receive(:new).
               once.
-              with(*connection.replica_set_options).
+              with(*connection.multi_server_options).
               and_return(pool)
           end
 
@@ -195,5 +195,81 @@ module Daodalus
         end
       end
     end
+
+    context "given a sharded config" do
+      let(:config) {{
+        "sharded"=>true,
+        "replicate_set_name"=>"daodalus",
+        "timeout"=>5,
+        "pool_size"=>10,
+        "database"=>"daodalus_test",
+        "host"=>"localhost",
+        "read"=>"primary",
+        "servers"=>[
+          {"port"=>27017, "host"=>"127.0.0.1"},
+          {"port"=>27017, "host"=>"127.0.0.2"},
+          {"port"=>27017, "host"=>"127.0.0.3"}
+        ],
+        "safe"=>{"w" => 2, "wtimeout" => 200, "j" => true}
+      }}
+
+      describe '#multi_server_options' do
+
+        it "returns an options array with the correct elements" do
+          connection.multi_server_options.should eq [
+            ["127.0.0.1:27017",
+              "127.0.0.2:27017",
+              "127.0.0.3:27017"
+          ],
+            {
+            :pool_size => 10,
+            :pool_timeout => 5,
+            :refresh_mode => false,
+            :refresh_interval => 90,
+            :read => :primary,
+            :safe=>{:w => 2, :wtimeout => 200, :j => true}
+          }
+          ]
+        end
+      end
+
+      describe '#db' do
+        let(:db) { stub }
+        let(:pool) { stub(:[] => db) }
+
+        subject { connection.db }
+
+        context 'when there is a successful connection' do
+
+          before do
+            Mongo::MongoShardedClient.should_receive(:new).
+              once.
+              with(*connection.multi_server_options).
+              and_return(pool)
+          end
+
+          it 'creates a new Mongo::MongoClient' do
+            subject
+          end
+
+          it 'does not create a new Mongo::MongoClient on subsequent calls' do
+            subject
+            subject
+          end
+
+        end
+
+        context "when there is a connection failure" do
+          before do
+            Mongo::MongoShardedClient.should_receive(:new).and_raise(Mongo::ConnectionFailure)
+          end
+
+          it 'raises any connection failures' do
+            expect { subject }.to raise_error(Mongo::ConnectionFailure)
+          end
+        end
+      end
+    end
+ 
   end
 end
