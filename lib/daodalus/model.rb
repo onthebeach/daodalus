@@ -1,11 +1,52 @@
+module Association
+  attr_reader :model_class, :field, :options
+
+  def initialize(model_class, field, options)
+    @model_class = model_class
+    @field = field
+    @options = options
+  end
+
+  def type
+    options.fetch(:type, inferred_class)
+  end
+
+  def inferred_class
+    class_name = f.to_s.classify
+    hierarchy = name.split("::").reduce([]) do |acc, name|
+      acc + ["#{acc.last + '::' unless acc.last.nil?}#{name}"]
+    end.map(&:constantize)
+    module_name = hierarchy.find{ |m| m.const_defined? class_name }
+    if const_defined?(class_name) then const_get(class_name)
+    elsif module_name.nil? then class_name.constantize
+    else module_name.const_get(class_name) end
+  end
+
+  def inferred_class_name
+    @inferred_class_name ||= f.to_s.classify
+  end
+
+  def hierarchy
+    tokens = model_class.name.split('::')
+    (1..tokens.length).map { |i| tokens.take(i) }
+
+      acc + [ "#{acc.last}::#{name}" ]
+    end.map(&:constantize)
+  end
+
+end
+
+class HasOne
+  include Association
+
+end
+
 module Daodalus
   module Model
-    def initialize(data)
-      @data = data
-    end
+    attr_reader :data
 
-    def data
-      @data.has_key?(:_id) ? @data : @data.merge!(_id: BSON::ObjectId.new)
+    def initialize(data)
+      @data = data.has_key?(:_id) ? data : data.merge(_id: BSON::ObjectId.new)
     end
 
     def self.included(base)
