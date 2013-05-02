@@ -9,7 +9,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency 'mongo', '~> 1.8.0'
   gem.add_runtime_dependency 'bson_ext', '~> 1.8.0'
   gem.add_runtime_dependency 'wendy'
-  gem.add_runtime_dependency 'active_support'
 
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'simplecov'
