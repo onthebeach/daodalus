@@ -18,6 +18,10 @@ module Daodalus
         transform {|result| result.fetch(key.to_s) }
       end
 
+      def map_to(result_class)
+        transform {|result| result_class.new(result) }
+      end
+
     end
   end
 end
