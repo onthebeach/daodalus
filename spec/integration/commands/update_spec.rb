@@ -30,3 +30,31 @@ describe "#update" do
   end
 
 end
+
+describe "#upsert" do
+  before :each do
+    CatDAO.remove_all
+  end
+
+  subject { CatDAO }
+
+  it 'updates when the record exists' do
+    subject.insert(name: "Kiki", mental: true)
+
+    subject.
+      set(:mental, false).
+      where(:name).eq("Kiki").
+      upsert
+
+    subject.find_one.fetch('mental').should eq false
+  end
+
+  it 'creates a new record when absent' do
+    subject.
+      set(:mental, true).
+      where(:name).eq("Kiki").
+      upsert
+
+    subject.find_one.fetch('mental').should eq true
+  end
+end
