@@ -2,6 +2,10 @@ module Daodalus
   module DAO
     include DSL
 
+    def save(*args)
+      collection.save(*args)
+    end
+
     def find_one(*args)
       collection.find_one(*args)
     end
