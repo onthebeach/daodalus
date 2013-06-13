@@ -1,1 +1,131 @@
-My GitHub Page
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Daodalus by onthebeach</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Daodalus</h1>
+        <p>DSL for building MongoDB queries, updates and aggregations</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/onthebeach/daodalus" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/onthebeach/daodalus/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/onthebeach/daodalus/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+<a name="daodalus---" class="anchor" href="#daodalus---"><span class="octicon octicon-link"></span></a>DAODALUS  <a href="http://travis-ci.org/onthebeach/daodalus"><img src="https://travis-ci.org/onthebeach/daodalus.png" alt="Build Status"></a> <a href="https://codeclimate.com/github/onthebeach/daodalus"><img src="https://codeclimate.com/github/onthebeach/daodalus.png" alt="Code Climate"></a>
+</h1>
+
+<h3>
+<a name="construct-complex-mongodb-queries-updates-and-aggregations" class="anchor" href="#construct-complex-mongodb-queries-updates-and-aggregations"><span class="octicon octicon-link"></span></a>Construct complex MongoDB queries, updates and aggregations.</h3>
+
+<h3>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration:</h3>
+
+<pre><code># config/mongo.yml
+development:
+  animals:
+    database: animals_development
+    host: localhost
+    pool_size: 5
+    timeout: 5
+    replicate_set_name: animals_development
+    servers:
+      - { host: localhost, port: 27017 }
+</code></pre>
+
+<h3>
+<a name="initialisation" class="anchor" href="#initialisation"><span class="octicon octicon-link"></span></a>Initialisation:</h3>
+
+<pre><code># config/initializers/daodalus.rb
+Daodalus::Configuration.load('config/mongo.yml', Rails.env)
+</code></pre>
+
+<h5>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples:</h5>
+
+<pre><code>#!ruby
+class CatDAO
+  extend Daodalus::DAO # or `include` if you want an instance of a DAO
+  target :animals, :cats # or overide `connection` to supply your own
+
+  def self.example_find
+    select(:name).where(:paws).less_than(4).find
+  end
+
+  def self.example_find_one
+    where(:collar_id).eq("aochc986").find_one
+  end
+
+  def self.example_update
+    set(:stray, true).where(:address).does_not_exist.update
+  end
+
+  def self.example_find_and_modify
+    dec(:lives).
+      push(:names, "Kitty").
+      where(:stray).eq(true).
+      and(:cuteness).gt(8).
+      find_and_modify(new: true)
+  end
+
+  def self.example_remove
+    where(:lives).eq(0).remove
+  end
+
+  def self.example_aggregation
+    match(:lives).gt(3).
+      and(:address).exists.
+      unwind(:favourite_foods).
+      group(:favourite_foods).
+      min(min_paws: 'paws').
+      sort(:_id).
+      limit(10).
+      project(:_id).as(:food).and(:min_paws).
+      aggregate
+  end
+end
+</code></pre>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Daodalus is Copyright © 2012 On The Beach Ltd.
+It is free software, and may be redistributed under the terms specified in the LICENSE file.</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/onthebeach">onthebeach</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
