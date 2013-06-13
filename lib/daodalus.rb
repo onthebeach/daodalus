@@ -1,0 +1,1 @@
+require 'daodalus/dao'
