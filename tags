@@ -1,0 +1,437 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Aggregation	lib/daodalus/dsl/aggregation/group.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	lib/daodalus/dsl/aggregation/limit.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	lib/daodalus/dsl/aggregation/match.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	lib/daodalus/dsl/aggregation/operator.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	lib/daodalus/dsl/aggregation/project.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	lib/daodalus/dsl/aggregation/skip.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	lib/daodalus/dsl/aggregation/sort.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	lib/daodalus/dsl/aggregation/unwind.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	spec/integration/aggregations/group_spec.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	spec/integration/aggregations/limit_spec.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	spec/integration/aggregations/match_spec.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	spec/integration/aggregations/project_spec.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	spec/integration/aggregations/skip_spec.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	spec/integration/aggregations/sort_spec.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	spec/integration/aggregations/unwind_spec.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	spec/lib/daodalus/dsl/aggregation/group_spec.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	spec/lib/daodalus/dsl/aggregation/limit_spec.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	spec/lib/daodalus/dsl/aggregation/match_spec.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	spec/lib/daodalus/dsl/aggregation/project_spec.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	spec/lib/daodalus/dsl/aggregation/skip_spec.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	spec/lib/daodalus/dsl/aggregation/sort_spec.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+Aggregation	spec/lib/daodalus/dsl/aggregation/unwind_spec.rb	/^    module Aggregation$/;"	m	class:Daodalus.DSL
+CatDAO	spec/support/cat_dao.rb	/^class CatDAO$/;"	c
+Chainable	lib/daodalus/dsl/chainable.rb	/^    module Chainable$/;"	m	class:Daodalus.DSL
+Clause	lib/daodalus/dsl/clause.rb	/^    module Clause$/;"	m	class:Daodalus.DSL
+Configuration	lib/daodalus/configuration.rb	/^  class Configuration$/;"	c	class:Daodalus
+Connection	lib/daodalus/connection.rb	/^  class Connection$/;"	c	class:Daodalus
+DAO	lib/daodalus/dao.rb	/^  module DAO$/;"	m	class:Daodalus
+DBCleaner	spec/spec_helper.rb	/^class DBCleaner$/;"	c
+DSL	lib/daodalus/dsl.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/aggregation/group.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/aggregation/limit.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/aggregation/match.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/aggregation/operator.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/aggregation/project.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/aggregation/skip.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/aggregation/sort.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/aggregation/unwind.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/chainable.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/clause.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/pipe.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/queries.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/select.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/transform.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/update.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/updates.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	lib/daodalus/dsl/where.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/integration/aggregations/group_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/integration/aggregations/limit_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/integration/aggregations/match_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/integration/aggregations/project_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/integration/aggregations/skip_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/integration/aggregations/sort_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/integration/aggregations/unwind_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/integration/commands/where_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/integration/transform_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/lib/daodalus/dsl/aggregation/group_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/lib/daodalus/dsl/aggregation/limit_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/lib/daodalus/dsl/aggregation/match_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/lib/daodalus/dsl/aggregation/project_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/lib/daodalus/dsl/aggregation/skip_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/lib/daodalus/dsl/aggregation/sort_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/lib/daodalus/dsl/aggregation/unwind_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/lib/daodalus/dsl/pipe_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/lib/daodalus/dsl/select_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/lib/daodalus/dsl/transform_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/lib/daodalus/dsl/update_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSL	spec/lib/daodalus/dsl/where_spec.rb	/^  module DSL$/;"	m	class:Daodalus
+DSLTestDAO	spec/lib/daodalus/dsl_spec.rb	/^class DSLTestDAO$/;"	c
+Daodalus	lib/daodalus/configuration.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/connection.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dao.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/aggregation/group.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/aggregation/limit.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/aggregation/match.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/aggregation/operator.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/aggregation/project.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/aggregation/skip.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/aggregation/sort.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/aggregation/unwind.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/chainable.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/clause.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/pipe.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/queries.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/select.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/transform.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/update.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/updates.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/dsl/where.rb	/^module Daodalus$/;"	m
+Daodalus	lib/daodalus/pool.rb	/^module Daodalus$/;"	m
+Daodalus	spec/integration/aggregations/group_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/integration/aggregations/limit_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/integration/aggregations/match_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/integration/aggregations/project_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/integration/aggregations/skip_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/integration/aggregations/sort_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/integration/aggregations/unwind_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/integration/commands/where_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/integration/transform_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/configuration_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/connection_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/dao_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/dsl/aggregation/group_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/dsl/aggregation/limit_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/dsl/aggregation/match_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/dsl/aggregation/project_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/dsl/aggregation/skip_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/dsl/aggregation/sort_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/dsl/aggregation/unwind_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/dsl/pipe_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/dsl/select_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/dsl/transform_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/dsl/update_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/dsl/where_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/dsl_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/model_spec.rb	/^module Daodalus$/;"	m
+Daodalus	spec/lib/daodalus/pool_spec.rb	/^module Daodalus$/;"	m
+DocumentDescriptor	spec/lib/daodalus/model_spec.rb	/^    module DocumentDescriptor$/;"	m	class:Daodalus.Model
+Group	lib/daodalus/dsl/aggregation/group.rb	/^      class Group$/;"	c	class:Daodalus.DSL.Aggregation
+InvalidConnectionError	lib/daodalus/pool.rb	/^  class InvalidConnectionError < StandardError$/;"	c	class:Daodalus
+Limit	lib/daodalus/dsl/aggregation/limit.rb	/^      class Limit$/;"	c	class:Daodalus.DSL.Aggregation
+Match	lib/daodalus/dsl/aggregation/match.rb	/^      class Match$/;"	c	class:Daodalus.DSL.Aggregation
+Model	spec/lib/daodalus/model_spec.rb	/^  module Model$/;"	m	class:Daodalus
+NestedTestModel	spec/lib/daodalus/model_spec.rb	/^class NestedTestModel$/;"	c
+Operator	lib/daodalus/dsl/aggregation/operator.rb	/^      module Operator$/;"	m	class:Daodalus.DSL.Aggregation
+Pipe	lib/daodalus/dsl/pipe.rb	/^    class Pipe$/;"	c	class:Daodalus.DSL
+Pool	lib/daodalus/pool.rb	/^  class Pool$/;"	c	class:Daodalus
+Project	lib/daodalus/dsl/aggregation/project.rb	/^      class Project$/;"	c	class:Daodalus.DSL.Aggregation
+Queries	lib/daodalus/dsl/queries.rb	/^    module Queries$/;"	m	class:Daodalus.DSL
+ReadmeDAO	spec/integration/readme_spec.rb	/^class ReadmeDAO$/;"	c
+Select	lib/daodalus/dsl/select.rb	/^    class Select$/;"	c	class:Daodalus.DSL
+Skip	lib/daodalus/dsl/aggregation/skip.rb	/^      class Skip$/;"	c	class:Daodalus.DSL.Aggregation
+Sort	lib/daodalus/dsl/aggregation/sort.rb	/^      class Sort$/;"	c	class:Daodalus.DSL.Aggregation
+Targetable	lib/daodalus/dao.rb	/^    module Targetable$/;"	m	class:Daodalus.DAO
+TestDAO	spec/lib/daodalus/dao_spec.rb	/^      class TestDAO$/;"	c	class:Daodalus
+TestDAOInstance	spec/lib/daodalus/dao_spec.rb	/^      class TestDAOInstance$/;"	c	class:Daodalus
+TestModel	spec/lib/daodalus/model_spec.rb	/^class TestModel$/;"	c
+Transform	lib/daodalus/dsl/transform.rb	/^    class Transform$/;"	c	class:Daodalus.DSL
+Unwind	lib/daodalus/dsl/aggregation/unwind.rb	/^      class Unwind$/;"	c	class:Daodalus.DSL.Aggregation
+Update	lib/daodalus/dsl/update.rb	/^    class Update$/;"	c	class:Daodalus.DSL
+Updates	lib/daodalus/dsl/updates.rb	/^    module Updates$/;"	m	class:Daodalus.DSL
+Where	lib/daodalus/dsl/where.rb	/^    class Where$/;"	c	class:Daodalus.DSL
+[]	lib/daodalus/pool.rb	/^    def [](conn)$/;"	f	class:Daodalus.Pool
+add_clause	lib/daodalus/dsl/aggregation/match.rb	/^        def add_clause(criteria)$/;"	f	class:Daodalus.DSL.Aggregation.Match
+add_clause	lib/daodalus/dsl/where.rb	/^      def add_clause(criteria)$/;"	f	class:Daodalus.DSL.Where
+add_each_to_set	lib/daodalus/dsl.rb	/^    def add_each_to_set(field, values)$/;"	f	class:Daodalus.DSL
+add_each_to_set	lib/daodalus/dsl/update.rb	/^      def add_each_to_set(field, values)$/;"	f	class:Daodalus.DSL.Update
+add_to_set	lib/daodalus/dsl.rb	/^    def add_to_set(field, *values)$/;"	f	class:Daodalus.DSL
+add_to_set	lib/daodalus/dsl/aggregation/group.rb	/^        def add_to_set(field)$/;"	f	class:Daodalus.DSL.Aggregation.Group
+add_to_set	lib/daodalus/dsl/update.rb	/^      def add_to_set(field, *values)$/;"	f	class:Daodalus.DSL.Update
+aggregate	lib/daodalus/dao.rb	/^    def aggregate(*args)$/;"	f	class:Daodalus.DAO
+aggregate	lib/daodalus/dsl/aggregation/operator.rb	/^        def aggregate$/;"	f	class:Daodalus.DSL.Aggregation.Operator
+aggregate	lib/daodalus/dsl/pipe.rb	/^      def aggregate$/;"	f	class:Daodalus.DSL.Pipe
+aggregate	lib/daodalus/dsl/transform.rb	/^      def aggregate$/;"	f	class:Daodalus.DSL.Transform
+aggregate_spec.rb	spec/integration/commands/aggregate_spec.rb	1;"	F
+all	lib/daodalus/dsl/clause.rb	/^      def all(*values)$/;"	f	class:Daodalus.DSL.Clause
+all.rb	lib/daodalus/all.rb	1;"	F
+all.rb	lib/daodalus/dsl/aggregation/all.rb	1;"	F
+all.rb	lib/daodalus/dsl/all.rb	1;"	F
+all.rb	spec/support/all.rb	1;"	F
+and	lib/daodalus/dsl/aggregation/project.rb	/^        def and(*fields)$/;"	f	class:Daodalus.DSL.Aggregation.Project
+and	lib/daodalus/dsl/clause.rb	/^      def and(*args)$/;"	f	class:Daodalus.DSL.Clause
+and	lib/daodalus/dsl/select.rb	/^      def and(*fields)$/;"	f	class:Daodalus.DSL.Select
+apply_conversion	spec/lib/daodalus/model_spec.rb	/^    def apply_conversion(value, type)$/;"	f	class:Daodalus.Model
+arg_array	lib/daodalus/dsl/aggregation/project.rb	/^        def arg_array(args)$/;"	f	class:Daodalus.DSL.Aggregation.Project
+as	lib/daodalus/dsl/aggregation/project.rb	/^        def as(key)$/;"	f	class:Daodalus.DSL.Aggregation.Project
+avg	lib/daodalus/dsl/aggregation/group.rb	/^        def avg(field)$/;"	f	class:Daodalus.DSL.Aggregation.Group
+build_aggregate_key	lib/daodalus/dsl/aggregation/group.rb	/^        def build_aggregate_key(op, field)$/;"	f	class:Daodalus.DSL.Aggregation.Group
+build_clause	lib/daodalus/dsl/clause.rb	/^      def build_clause(op, value)$/;"	f	class:Daodalus.DSL.Clause
+build_update	lib/daodalus/dsl/update.rb	/^      def build_update(op, value)$/;"	f	class:Daodalus.DSL.Update
+cat_dao.rb	spec/support/cat_dao.rb	1;"	F
+chain	lib/daodalus/dsl/aggregation/match.rb	/^        def chain(field)$/;"	f	class:Daodalus.DSL.Aggregation.Match
+chain	lib/daodalus/dsl/where.rb	/^      def chain(field)$/;"	f	class:Daodalus.DSL.Where
+chainable.rb	lib/daodalus/dsl/chainable.rb	1;"	F
+clause.rb	lib/daodalus/dsl/clause.rb	1;"	F
+clean	spec/spec_helper.rb	/^  def self.clean$/;"	F	class:DBCleaner
+collection	lib/daodalus/dao.rb	/^    def collection$/;"	f	class:Daodalus.DAO
+collection_name	lib/daodalus/dao.rb	/^    def collection_name$/;"	f	class:Daodalus.DAO
+config	lib/daodalus/configuration.rb	/^    def config$/;"	f	class:Daodalus.Configuration
+config	lib/daodalus/configuration.rb	/^    def self.config$/;"	F	class:Daodalus.Configuration
+config	lib/daodalus/connection.rb	/^    def config$/;"	f	class:Daodalus.Connection
+config	lib/daodalus/pool.rb	/^    def config$/;"	f	class:Daodalus.Pool
+configuration.rb	lib/daodalus/configuration.rb	1;"	F
+configuration_spec.rb	spec/lib/daodalus/configuration_spec.rb	1;"	F
+connection	lib/daodalus/connection.rb	/^    def connection$/;"	f	class:Daodalus.Connection
+connection.rb	lib/daodalus/connection.rb	1;"	F
+connection_name	lib/daodalus/dao.rb	/^    def connection_name$/;"	f	class:Daodalus.DAO
+connection_spec.rb	spec/lib/daodalus/connection_spec.rb	1;"	F
+connections	lib/daodalus/pool.rb	/^    def connections$/;"	f	class:Daodalus.Pool
+count	lib/daodalus/dao.rb	/^    def count(*args)$/;"	f	class:Daodalus.DAO
+count	lib/daodalus/dsl/where.rb	/^      def count(options = {})$/;"	f	class:Daodalus.DSL.Where
+count_spec.rb	spec/integration/commands/count_spec.rb	1;"	F
+dao	lib/daodalus/dsl.rb	/^    def dao$/;"	f	class:Daodalus.DSL
+dao	lib/daodalus/dsl/pipe.rb	/^      def dao$/;"	f	class:Daodalus.DSL.Pipe
+dao	lib/daodalus/dsl/transform.rb	/^      def dao$/;"	f	class:Daodalus.DSL.Transform
+dao.rb	lib/daodalus/dao.rb	1;"	F
+dao_spec.rb	spec/lib/daodalus/dao_spec.rb	1;"	F
+daodalus.rb	lib/daodalus.rb	1;"	F
+database_name	lib/daodalus/connection.rb	/^    def database_name$/;"	f	class:Daodalus.Connection
+db	lib/daodalus/connection.rb	/^    def db$/;"	f	class:Daodalus.Connection
+db	lib/daodalus/dao.rb	/^    def db$/;"	f	class:Daodalus.DAO
+dec	lib/daodalus/dsl.rb	/^    def dec(field, amount=1)$/;"	f	class:Daodalus.DSL
+dec	lib/daodalus/dsl/update.rb	/^      def dec(field, amount=1)$/;"	f	class:Daodalus.DSL.Update
+define_field	spec/lib/daodalus/model_spec.rb	/^      def define_field(f, key, type)$/;"	f	class:Daodalus.Model.DocumentDescriptor
+define_field_with_default	spec/lib/daodalus/model_spec.rb	/^      def define_field_with_default(f, key, type, options)$/;"	f	class:Daodalus.Model.DocumentDescriptor
+direction	lib/daodalus/dsl/aggregation/sort.rb	/^        def direction(d)$/;"	f	class:Daodalus.DSL.Aggregation.Sort
+divided_by	lib/daodalus/dsl/aggregation/project.rb	/^        def divided_by(arg)$/;"	f	class:Daodalus.DSL.Aggregation.Project
+does_not_exist	lib/daodalus/dsl/clause.rb	/^      def does_not_exist$/;"	f	class:Daodalus.DSL.Clause
+dog_dao.rb	spec/support/dog_dao.rb	1;"	F
+double	spec/integration/transform_spec.rb	/^        def double(x)$/;"	f	class:Daodalus.DSL
+drop_database	lib/daodalus/connection.rb	/^    def drop_database$/;"	f	class:Daodalus.Connection
+dsl.rb	lib/daodalus/dsl.rb	1;"	F
+dsl_spec.rb	spec/lib/daodalus/dsl_spec.rb	1;"	F
+elem_match	lib/daodalus/dsl/clause.rb	/^      def elem_match(clause)$/;"	f	class:Daodalus.DSL.Clause
+elem_match	lib/daodalus/dsl/select.rb	/^      def elem_match(field, value)$/;"	f	class:Daodalus.DSL.Select
+elem_match_clause	lib/daodalus/dsl/select.rb	/^      def elem_match_clause(field, value)$/;"	f	class:Daodalus.DSL.Select
+eq	lib/daodalus/dsl/aggregation/project.rb	/^        def eq(arg)$/;"	f	class:Daodalus.DSL.Aggregation.Project
+eq	lib/daodalus/dsl/clause.rb	/^      def eq(value)$/;"	f	class:Daodalus.DSL.Clause
+example_aggregation	spec/integration/readme_spec.rb	/^  def self.example_aggregation$/;"	F	class:ReadmeDAO
+example_find	spec/integration/readme_spec.rb	/^  def self.example_find$/;"	F	class:ReadmeDAO
+example_find_and_modify	spec/integration/readme_spec.rb	/^  def self.example_find_and_modify$/;"	F	class:ReadmeDAO
+example_find_one	spec/integration/readme_spec.rb	/^  def self.example_find_one$/;"	F	class:ReadmeDAO
+example_remove	spec/integration/readme_spec.rb	/^  def self.example_remove$/;"	F	class:ReadmeDAO
+example_update	spec/integration/readme_spec.rb	/^  def self.example_update$/;"	F	class:ReadmeDAO
+exists	lib/daodalus/dsl/clause.rb	/^      def exists(value=true)$/;"	f	class:Daodalus.DSL.Clause
+extract	lib/daodalus/dsl/chainable.rb	/^      def extract(key)$/;"	f	class:Daodalus.DSL.Chainable
+field	spec/lib/daodalus/model_spec.rb	/^      def field(f, options={})$/;"	f	class:Daodalus.Model.DocumentDescriptor
+field_arg?	lib/daodalus/dsl/clause.rb	/^      def field_arg?(args)$/;"	f	class:Daodalus.DSL.Clause
+field_as_operator	lib/daodalus/dsl/aggregation/operator.rb	/^        def field_as_operator(field)$/;"	f	class:Daodalus.DSL.Aggregation.Operator
+fields_as_value	lib/daodalus/dsl/aggregation/project.rb	/^        def fields_as_value$/;"	f	class:Daodalus.DSL.Aggregation.Project
+find	lib/daodalus/dao.rb	/^    def find(*args)$/;"	f	class:Daodalus.DAO
+find	lib/daodalus/dsl/pipe.rb	/^      def find(options = {})$/;"	f	class:Daodalus.DSL.Pipe
+find	lib/daodalus/dsl/queries.rb	/^      def find(options = {})$/;"	f	class:Daodalus.DSL.Queries
+find	lib/daodalus/dsl/transform.rb	/^      def find(options = {})$/;"	f	class:Daodalus.DSL.Transform
+find_and_modify	lib/daodalus/dao.rb	/^    def find_and_modify(*args)$/;"	f	class:Daodalus.DAO
+find_and_modify	lib/daodalus/dsl/pipe.rb	/^      def find_and_modify(options = {})$/;"	f	class:Daodalus.DSL.Pipe
+find_and_modify	lib/daodalus/dsl/transform.rb	/^      def find_and_modify(options = {})$/;"	f	class:Daodalus.DSL.Transform
+find_and_modify	lib/daodalus/dsl/updates.rb	/^      def find_and_modify(options = {})$/;"	f	class:Daodalus.DSL.Updates
+find_and_modify_spec.rb	spec/integration/commands/find_and_modify_spec.rb	1;"	F
+find_one	lib/daodalus/dao.rb	/^    def find_one(*args)$/;"	f	class:Daodalus.DAO
+find_one	lib/daodalus/dsl/pipe.rb	/^      def find_one(options = {})$/;"	f	class:Daodalus.DSL.Pipe
+find_one	lib/daodalus/dsl/queries.rb	/^      def find_one(options = {})$/;"	f	class:Daodalus.DSL.Queries
+find_one	lib/daodalus/dsl/transform.rb	/^      def find_one(options = {})$/;"	f	class:Daodalus.DSL.Transform
+find_one_spec.rb	spec/integration/commands/find_one_spec.rb	1;"	F
+find_spec.rb	spec/integration/commands/find_spec.rb	1;"	F
+first	lib/daodalus/dsl/aggregation/group.rb	/^        def first(field)$/;"	f	class:Daodalus.DSL.Aggregation.Group
+group	lib/daodalus/dsl.rb	/^    def group(*keys)$/;"	f	class:Daodalus.DSL
+group	lib/daodalus/dsl/aggregation/operator.rb	/^        def group(*keys)$/;"	f	class:Daodalus.DSL.Aggregation.Operator
+group.rb	lib/daodalus/dsl/aggregation/group.rb	1;"	F
+group_key	lib/daodalus/dsl/aggregation/group.rb	/^        def group_key$/;"	f	class:Daodalus.DSL.Aggregation.Group
+group_spec.rb	spec/integration/aggregations/group_spec.rb	1;"	F
+group_spec.rb	spec/lib/daodalus/dsl/aggregation/group_spec.rb	1;"	F
+gt	lib/daodalus/dsl/clause.rb	/^      def gt(value)$/;"	f	class:Daodalus.DSL.Clause
+gte	lib/daodalus/dsl/clause.rb	/^      def gte(value)$/;"	f	class:Daodalus.DSL.Clause
+in	lib/daodalus/dsl/clause.rb	/^      def in(*values)$/;"	f	class:Daodalus.DSL.Clause
+inc	lib/daodalus/dsl.rb	/^    def inc(field, amount=1)$/;"	f	class:Daodalus.DSL
+inc	lib/daodalus/dsl/update.rb	/^      def inc(field, amount=1)$/;"	f	class:Daodalus.DSL.Update
+included	lib/daodalus/dao.rb	/^    def self.included(base)$/;"	F	class:Daodalus.DAO
+included	spec/lib/daodalus/model_spec.rb	/^    def self.included(base)$/;"	F	class:Daodalus.Model
+initialize	lib/daodalus/connection.rb	/^    def initialize(config)$/;"	f	class:Daodalus.Connection
+initialize	lib/daodalus/dsl/aggregation/group.rb	/^        def initialize(dao, keys, aggregates={}, query=[])$/;"	f	class:Daodalus.DSL.Aggregation.Group
+initialize	lib/daodalus/dsl/aggregation/limit.rb	/^        def initialize(dao, total, query=[])$/;"	f	class:Daodalus.DSL.Aggregation.Limit
+initialize	lib/daodalus/dsl/aggregation/match.rb	/^        def initialize(dao, field, criteria={}, query=[])$/;"	f	class:Daodalus.DSL.Aggregation.Match
+initialize	lib/daodalus/dsl/aggregation/project.rb	/^        def initialize(dao, fields, value, projection, query=[])$/;"	f	class:Daodalus.DSL.Aggregation.Project
+initialize	lib/daodalus/dsl/aggregation/skip.rb	/^        def initialize(dao, total, query=[])$/;"	f	class:Daodalus.DSL.Aggregation.Skip
+initialize	lib/daodalus/dsl/aggregation/sort.rb	/^        def initialize(dao, fields, query=[])$/;"	f	class:Daodalus.DSL.Aggregation.Sort
+initialize	lib/daodalus/dsl/aggregation/unwind.rb	/^        def initialize(dao, field, query=[])$/;"	f	class:Daodalus.DSL.Aggregation.Unwind
+initialize	lib/daodalus/dsl/pipe.rb	/^      def initialize(operator, block, args)$/;"	f	class:Daodalus.DSL.Pipe
+initialize	lib/daodalus/dsl/select.rb	/^      def initialize(dao, fields, criteria={}, select_clause={'_id' => 0})$/;"	f	class:Daodalus.DSL.Select
+initialize	lib/daodalus/dsl/transform.rb	/^      def initialize(operator, block, args)$/;"	f	class:Daodalus.DSL.Transform
+initialize	lib/daodalus/dsl/update.rb	/^      def initialize(dao, criteria={}, select_clause={}, update_clause={})$/;"	f	class:Daodalus.DSL.Update
+initialize	lib/daodalus/dsl/where.rb	/^      def initialize(dao, field=nil, criteria={}, select_clause={}, update_clause={})$/;"	f	class:Daodalus.DSL.Where
+initialize	spec/lib/daodalus/model_spec.rb	/^    def initialize(result)$/;"	f	class:Daodalus.Model
+insert	lib/daodalus/dao.rb	/^    def insert(*args)$/;"	f	class:Daodalus.DAO
+last	lib/daodalus/dsl/aggregation/group.rb	/^        def last(field)$/;"	f	class:Daodalus.DSL.Aggregation.Group
+limit	lib/daodalus/dsl.rb	/^    def limit(total)$/;"	f	class:Daodalus.DSL
+limit	lib/daodalus/dsl/aggregation/operator.rb	/^        def limit(total)$/;"	f	class:Daodalus.DSL.Aggregation.Operator
+limit.rb	lib/daodalus/dsl/aggregation/limit.rb	1;"	F
+limit_spec.rb	spec/integration/aggregations/limit_spec.rb	1;"	F
+limit_spec.rb	spec/lib/daodalus/dsl/aggregation/limit_spec.rb	1;"	F
+load	lib/daodalus/configuration.rb	/^    def load(file, env)$/;"	f	class:Daodalus.Configuration
+load	lib/daodalus/configuration.rb	/^    def self.load(file, env)$/;"	F	class:Daodalus.Configuration
+lt	lib/daodalus/dsl/clause.rb	/^      def lt(value)$/;"	f	class:Daodalus.DSL.Clause
+lte	lib/daodalus/dsl/clause.rb	/^      def lte(value)$/;"	f	class:Daodalus.DSL.Clause
+match	lib/daodalus/dsl.rb	/^    def match(field=nil)$/;"	f	class:Daodalus.DSL
+match	lib/daodalus/dsl/aggregation/match.rb	/^        def match(field = nil)$/;"	f	class:Daodalus.DSL.Aggregation.Match
+match	lib/daodalus/dsl/aggregation/operator.rb	/^        def match(field=nil)$/;"	f	class:Daodalus.DSL.Aggregation.Operator
+match.rb	lib/daodalus/dsl/aggregation/match.rb	1;"	F
+match_spec.rb	spec/integration/aggregations/match_spec.rb	1;"	F
+match_spec.rb	spec/lib/daodalus/dsl/aggregation/match_spec.rb	1;"	F
+max	lib/daodalus/dsl/aggregation/group.rb	/^        def max(field)$/;"	f	class:Daodalus.DSL.Aggregation.Group
+min	lib/daodalus/dsl/aggregation/group.rb	/^        def min(field)$/;"	f	class:Daodalus.DSL.Aggregation.Group
+minus	lib/daodalus/dsl/aggregation/project.rb	/^        def minus(arg)$/;"	f	class:Daodalus.DSL.Aggregation.Project
+mod	lib/daodalus/dsl/aggregation/project.rb	/^        def mod(arg)$/;"	f	class:Daodalus.DSL.Aggregation.Project
+mod	lib/daodalus/dsl/clause.rb	/^      def mod(divisor, remainder)$/;"	f	class:Daodalus.DSL.Clause
+model_spec.rb	spec/lib/daodalus/model_spec.rb	1;"	F
+multiplied_by	lib/daodalus/dsl/aggregation/project.rb	/^        def multiplied_by(*args)$/;"	f	class:Daodalus.DSL.Aggregation.Project
+ne	lib/daodalus/dsl/clause.rb	/^      def ne(value)$/;"	f	class:Daodalus.DSL.Clause
+nin	lib/daodalus/dsl/clause.rb	/^      def nin(*values)$/;"	f	class:Daodalus.DSL.Clause
+nor	lib/daodalus/dsl/clause.rb	/^      def nor(*clauses)$/;"	f	class:Daodalus.DSL.Clause
+not	lib/daodalus/dsl/clause.rb	/^      def not$/;"	f	class:Daodalus.DSL.Clause
+operator	lib/daodalus/dsl/aggregation/group.rb	/^        def operator$/;"	f	class:Daodalus.DSL.Aggregation.Group
+operator	lib/daodalus/dsl/aggregation/limit.rb	/^        def operator$/;"	f	class:Daodalus.DSL.Aggregation.Limit
+operator	lib/daodalus/dsl/aggregation/match.rb	/^        def operator$/;"	f	class:Daodalus.DSL.Aggregation.Match
+operator	lib/daodalus/dsl/aggregation/project.rb	/^        def operator$/;"	f	class:Daodalus.DSL.Aggregation.Project
+operator	lib/daodalus/dsl/aggregation/skip.rb	/^        def operator$/;"	f	class:Daodalus.DSL.Aggregation.Skip
+operator	lib/daodalus/dsl/aggregation/sort.rb	/^        def operator$/;"	f	class:Daodalus.DSL.Aggregation.Sort
+operator	lib/daodalus/dsl/aggregation/unwind.rb	/^        def operator$/;"	f	class:Daodalus.DSL.Aggregation.Unwind
+operator.rb	lib/daodalus/dsl/aggregation/operator.rb	1;"	F
+or	lib/daodalus/dsl/clause.rb	/^      def or(*clauses)$/;"	f	class:Daodalus.DSL.Clause
+parse	lib/daodalus/configuration.rb	/^    def parse(file, env)$/;"	f	class:Daodalus.Configuration
+pipe	lib/daodalus/dsl/chainable.rb	/^      def pipe(f=nil, *args, &block)$/;"	f	class:Daodalus.DSL.Chainable
+pipe.rb	lib/daodalus/dsl/pipe.rb	1;"	F
+pipe_spec.rb	spec/lib/daodalus/dsl/pipe_spec.rb	1;"	F
+plus	lib/daodalus/dsl/aggregation/project.rb	/^        def plus(*args)$/;"	f	class:Daodalus.DSL.Aggregation.Project
+pool	lib/daodalus/connection.rb	/^    def pool$/;"	f	class:Daodalus.Connection
+pool.rb	lib/daodalus/pool.rb	1;"	F
+pool_size	lib/daodalus/connection.rb	/^    def pool_size$/;"	f	class:Daodalus.Connection
+pool_spec.rb	spec/lib/daodalus/pool_spec.rb	1;"	F
+pop_first	lib/daodalus/dsl.rb	/^    def pop_first(field)$/;"	f	class:Daodalus.DSL
+pop_first	lib/daodalus/dsl/update.rb	/^      def pop_first(field)$/;"	f	class:Daodalus.DSL.Update
+pop_last	lib/daodalus/dsl.rb	/^    def pop_last(field)$/;"	f	class:Daodalus.DSL
+pop_last	lib/daodalus/dsl/update.rb	/^      def pop_last(field)$/;"	f	class:Daodalus.DSL.Update
+project	lib/daodalus/dsl.rb	/^    def project(*fields)$/;"	f	class:Daodalus.DSL
+project	lib/daodalus/dsl/aggregation/operator.rb	/^        def project(*fields)$/;"	f	class:Daodalus.DSL.Aggregation.Operator
+project.rb	lib/daodalus/dsl/aggregation/project.rb	1;"	F
+project_spec.rb	spec/integration/aggregations/project_spec.rb	1;"	F
+project_spec.rb	spec/lib/daodalus/dsl/aggregation/project_spec.rb	1;"	F
+projection	lib/daodalus/dsl/aggregation/project.rb	/^        def projection$/;"	f	class:Daodalus.DSL.Aggregation.Project
+projection_spec.rb	spec/integration/commands/projection_spec.rb	1;"	F
+pull	lib/daodalus/dsl.rb	/^    def pull(field, *values)$/;"	f	class:Daodalus.DSL
+pull	lib/daodalus/dsl/update.rb	/^      def pull(field, *values)$/;"	f	class:Daodalus.DSL.Update
+pull_all	lib/daodalus/dsl.rb	/^    def pull_all(field, values)$/;"	f	class:Daodalus.DSL
+pull_all	lib/daodalus/dsl/update.rb	/^      def pull_all(field, values)$/;"	f	class:Daodalus.DSL.Update
+push	lib/daodalus/dsl.rb	/^    def push(field, *values)$/;"	f	class:Daodalus.DSL
+push	lib/daodalus/dsl/aggregation/group.rb	/^        def push(field)$/;"	f	class:Daodalus.DSL.Aggregation.Group
+push	lib/daodalus/dsl/update.rb	/^      def push(field, *values)$/;"	f	class:Daodalus.DSL.Update
+push_all	lib/daodalus/dsl.rb	/^    def push_all(field, values)$/;"	f	class:Daodalus.DSL
+push_all	lib/daodalus/dsl/update.rb	/^      def push_all(field, values)$/;"	f	class:Daodalus.DSL.Update
+queries.rb	lib/daodalus/dsl/queries.rb	1;"	F
+read	lib/daodalus/configuration.rb	/^    def read(file)$/;"	f	class:Daodalus.Configuration
+read	lib/daodalus/connection.rb	/^    def read$/;"	f	class:Daodalus.Connection
+readme_spec.rb	spec/integration/readme_spec.rb	1;"	F
+refresh_interval	lib/daodalus/connection.rb	/^    def refresh_interval$/;"	f	class:Daodalus.Connection
+refresh_mode	lib/daodalus/connection.rb	/^    def refresh_mode$/;"	f	class:Daodalus.Connection
+remove	lib/daodalus/dao.rb	/^    def remove(*args)$/;"	f	class:Daodalus.DAO
+remove	lib/daodalus/dsl/where.rb	/^      def remove(options = {})$/;"	f	class:Daodalus.DSL.Where
+remove_all	lib/daodalus/dao.rb	/^    def remove_all$/;"	f	class:Daodalus.DAO
+remove_spec.rb	spec/integration/commands/remove_spec.rb	1;"	F
+rename	lib/daodalus/dsl.rb	/^    def rename(field, value)$/;"	f	class:Daodalus.DSL
+rename	lib/daodalus/dsl/update.rb	/^      def rename(field, value)$/;"	f	class:Daodalus.DSL.Update
+replica_set_connection	lib/daodalus/connection.rb	/^    def replica_set_connection$/;"	f	class:Daodalus.Connection
+replica_set_options	lib/daodalus/connection.rb	/^    def replica_set_options$/;"	f	class:Daodalus.Connection
+safe	lib/daodalus/connection.rb	/^    def safe$/;"	f	class:Daodalus.Connection
+select	lib/daodalus/dsl.rb	/^    def select(*fields)$/;"	f	class:Daodalus.DSL
+select.rb	lib/daodalus/dsl/select.rb	1;"	F
+select_clause	lib/daodalus/dsl/select.rb	/^      def select_clause$/;"	f	class:Daodalus.DSL.Select
+select_options	lib/daodalus/dsl/queries.rb	/^      def select_options$/;"	f	class:Daodalus.DSL.Queries
+select_spec.rb	spec/lib/daodalus/dsl/select_spec.rb	1;"	F
+servers	lib/daodalus/connection.rb	/^    def servers$/;"	f	class:Daodalus.Connection
+set	lib/daodalus/dsl.rb	/^    def set(field, value)$/;"	f	class:Daodalus.DSL
+set	lib/daodalus/dsl/update.rb	/^      def set(field, value)$/;"	f	class:Daodalus.DSL.Update
+single_server_options	lib/daodalus/connection.rb	/^    def single_server_options$/;"	f	class:Daodalus.Connection
+size	lib/daodalus/dsl/clause.rb	/^      def size(value)$/;"	f	class:Daodalus.DSL.Clause
+skip	lib/daodalus/dsl.rb	/^    def skip(total)$/;"	f	class:Daodalus.DSL
+skip	lib/daodalus/dsl/aggregation/operator.rb	/^        def skip(total)$/;"	f	class:Daodalus.DSL.Aggregation.Operator
+skip.rb	lib/daodalus/dsl/aggregation/skip.rb	1;"	F
+skip_spec.rb	spec/integration/aggregations/skip_spec.rb	1;"	F
+skip_spec.rb	spec/lib/daodalus/dsl/aggregation/skip_spec.rb	1;"	F
+slice	lib/daodalus/dsl/select.rb	/^      def slice(number)$/;"	f	class:Daodalus.DSL.Select
+slice_clause	lib/daodalus/dsl/select.rb	/^      def slice_clause(number)$/;"	f	class:Daodalus.DSL.Select
+sort	lib/daodalus/dsl.rb	/^    def sort(*fields)$/;"	f	class:Daodalus.DSL
+sort	lib/daodalus/dsl/aggregation/operator.rb	/^        def sort(*fields)$/;"	f	class:Daodalus.DSL.Aggregation.Operator
+sort.rb	lib/daodalus/dsl/aggregation/sort.rb	1;"	F
+sort_field	lib/daodalus/dsl/aggregation/sort.rb	/^        def sort_field(f)$/;"	f	class:Daodalus.DSL.Aggregation.Sort
+sort_fields	lib/daodalus/dsl/aggregation/sort.rb	/^        def sort_fields$/;"	f	class:Daodalus.DSL.Aggregation.Sort
+sort_spec.rb	spec/integration/aggregations/sort_spec.rb	1;"	F
+sort_spec.rb	spec/lib/daodalus/dsl/aggregation/sort_spec.rb	1;"	F
+spec_helper.rb	spec/spec_helper.rb	1;"	F
+square	spec/integration/transform_spec.rb	/^        def square(x)$/;"	f	class:Daodalus.DSL
+sum	lib/daodalus/dsl/aggregation/group.rb	/^        def sum(field)$/;"	f	class:Daodalus.DSL.Aggregation.Group
+target	lib/daodalus/dao.rb	/^      def target(conn, coll)$/;"	f	class:Daodalus.DAO.Targetable
+test_clause	spec/lib/daodalus/dsl_spec.rb	/^  def self.test_clause(query, cats)$/;"	F	class:DSLTestDAO
+test_group	spec/lib/daodalus/dsl_spec.rb	/^  def self.test_group$/;"	F	class:DSLTestDAO
+test_limit	spec/lib/daodalus/dsl_spec.rb	/^  def self.test_limit$/;"	F	class:DSLTestDAO
+test_match	spec/lib/daodalus/dsl_spec.rb	/^  def self.test_match$/;"	F	class:DSLTestDAO
+test_project	spec/lib/daodalus/dsl_spec.rb	/^  def self.test_project$/;"	F	class:DSLTestDAO
+test_skip	spec/lib/daodalus/dsl_spec.rb	/^  def self.test_skip$/;"	F	class:DSLTestDAO
+test_sort	spec/lib/daodalus/dsl_spec.rb	/^  def self.test_sort$/;"	F	class:DSLTestDAO
+test_unwind	spec/lib/daodalus/dsl_spec.rb	/^  def self.test_unwind$/;"	F	class:DSLTestDAO
+test_where	spec/lib/daodalus/dsl_spec.rb	/^  def self.test_where$/;"	F	class:DSLTestDAO
+timeout	lib/daodalus/connection.rb	/^    def timeout$/;"	f	class:Daodalus.Connection
+to_mongo	lib/daodalus/dsl/aggregation/group.rb	/^        def to_mongo$/;"	f	class:Daodalus.DSL.Aggregation.Group
+to_mongo	lib/daodalus/dsl/aggregation/limit.rb	/^        def to_mongo$/;"	f	class:Daodalus.DSL.Aggregation.Limit
+to_mongo	lib/daodalus/dsl/aggregation/match.rb	/^        def to_mongo$/;"	f	class:Daodalus.DSL.Aggregation.Match
+to_mongo	lib/daodalus/dsl/aggregation/project.rb	/^        def to_mongo$/;"	f	class:Daodalus.DSL.Aggregation.Project
+to_mongo	lib/daodalus/dsl/aggregation/skip.rb	/^        def to_mongo$/;"	f	class:Daodalus.DSL.Aggregation.Skip
+to_mongo	lib/daodalus/dsl/aggregation/sort.rb	/^        def to_mongo$/;"	f	class:Daodalus.DSL.Aggregation.Sort
+to_mongo	lib/daodalus/dsl/aggregation/unwind.rb	/^        def to_mongo$/;"	f	class:Daodalus.DSL.Aggregation.Unwind
+to_query	lib/daodalus/dsl/aggregation/operator.rb	/^        def to_query$/;"	f	class:Daodalus.DSL.Aggregation.Operator
+transform	lib/daodalus/dsl/chainable.rb	/^      def transform(f=nil, *args, &block)$/;"	f	class:Daodalus.DSL.Chainable
+transform.rb	lib/daodalus/dsl/transform.rb	1;"	F
+transform_spec.rb	spec/integration/transform_spec.rb	1;"	F
+transform_spec.rb	spec/lib/daodalus/dsl/transform_spec.rb	1;"	F
+unset	lib/daodalus/dsl.rb	/^    def unset(field)$/;"	f	class:Daodalus.DSL
+unset	lib/daodalus/dsl/update.rb	/^      def unset(field)$/;"	f	class:Daodalus.DSL.Update
+unwind	lib/daodalus/dsl.rb	/^    def unwind(field)$/;"	f	class:Daodalus.DSL
+unwind	lib/daodalus/dsl/aggregation/operator.rb	/^        def unwind(field)$/;"	f	class:Daodalus.DSL.Aggregation.Operator
+unwind.rb	lib/daodalus/dsl/aggregation/unwind.rb	1;"	F
+unwind_spec.rb	spec/integration/aggregations/unwind_spec.rb	1;"	F
+unwind_spec.rb	spec/lib/daodalus/dsl/aggregation/unwind_spec.rb	1;"	F
+update	lib/daodalus/dao.rb	/^    def update(*args)$/;"	f	class:Daodalus.DAO
+update	lib/daodalus/dsl/updates.rb	/^      def update(options = {})$/;"	f	class:Daodalus.DSL.Updates
+update.rb	lib/daodalus/dsl/update.rb	1;"	F
+update_spec.rb	spec/integration/commands/update_spec.rb	1;"	F
+update_spec.rb	spec/lib/daodalus/dsl/update_spec.rb	1;"	F
+updates.rb	lib/daodalus/dsl/updates.rb	1;"	F
+updates_spec.rb	spec/integration/updates_spec.rb	1;"	F
+value	lib/daodalus/dsl/aggregation/project.rb	/^        def value$/;"	f	class:Daodalus.DSL.Aggregation.Project
+where	lib/daodalus/dsl.rb	/^    def where(field=nil)$/;"	f	class:Daodalus.DSL
+where	lib/daodalus/dsl/select.rb	/^      def where(field)$/;"	f	class:Daodalus.DSL.Select
+where	lib/daodalus/dsl/update.rb	/^      def where(field)$/;"	f	class:Daodalus.DSL.Update
+where.rb	lib/daodalus/dsl/where.rb	1;"	F
+where_spec.rb	spec/integration/commands/where_spec.rb	1;"	F
+where_spec.rb	spec/lib/daodalus/dsl/where_spec.rb	1;"	F
+with	lib/daodalus/dsl/chainable.rb	/^      def with(*args)$/;"	f	class:Daodalus.DSL.Chainable
+with_aggregate_key	lib/daodalus/dsl/aggregation/group.rb	/^        def with_aggregate_key(op, field)$/;"	f	class:Daodalus.DSL.Aggregation.Group
+with_array_operator	lib/daodalus/dsl/aggregation/project.rb	/^        def with_array_operator(op, args)$/;"	f	class:Daodalus.DSL.Aggregation.Project
+with_condition	lib/daodalus/dsl/clause.rb	/^      def with_condition(op, value)$/;"	f	class:Daodalus.DSL.Clause
+with_update	lib/daodalus/dsl/update.rb	/^      def with_update(op, field, value)$/;"	f	class:Daodalus.DSL.Update
