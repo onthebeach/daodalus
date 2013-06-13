@@ -68,9 +68,26 @@ Daodalus::Connection.register(conn, :name)
 
 <p>Create a DAO by specifying a database and collection (and optional connection name, defaulting to 'default'):</p>
 
-<p>dao = Daodalus::DAO.new(:my_db, :my_collection, :my_connection)</p>
+<pre><code>dao = Daodalus::DAO.new(:my_db, :my_collection, :my_connection)
+</code></pre>
 
 <p>The <code>connection</code> name must match one of the connections you registered earlier.</p>
+
+<h3>
+<a name="basic-mongodb-methods" class="anchor" href="#basic-mongodb-methods"><span class="octicon octicon-link"></span></a>Basic MongoDB Methods</h3>
+
+<p>You now have access to several basic MongoDB methods as defined on the MongoDB Ruby driver. The following methods work unchanged:</p>
+
+<ul>
+<li><code>find</code></li>
+<li><code>update</code></li>
+<li><code>insert</code></li>
+<li><code>save</code></li>
+<li><code>remove</code></li>
+<li><code>remove_all</code></li>
+<li><code>count</code></li>
+<li><code>aggregate</code></li>
+</ul><p>However, <code>find_one</code> and <code>find_and_modify</code> work slightly differently. While the original methods return either the matched document or <code>nil</code>, Daodalus is allergic to <code>nil</code>s, and so avoids them by using optional types instead. So the values returned will be either <code>Some[value]</code> or <code>None</code>. You can read more about optional types and see the implementation used by Daodalus <a href="http://github.com/rsslldnphy/optional">here</a>.</p>
 
 <p>*
 *
