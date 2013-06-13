@@ -43,15 +43,15 @@
 <a name="daodalus---" class="anchor" href="#daodalus---"><span class="octicon octicon-link"></span></a>DAODALUS  <a href="http://travis-ci.org/onthebeach/daodalus"><img src="https://travis-ci.org/onthebeach/daodalus.png" alt="Build Status"></a> <a href="https://codeclimate.com/github/onthebeach/daodalus"><img src="https://codeclimate.com/github/onthebeach/daodalus.png" alt="Code Climate"></a>
 </h1>
 
-<h2>
-<a name="take-the-sting-out-of-constructing-complex-mongodb-queries-updates-and-aggregations" class="anchor" href="#take-the-sting-out-of-constructing-complex-mongodb-queries-updates-and-aggregations"><span class="octicon octicon-link"></span></a>Take the sting out of constructing complex MongoDB queries, updates and aggregations.</h2>
+<h3>
+<a name="take-the-sting-out-of-constructing-complex-mongodb-queries-updates-and-aggregations" class="anchor" href="#take-the-sting-out-of-constructing-complex-mongodb-queries-updates-and-aggregations"><span class="octicon octicon-link"></span></a>Take the sting out of constructing complex MongoDB queries, updates and aggregations.</h3>
 
 <p>In Greek mythology, Daedalus tried to prevent Icarus from flying too close to the sun, but Icarus ignored his father's warning, the wax holding together his wings melted, and he fell to his death. 'Daodalus' hopes to succeed where Daedalus failed by preventing your application code from flying too close to the code that interacts with your datastore.</p>
 
 <p>Originally conceived of as an implementation of the Data Access Object pattern, it has evolved since then into more of a DSL to simplify doing complicated things with Mongo. However, by separating your models from the object used to interact with their stored form, we hope Daodalus still encourages your application and data layers to keep their distance from each other.</p>
 
-<h3>
-<a name="registering-connections" class="anchor" href="#registering-connections"><span class="octicon octicon-link"></span></a>Registering connections</h3>
+<h2>
+<a name="registering-connections" class="anchor" href="#registering-connections"><span class="octicon octicon-link"></span></a>Registering connections</h2>
 
 <p>Before being able to use Daodalus you will need to create and register one or more connections to your instance (or instances) of MongoDB. Here's how you do it:</p>
 
@@ -63,8 +63,8 @@ Daodalus::Connection.register(conn, :name)
 
 <p>The connection can be any MongoDB connection class provided by the Ruby Mongo Driver - so you could also use a <code>MongoShardedClient</code> or <code>MongoReplicaSetClient</code> here.</p>
 
-<h3>
-<a name="creating-a-dao" class="anchor" href="#creating-a-dao"><span class="octicon octicon-link"></span></a>Creating a DAO</h3>
+<h2>
+<a name="creating-a-dao" class="anchor" href="#creating-a-dao"><span class="octicon octicon-link"></span></a>Creating a DAO</h2>
 
 <p>Create a DAO by specifying a database and collection (and optional connection name, defaulting to 'default'):</p>
 
@@ -73,8 +73,8 @@ Daodalus::Connection.register(conn, :name)
 
 <p>The <code>connection</code> name must match one of the connections you registered earlier.</p>
 
-<h3>
-<a name="basic-mongodb-methods" class="anchor" href="#basic-mongodb-methods"><span class="octicon octicon-link"></span></a>Basic MongoDB Methods</h3>
+<h2>
+<a name="basic-mongodb-methods" class="anchor" href="#basic-mongodb-methods"><span class="octicon octicon-link"></span></a>Basic MongoDB Methods</h2>
 
 <p>You now have access to several basic MongoDB methods as defined on the MongoDB Ruby driver. The following methods work unchanged:</p>
 
