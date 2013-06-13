@@ -1,44 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Daodalus by onthebeach</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Daodalus : DSL for building MongoDB queries, updates and aggregations" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Daodalus</title>
   </head>
+
   <body>
 
-      <header>
-        <h1>Daodalus</h1>
-        <p>DSL for building MongoDB queries, updates and aggregations</p>
-      </header>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/onthebeach/daodalus">View on GitHub</a>
 
-      <div id="banner">
-        <span id="logo"></span>
+          <h1 id="project_title">Daodalus</h1>
+          <h2 id="project_tagline">DSL for building MongoDB queries, updates and aggregations</h2>
 
-        <a href="https://github.com/onthebeach/daodalus" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/onthebeach/daodalus/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/onthebeach/daodalus/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/onthebeach/daodalus/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/onthebeach/daodalus/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
 
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
-      <section>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
 <a name="daodalus---" class="anchor" href="#daodalus---"><span class="octicon octicon-link"></span></a>DAODALUS  <a href="http://travis-ci.org/onthebeach/daodalus"><img src="https://travis-ci.org/onthebeach/daodalus.png" alt="Build Status"></a> <a href="https://codeclimate.com/github/onthebeach/daodalus"><img src="https://codeclimate.com/github/onthebeach/daodalus.png" alt="Code Climate"></a>
 </h1>
@@ -51,7 +43,7 @@
 
 <p>Before being able to use Daodalus you will need to create and register one or more connections to your instance (or instances) of MongoDB. Here's how you do it:</p>
 
-<pre><code>conn = Mongo::MongoClient.new('localhost', 27017, pool_size: 5, pool_timeout: 5)
+<pre><code>conn = Mongo::MongoClient.new('localhost', 27017, pool_size: 5)
 Daodalus::Connection.register(conn, :name)
 </code></pre>
 
@@ -143,12 +135,17 @@ end
 <p>Daodalus is Copyright © 2012 On The Beach Ltd.
 It is free software, and may be redistributed under the terms specified in the LICENSE file.</p>
       </section>
-      <footer>
-        <p>Project maintained by <a href="https://github.com/onthebeach">onthebeach</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Daodalus maintained by <a href="https://github.com/onthebeach">onthebeach</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
     
+
   </body>
 </html>
