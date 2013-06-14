@@ -117,6 +117,30 @@ Daodalus::Connection.register(conn, :name)
 <td><code>dao.where(:paws).ne(4)</code></td>
 <td><code>{ 'paws' : { '$ne' : 4 } }</code></td>
 </tr>
+<tr>
+<td><code>lt</code></td>
+<td><code>less_than</code></td>
+<td><code>dao.where(:paws).lt(4)</code></td>
+<td><code>{ 'paws' : { '$lt' : 4 } }</code></td>
+</tr>
+<tr>
+<td><code>gt</code></td>
+<td><code>greater_than</code></td>
+<td><code>dao.where(:paws).gt(4)</code></td>
+<td><code>{ 'paws' : { '$gt' : 4 } }</code></td>
+</tr>
+<tr>
+<td><code>lte</code></td>
+<td><code>less_than_or_equal</code></td>
+<td><code>dao.where(:paws).lte(4)</code></td>
+<td><code>{ 'paws' : { '$lte' : 4 } }</code></td>
+</tr>
+<tr>
+<td><code>gte</code></td>
+<td><code>greater_than_or_equal</code></td>
+<td><code>dao.where(:paws).gte(4)</code></td>
+<td><code>{ 'paws' : { '$gte' : 4 } }</code></td>
+</tr>
 </table><p>*
 *
 *
