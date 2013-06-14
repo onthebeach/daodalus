@@ -231,6 +231,21 @@ Daodalus::Connection.register(conn, :name)
 
 <p>This will match only documents with a <code>foods</code> array which contains an element with a <code>type</code> value of "wet" <em>and</em> a <code>name</code> value of "Whiskas".</p>
 
+<h2>
+<a name="selecting-fields-to-be-returned-projection" class="anchor" href="#selecting-fields-to-be-returned-projection"><span class="octicon octicon-link"></span></a>Selecting Fields to be Returned (Projection)</h2>
+
+<p>You don't always want the whole document to be returned. Mongo allows you to specify which fields you're interested in. To do this in Daodalus, use <code>#select</code>. Here's how to specify a bunch of fields to be selected:</p>
+
+<pre><code>dao.select(:name, :paws, :tail)
+</code></pre>
+
+<p>NB. Although MongoDB <em>always</em> selects the <code>_id</code> field by default, Daodalus does not do this (in order to reduce the number of 'special cases'). If you need the <code>_id</code> field, simply specify it as part of the select.</p>
+
+<p>If you're selecting lots of fields, you may wish to split the statement over multiple lines - or you could wish to separate groups of selected fields for semantic reasons. To help keep this neat, selects can be chained with the <code>and</code> method like this:</p>
+
+<pre><code>dao.select(:cats, :dogs, :fish).and(:pigs, :sheep, :horseys)
+</code></pre>
+
 <p>*
 *
 *
