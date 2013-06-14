@@ -84,12 +84,26 @@ Daodalus::Connection.register(conn, :name)
 <li><code>insert</code></li>
 <li><code>save</code></li>
 <li><code>remove</code></li>
-<li><code>remove_all</code></li>
 <li><code>count</code></li>
 <li><code>aggregate</code></li>
 </ul><p>However, <code>find_one</code> and <code>find_and_modify</code> work slightly differently. While the original methods return either the matched document or <code>nil</code>, Daodalus is allergic to <code>nil</code>s, and so avoids them by using optional types instead. So the values returned will be either <code>Some[value]</code> or <code>None</code>. You can read more about optional types and see the implementation used by Daodalus <a href="http://github.com/rsslldnphy/optional">here</a>.</p>
 
 <p>These are the only methods exposed by the Daodalus DAO - but should you need to call any other methods on the collection, the <code>Mongo::Collection</code> object can be accessed directly by calling <code>dao.coll</code>.</p>
+
+<h2>
+<a name="queries" class="anchor" href="#queries"><span class="octicon octicon-link"></span></a>Queries</h2>
+
+<p>Queries are built up by chaining together one or more 'where' clauses, like this:</p>
+
+<pre><code>dao.where(:name).eq('Terry').and(:paws).gte(3).find
+</code></pre>
+
+<p>Note that a longer-form version of the clause name usually exists as an alias if you prefer to be a bit more verbose. So the above could equally be expressed as:</p>
+
+<pre><code>dao.where(:name).equals('Terry').and(:paws).greater_than_or_equal_to(3).find
+</code></pre>
+
+<p>Notice the <code>find</code> at the end of the chain? This is what terminates the chain and sends your query to Mongo. You can also use <code>find_one</code> here (which, remember, will return an <code>Option</code>) as well as some other methods for updating and aggregation that we'll come to later.</p>
 
 <p>*
 *
