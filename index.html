@@ -273,6 +273,16 @@ dao.select(:favourite_foods).slice(10, 4)  # get four, starting with the 10th
 dao.select(:favourite_foods).slice(-10, 4) # get four, starting with the 10th from last
 </code></pre>
 
+<h3>
+<a name="elem_match" class="anchor" href="#elem_match"><span class="octicon octicon-link"></span></a>Elem_match</h3>
+
+<p>It's also possible to use <code>#elem_match</code> as part of a select clause, in a similar way to how it's used in a where clause. This time, it makes sure that only the first element in an array that matches the provided query is returned.</p>
+
+<pre><code>dao.select(:favourite_foods).elem_match(
+  dao.where(:price).lte(5_00)
+)
+</code></pre>
+
 <p>*
 *
 *
