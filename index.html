@@ -70,14 +70,14 @@ Daodalus::Connection.register(conn, :name)
 <p>You now have access to several basic MongoDB methods as defined on the <code>Mongo::Collection</code> class of the MongoDB Ruby driver. The following methods work unchanged:</p>
 
 <ul>
-<li><code>find</code></li>
-<li><code>update</code></li>
-<li><code>insert</code></li>
-<li><code>save</code></li>
-<li><code>remove</code></li>
-<li><code>count</code></li>
-<li><code>aggregate</code></li>
-</ul><p>However, <code>find_one</code> and <code>find_and_modify</code> work slightly differently. While the original methods return either the matched document or <code>nil</code>, Daodalus is allergic to <code>nil</code>s, and so avoids them by using optional types instead. So the values returned will be either <code>Some[value]</code> or <code>None</code>. You can read more about optional types and see the implementation used by Daodalus <a href="http://github.com/rsslldnphy/optional">here</a>.</p>
+<li><code>#find</code></li>
+<li><code>#update</code></li>
+<li><code>#insert</code></li>
+<li><code>#save</code></li>
+<li><code>#remove</code></li>
+<li><code>#count</code></li>
+<li><code>#aggregate</code></li>
+</ul><p>However, <code>#find_one</code> and <code>#find_and_modify</code> work slightly differently. While the original methods return either the matched document or <code>nil</code>, Daodalus is allergic to <code>nil</code>s, and so avoids them by using optional types instead. So the values returned will be either <code>Some[value]</code> or <code>None</code>. You can read more about optional types and see the implementation used by Daodalus <a href="http://github.com/rsslldnphy/optional">here</a>.</p>
 
 <p>These are the only methods exposed by the Daodalus DAO - but should you need to call any other methods on the collection, the <code>Mongo::Collection</code> object can be accessed directly by calling <code>dao.coll</code>.</p>
 
@@ -113,84 +113,111 @@ Daodalus::Connection.register(conn, :name)
 <th>Translation</th>
 </tr>
 <tr>
-<td><code>eq</code></td>
-<td><code>equals</code></td>
+<td><code>#eq</code></td>
+<td><code>#equals</code></td>
 <td><code>dao.where(:paws).eq(4)</code></td>
 <td><code>{ 'paws' : 4 }</code></td>
 </tr>
 <tr>
-<td><code>ne</code></td>
-<td><code>not_equal</code></td>
+<td><code>#ne</code></td>
+<td><code>#not_equal</code></td>
 <td><code>dao.where(:paws).ne(4)</code></td>
 <td><code>{ 'paws' : { '$ne' : 4 } }</code></td>
 </tr>
 <tr>
-<td><code>lt</code></td>
-<td><code>less_than</code></td>
+<td><code>#lt</code></td>
+<td><code>#less_than</code></td>
 <td><code>dao.where(:paws).lt(4)</code></td>
 <td><code>{ 'paws' : { '$lt' : 4 } }</code></td>
 </tr>
 <tr>
-<td><code>gt</code></td>
-<td><code>greater_than</code></td>
+<td><code>#gt</code></td>
+<td><code>#greater_than</code></td>
 <td><code>dao.where(:paws).gt(4)</code></td>
 <td><code>{ 'paws' : { '$gt' : 4 } }</code></td>
 </tr>
 <tr>
-<td><code>lte</code></td>
-<td><code>less_than_or_equal</code></td>
+<td><code>#lte</code></td>
+<td><code>#less_than_or_equal</code></td>
 <td><code>dao.where(:paws).lte(4)</code></td>
 <td><code>{ 'paws' : { '$lte' : 4 } }</code></td>
 </tr>
 <tr>
-<td><code>gte</code></td>
-<td><code>greater_than_or_equal</code></td>
+<td><code>#gte</code></td>
+<td><code>#greater_than_or_equal</code></td>
 <td><code>dao.where(:paws).gte(4)</code></td>
 <td><code>{ 'paws' : { '$gte' : 4 } }</code></td>
 </tr>
 <tr>
-<td><code>in</code></td>
+<td><code>#in</code></td>
 <td>-</td>
 <td><code>dao.where(:paws).in(4, 3)</code></td>
 <td><code>{ 'paws' : { '$in' : [4, 3] } }</code></td>
 </tr>
 <tr>
-<td><code>nin</code></td>
-<td><code>not_in</code></td>
+<td><code>#nin</code></td>
+<td><code>#not_in</code></td>
 <td><code>dao.where(:paws).gte(4)</code></td>
 <td><code>{ 'paws' : { '$nin' : [4, 3] } }</code></td>
 </tr>
 <tr>
-<td><code>all</code></td>
+<td><code>#all</code></td>
 <td>-</td>
 <td><code>dao.where(:likes).all('tuna', 'catnip')</code></td>
 <td><code>{ 'likes' : { '$all' : ['tuna', 'catnip'] } }</code></td>
 </tr>
 <tr>
-<td><code>size</code></td>
+<td><code>#size</code></td>
 <td>-</td>
 <td><code>dao.where(:likes).size(3)</code></td>
 <td><code>{ 'likes' : { '$size' : 3 } }</code></td>
 </tr>
 <tr>
-<td><code>exists</code></td>
+<td><code>#exists</code></td>
 <td>-</td>
 <td><code>dao.where(:tail).exists</code></td>
 <td><code>{ 'tail' : { '$exists' : true } }</code></td>
 </tr>
 <tr>
-<td><code>does_not_exist</code></td>
-<td><code>exists(false)</code></td>
+<td><code>#does_not_exist</code></td>
+<td><code>#exists(false)</code></td>
 <td><code>dao.where(:tail).does_not_exist</code></td>
 <td><code>{ 'tail' : { '$exists' : false } }</code></td>
 </tr>
-<tr>
-<td><code>not</code></td>
-<td>-</td>
-<td><code>dao.where(:paws).not.gte(4)</code></td>
-<td><code>{ 'paws' : { '$not' :{ '$gte' : 4 } } }</code></td>
-</tr>
-</table><p>*
+</table><h2>
+<a name="logic" class="anchor" href="#logic"><span class="octicon octicon-link"></span></a>Logic</h2>
+
+<p>Using <code>#not</code> will negate the following where clause (one only), whatever it might be. So:</p>
+
+<pre><code>dao.where(:paws).not.gte(4)
+</code></pre>
+
+<p>translates as:</p>
+
+<pre><code>{ 'paws' : { '$not' : { '$gte' : 4 } } }
+</code></pre>
+
+<p>The MongoDB <code>or</code> and <code>nor</code> operators have different names in Daodalus so that they make more sense in the context they're in. So, to match <em>any</em> of a set of clauses, use <code>#any</code> like this:</p>
+
+<pre><code>dao.where.any(
+  dao.where(:paws).eq(3),
+  dao.where(:name).eq('Terry')
+)
+
+# translates as { '$or' : [ { 'paws' : 3 }, { 'name' : 'Terry' }] }
+</code></pre>
+
+<p>...and to match only if <em>none</em> of a set of clauses match, use <code>#none</code>:</p>
+
+<pre><code>dao.where.none(
+  dao.where(:paws).eq(3),
+  dao.where(:name).eq('Terry')
+)
+
+# translates as { '$nor' : [ { 'paws' : 3 }, { 'name' : 'Terry' }] }
+</code></pre>
+
+<p>*
 *
 *
 *
