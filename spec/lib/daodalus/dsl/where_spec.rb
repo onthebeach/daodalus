@@ -81,6 +81,31 @@ module Daodalus
         dao.where(:paws).not.less_than(3).find_one.should be_some
         dao.where(:paws).not.eq(3).find_one.should be_none
       end
+
+      it 'implements #any' do
+        dao.where.any(
+          dao.where(:likes).size(14),
+          dao.where(:likes).eq('tuna'),
+        ).find_one.should be_some
+
+        dao.where.any(
+          dao.where(:likes).size(14),
+          dao.where(:likes).eq('dogs'),
+        ).find_one.should be_none
+      end
+
+      it 'implements #none' do
+        dao.where.none(
+          dao.where(:likes).size(3),
+          dao.where(:likes).eq('dogs'),
+        ).find_one.should be_some
+
+        dao.where.none(
+          dao.where(:likes).size(7),
+          dao.where(:likes).eq('catnip'),
+        ).find_one.should be_none
+      end
+
     end
   end
 end

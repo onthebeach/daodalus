@@ -1,7 +1,7 @@
 module Daodalus
   module DSL
 
-    def where field
+    def where field=nil
       Where.new(self, query, field.to_s)
     end
 

@@ -9,6 +9,10 @@ module Daodalus
         @field = field
       end
 
+      def to_query
+        query.wheres
+      end
+
       def eq value
         add_clause value
       end
@@ -77,6 +81,14 @@ module Daodalus
           Where.new(dao, query.where(field.to_s => { '$ne' => value}), field)
         end
         self
+      end
+
+      def any *clauses
+        Where.new(dao, query.where('$or' => clauses.map(&:to_query)), field)
+      end
+
+      def none *clauses
+        Where.new(dao, query.where('$nor' => clauses.map(&:to_query)), field)
       end
 
       private
