@@ -9,6 +9,10 @@ module Daodalus
         @fields = fields
       end
 
+      def and *fields
+        Select.new(dao, query, fields)
+      end
+
       private
 
       def query

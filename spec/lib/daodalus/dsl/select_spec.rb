@@ -18,6 +18,10 @@ module Daodalus
         dao.select(:name, :paws).find_one.value.keys.should eq ['name', 'paws']
       end
 
+      it 'allows the chaining of selects' do
+        dao.select(:name).and(:paws).find_one.value.keys.should eq ['name', 'paws']
+      end
+
     end
   end
 end
