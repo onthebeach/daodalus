@@ -35,7 +35,7 @@ module Daodalus
       end
 
       it 'allows use of the positional operator' do
-        query = dao.select(:foods).by_position.where(:foods, :type).eq('wet')
+        query = dao.select(:foods).by_position.where(:'foods.type').eq('wet')
         result = query.find_one.value
         result.fetch('foods').should eq (['type' => 'wet', 'name' => 'whiskas'])
       end

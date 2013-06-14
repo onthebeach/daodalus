@@ -30,9 +30,10 @@ module Daodalus
         raise InvalidQueryError, "Too many fields for positional operator: #{fields.inspect}" if fields.size > 1
         Select.new(dao, @query, ["#{fields.first}.$"])
       end
+      alias_method :positional, :by_position
 
-      def where *fields
-        Where.new(dao, query, fields)
+      def where field=nil
+        Where.new(dao, query, field)
       end
 
       private

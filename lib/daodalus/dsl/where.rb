@@ -3,10 +3,10 @@ module Daodalus
     class Where
       include Queries
 
-      def initialize(dao, query, fields)
+      def initialize(dao, query, field)
         @dao    = dao
         @query  = query
-        @fields = fields
+        @field = field
       end
 
       def to_query
@@ -76,8 +76,8 @@ module Daodalus
         exists false
       end
 
-      def where *fields
-        Where.new(dao, query, fields)
+      def where field=nil
+        Where.new(dao, query, field)
       end
       alias_method :and, :where
 
@@ -87,20 +87,20 @@ module Daodalus
 
       def not
         define_singleton_method :add_clause do |clause|
-          Where.new(dao, query.where(fields.join('.') => { '$not' => clause}), fields)
+          Where.new(dao, query.where(field.to_s => { '$not' => clause}), field)
         end
         define_singleton_method :eq do |value|
-          Where.new(dao, query.where(fields.join('.') => { '$ne' => value}), fields)
+          Where.new(dao, query.where(field.to_s => { '$ne' => value}), field)
         end
         self
       end
 
       def any *clauses
-        Where.new(dao, query.where('$or' => clauses.map(&:to_query)), fields)
+        Where.new(dao, query.where('$or' => clauses.map(&:to_query)), field)
       end
 
       def none *clauses
-        Where.new(dao, query.where('$nor' => clauses.map(&:to_query)), fields)
+        Where.new(dao, query.where('$nor' => clauses.map(&:to_query)), field)
       end
 
       def elem_match clause
@@ -110,10 +110,10 @@ module Daodalus
       private
 
       def add_clause clause
-        Where.new(dao, query.where(fields.join('.') => clause), fields)
+        Where.new(dao, query.where(field.to_s => clause), field)
       end
 
-      attr_reader :dao, :query, :fields
+      attr_reader :dao, :query, :field
     end
   end
 end
