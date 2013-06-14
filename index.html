@@ -220,11 +220,13 @@ Daodalus::Connection.register(conn, :name)
 <h3>
 <a name="matching-array-elements" class="anchor" href="#matching-array-elements"><span class="octicon octicon-link"></span></a>Matching array elements</h3>
 
-<p>You can also ensure a specific array element matches a number of conditions using the <code>elem_match</code> method.</p>
+<p>You can also ensure a specific array element matches a number of conditions using the <code>#elem_match</code> method.</p>
 
 <pre><code>dao.where(:foods).elem_match(
   dao.where(:type).eq(:wet).and(:name).eq("Whiskas")
 )
+
+# translates as { 'foods' : { '$elemMatch' : { 'type' : 'wet', 'name' : 'Whiskas' } } }
 </code></pre>
 
 <p>This will match only documents with a <code>foods</code> array which contains an element with a <code>type</code> value of "wet" <em>and</em> a <code>name</code> value of "Whiskas".</p>
