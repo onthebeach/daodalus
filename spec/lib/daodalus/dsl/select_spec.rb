@@ -10,6 +10,7 @@ module Daodalus
         dao.insert('name'  => 'Terry',
                    'paws'  => 3,
                    'likes' => ['tuna', 'catnip'],
+                   'lives' => [1,2,3,4,5,6,7,8,9],
                    'foods' => [{'type' => 'dry', 'name' => 'go cat'},
                                {'type' => 'wet', 'name' => 'whiskas'}])
       end
@@ -38,6 +39,12 @@ module Daodalus
         query = dao.select(:foods).by_position.where(:'foods.type').eq('wet')
         result = query.find_one.value
         result.fetch('foods').should eq (['type' => 'wet', 'name' => 'whiskas'])
+      end
+
+      it 'implements #slice' do
+        dao.select(:lives).slice(-3).find_one.value.fetch('lives').should eq [7,8,9]
+        dao.select(:lives).slice(-3, 3).find_one.value.fetch('lives').should eq [7,8,9]
+        dao.select(:lives).slice(6, 5).find_one.value.fetch('lives').should eq [7,8,9]
       end
     end
   end
