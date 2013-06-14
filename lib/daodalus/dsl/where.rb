@@ -12,6 +12,12 @@ module Daodalus
       def eq value
         Where.new(dao, query.where(field.to_s => value), field)
       end
+      alias_method :equals, :eq
+
+      def where field
+        Where.new(dao, query, field)
+      end
+      alias_method :and, :where
 
       private
 

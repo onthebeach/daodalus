@@ -11,8 +11,6 @@ module Daodalus
       connections.fetch(name.to_s) { raise InvalidConnectionError.new(name) }
     end
 
-    private
-
     def connections
       @connections ||= {}
     end

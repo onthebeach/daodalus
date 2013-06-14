@@ -21,7 +21,6 @@ module Daodalus
       :insert,
       :save,
       :remove,
-      :remove_all,
       :count,
       :aggregate
     ] => :coll
