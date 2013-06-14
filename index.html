@@ -103,7 +103,7 @@ Daodalus::Connection.register(conn, :name)
 <th>Clause</th>
 <th>Alias</th>
 <th>Usage</th>
-<th>As Mongo</th>
+<th>Translation</th>
 </tr>
 <tr>
 <td><code>eq</code></td>
@@ -140,6 +140,18 @@ Daodalus::Connection.register(conn, :name)
 <td><code>greater_than_or_equal</code></td>
 <td><code>dao.where(:paws).gte(4)</code></td>
 <td><code>{ 'paws' : { '$gte' : 4 } }</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td>-</td>
+<td><code>dao.where(:paws).in(4, 3)</code></td>
+<td><code>{ 'paws' : { '$in' : [4, 3] } }</code></td>
+</tr>
+<tr>
+<td><code>nin</code></td>
+<td><code>not_in</code></td>
+<td><code>dao.where(:paws).gte(4)</code></td>
+<td><code>{ 'paws' : { '$nin' : [4, 3] } }</code></td>
 </tr>
 </table><p>*
 *
