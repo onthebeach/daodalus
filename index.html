@@ -100,12 +100,33 @@ Daodalus::Connection.register(conn, :name)
 
 <p>Note that a longer-form version of the clause name usually exists as an alias if you prefer to be a bit more verbose. So the above could equally be expressed as:</p>
 
-<pre><code>dao.where(:name).equals('Terry').and(:paws).greater_than_or_equal_to(3).find
+<pre><code>dao.where(:name).equals('Terry').and(:paws).greater_than_or_equal(3).find
 </code></pre>
 
 <p>Notice the <code>find</code> at the end of the chain? This is what terminates the chain and sends your query to Mongo. You can also use <code>find_one</code> here (which, remember, will return an <code>Option</code>) as well as some other methods for updating and aggregation that we'll come to later.</p>
 
-<p>*
+<p>Here is the complete list of currently implemented 'where' clauses you can use with Daodalus.</p>
+
+<table>
+<tr>
+<th>Clause</th>
+<th>Alias</th>
+<th>Usage</th>
+<th>As Mongo</th>
+</tr>
+<tr>
+<td><code>eq</code></td>
+<td><code>equals</code></td>
+<td><code>dao.where(:paws).eq(4)</code></td>
+<td><code>{ 'paws' : 4 }</code></td>
+</tr>
+<tr>
+<td><code>ne</code></td>
+<td><code>not_equal</code></td>
+<td><code>dao.where(:paws).ne(4)</code></td>
+<td><code>{ 'paws' : { '$ne' =&gt; 4 } }</code></td>
+</tr>
+</table><p>*
 *
 *
 *
