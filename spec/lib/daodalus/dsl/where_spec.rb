@@ -7,7 +7,11 @@ module Daodalus
       let (:dao) { DAO.new(:animalhouse, :cats) }
 
       before do
-        dao.insert('name' => 'Terry', 'paws' => 3, 'likes' => ['tuna', 'catnip'])
+        dao.insert('name'  => 'Terry',
+                   'paws'  => 3,
+                   'likes' => ['tuna', 'catnip'],
+                   'foods' => [{'type' => 'dry', 'name' => 'go cat'},
+                               {'type' => 'wet', 'name' => 'whiskas'}])
       end
 
       it 'can test for equality' do
@@ -106,6 +110,15 @@ module Daodalus
         ).find_one.should be_none
       end
 
+      it 'implements #elem_match' do
+        dao.where(:foods).elem_match(
+          dao.where(:type).eq(:wet).and(:name).eq('whiskas')
+        ).find_one.should be_some
+
+        dao.where(:foods).elem_match(
+          dao.where(:type).eq(:dry).and(:name).eq('whiskas')
+        ).find_one.should be_none
+      end
     end
   end
 end

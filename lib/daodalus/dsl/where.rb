@@ -91,6 +91,10 @@ module Daodalus
         Where.new(dao, query.where('$nor' => clauses.map(&:to_query)), field)
       end
 
+      def elem_match clause
+        add_clause '$elemMatch' => clause.to_query
+      end
+
       private
 
       def add_clause clause
