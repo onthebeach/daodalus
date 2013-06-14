@@ -12,6 +12,10 @@ module Daodalus
       Query.new(add_where(clause), selects, updates)
     end
 
+    def select clause
+      Query.new(wheres, selects.merge(clause), updates)
+    end
+
     private
 
     def add_where clause
