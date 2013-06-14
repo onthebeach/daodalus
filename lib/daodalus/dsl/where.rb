@@ -10,7 +10,7 @@ module Daodalus
       end
 
       def eq value
-        Where.new(dao, query.where(field.to_s => value), field)
+        add_clause value
       end
       alias_method :equals, :eq
 
@@ -20,6 +20,10 @@ module Daodalus
       alias_method :and, :where
 
       private
+
+      def add_clause clause
+        Where.new(dao, query.where(field.to_s => clause), field)
+      end
 
       attr_reader :dao, :query, :field
     end

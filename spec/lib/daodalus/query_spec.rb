@@ -15,9 +15,13 @@ module Daodalus
       q.wheres.should eq ({'paws' => 3, 'tail' => 'waggy'})
     end
 
-    it 'overwrites previous where clauses if one is added for the same field' do
-      q = query.where('paws' => 3).where('paws' => 4)
-      q.wheres.should eq ({'paws' => 4})
+    it 'merges clauses where possible' do
+      q = query.where('paws' => { '$gte' => 3}).where('paws' => {'$lte' => 6})
+      q.wheres.should eq ({'paws' => {'$gte'=>3, '$lte'=>6}})
+    end
+
+    it 'raises an error if two clauses cannot be merged' do
+      expect { query.where('paws' => 3).where('paws' => 4) }.to raise_error InvalidQueryError
     end
 
   end
