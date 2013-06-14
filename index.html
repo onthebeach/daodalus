@@ -103,6 +103,11 @@ Daodalus::Connection.register(conn, :name)
 
 <p>But bear in mind that it's not possible to make an equality assertion <em>and</em> another assertion on the same field. (Which makes sense if you think about it.) This will raise an <code>InvalidQueryError</code>.</p>
 
+<p>Querying against nested fields works just like it does in plain Mongo, using the dot operator. (You can pass field names as strings or symbols, it's up to you.)</p>
+
+<pre><code>dao.where(:'paws.2.toes').gt(3) # the third element of the paws array has a toes field that is &gt; than 3
+</code></pre>
+
 <p>Here is the complete list of currently implemented 'where' clauses you can use with Daodalus.</p>
 
 <table>
@@ -241,9 +246,31 @@ Daodalus::Connection.register(conn, :name)
 
 <p>NB. Although MongoDB <em>always</em> selects the <code>_id</code> field by default, Daodalus does not do this (in order to reduce the number of 'special cases'). If you need the <code>_id</code> field, simply specify it as part of the select.</p>
 
+<h3>
+<a name="chaining-selects" class="anchor" href="#chaining-selects"><span class="octicon octicon-link"></span></a>Chaining selects</h3>
+
 <p>If you're selecting lots of fields, you may wish to split the statement over multiple lines - or you could wish to separate groups of selected fields for semantic reasons. To help keep this neat, selects can be chained with the <code>and</code> method like this:</p>
 
 <pre><code>dao.select(:cats, :dogs, :fish).and(:pigs, :sheep, :horseys)
+</code></pre>
+
+<h3>
+<a name="the-positional-operator" class="anchor" href="#the-positional-operator"><span class="octicon octicon-link"></span></a>The positional operator</h3>
+
+<p>In Mongo, if you want to select only the first matched subdocument in an array you use the positional operator (<code>$</code>). In Daodalus, we've given that the slightly more descriptive name of <code>#by_position</code>. Use it like this:</p>
+
+<pre><code>dao.select(:cats).by_position.where(:'cats.paws').gt(3) # select and return only the first cat with &gt; 3 paws
+</code></pre>
+
+<h3>
+<a name="slice" class="anchor" href="#slice"><span class="octicon octicon-link"></span></a>Slice</h3>
+
+<p>To select a subsection of an array, use <code>#slice</code>.</p>
+
+<pre><code>dao.select(:favourite_foods).slice(4)      # get the first four
+dao.select(:favourite_foods).slice(-4)     # get the last four
+dao.select(:favourite_foods).slice(10, 4)  # get four, starting with the 10th
+dao.select(:favourite_foods).slice(-10, 4) # get four, starting with the 10th from last
 </code></pre>
 
 <p>*
