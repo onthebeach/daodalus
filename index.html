@@ -96,6 +96,13 @@ Daodalus::Connection.register(conn, :name)
 
 <p>Notice the <code>find</code> at the end of the chain? This is what terminates the chain and sends your query to Mongo. You can also use <code>find_one</code> here (which, remember, will return an <code>Option</code>) as well as some other methods for updating and aggregation that we'll come to later.</p>
 
+<p>If you need to make multiple assertions about the same field, you can simply chain them like this:</p>
+
+<pre><code>dao.where(:paws).gt(2).lt(5).find
+</code></pre>
+
+<p>But bear in mind that it's not possible to make an equality assertion <em>and</em> another assertion on the same field. (Which makes sense if you think about it.) This will raise an <code>InvalidQueryError</code>.</p>
+
 <p>Here is the complete list of currently implemented 'where' clauses you can use with Daodalus.</p>
 
 <table>
@@ -176,6 +183,12 @@ Daodalus::Connection.register(conn, :name)
 <td><code>exists(false)</code></td>
 <td><code>dao.where(:tail).does_not_exist</code></td>
 <td><code>{ 'tail' : { '$exists' : false } }</code></td>
+</tr>
+<tr>
+<td><code>not</code></td>
+<td>-</td>
+<td><code>dao.where(:paws).not.gte(4)</code></td>
+<td><code>{ 'paws' : { '$not' :{ '$gte' : 4 } } }</code></td>
 </tr>
 </table><p>*
 *
