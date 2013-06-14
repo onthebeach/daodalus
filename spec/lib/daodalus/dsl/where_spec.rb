@@ -47,6 +47,16 @@ module Daodalus
         dao.where(:paws).gte(4).find_one.should be_none
       end
 
+      it 'implements #in' do
+        dao.where(:paws).in(3, 5).find_one.should be_some
+        dao.where(:paws).in(4, 1).find_one.should be_none
+      end
+
+      it 'implements #nin' do
+        dao.where(:paws).nin(2, 5).find_one.should be_some
+        dao.where(:paws).nin(4, 3).find_one.should be_none
+      end
+
     end
   end
 end

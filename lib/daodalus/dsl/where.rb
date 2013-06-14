@@ -39,6 +39,15 @@ module Daodalus
       end
       alias_method :greater_than_or_equal, :gte
 
+      def in *values
+        add_clause '$in' => values
+      end
+
+      def nin *values
+        add_clause '$nin' => values
+      end
+      alias_method :not_in, :nin
+
       def where field
         Where.new(dao, query, field)
       end
