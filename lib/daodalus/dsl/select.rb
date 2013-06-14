@@ -6,12 +6,16 @@ module Daodalus
       def initialize(dao, query, fields)
         @dao   = dao
         @query = query
-        @field = field
+        @fields = fields
       end
 
       private
 
-      attr_reader :dao, :query, :field
+      def query
+        @query.select(fields.reduce({}) { |acc, f| acc.merge(f.to_s => 1) })
+      end
+
+      attr_reader :dao, :fields
     end
   end
 end

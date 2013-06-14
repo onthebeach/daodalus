@@ -6,7 +6,7 @@ module Daodalus
       @selects = selects
       @updates = updates
     end
-    attr_reader :wheres, :selects, :updates
+    attr_reader :wheres, :updates
 
     def where clause
       Query.new(add_where(clause), selects, updates)
@@ -14,6 +14,10 @@ module Daodalus
 
     def select clause
       Query.new(wheres, selects.merge(clause), updates)
+    end
+
+    def selects
+      { '_id' => 0 }.merge(@selects)
     end
 
     private

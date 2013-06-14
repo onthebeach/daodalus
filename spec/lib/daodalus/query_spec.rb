@@ -26,7 +26,7 @@ module Daodalus
 
     it 'can have select clauses added to it' do
       q = query.select('paws' => 1, 'tail' => 1)
-      q.selects.should eq ({'paws' => 1, 'tail' => 1})
+      q.selects.should eq ({'_id' => 0, 'paws' => 1, 'tail' => 1})
     end
 
   end
