@@ -22,5 +22,13 @@ module Daodalus
       dao.find
     end
 
+    it 'returns an optional value for find_one' do
+      dao.find_one(name: 'felix').should be_none
+    end
+
+    it 'returns an optional value for find_and_modify' do
+      dao.find_and_modify(query: { name: 'felix'}, update: { '$set' => { name: 'cat' }}).should be_none
+    end
+
   end
 end

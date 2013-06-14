@@ -1,3 +1,5 @@
 require 'mongo'
+require 'optional'
 require 'daodalus/connection'
+require 'daodalus/invalid_connection_error'
 require 'daodalus/dao'

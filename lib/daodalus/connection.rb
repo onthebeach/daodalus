@@ -18,11 +18,4 @@ module Daodalus
     end
 
   end
-
-  class InvalidConnectionError < StandardError
-    def initialize(name)
-      super("Daodalus::InvalidConnectionError - #{name.inspect}")
-    end
-  end
-
 end

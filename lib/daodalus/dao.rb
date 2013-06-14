@@ -16,8 +16,6 @@ module Daodalus
 
     delegate [
       :find,
-      :find_one,
-      :find_and_modify,
       :update,
       :insert,
       :save,
@@ -26,6 +24,14 @@ module Daodalus
       :count,
       :aggregate
     ] => :coll
+
+    def find_one(*args)
+      Option[coll.find_one(*args)]
+    end
+
+    def find_and_modify(*args)
+      Option[coll.find_and_modify(*args)]
+    end
 
     private
 
