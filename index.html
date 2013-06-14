@@ -184,8 +184,8 @@ Daodalus::Connection.register(conn, :name)
 <td><code>dao.where(:tail).does_not_exist</code></td>
 <td><code>{ 'tail' : { '$exists' : false } }</code></td>
 </tr>
-</table><h2>
-<a name="logic" class="anchor" href="#logic"><span class="octicon octicon-link"></span></a>Logic</h2>
+</table><h3>
+<a name="logic" class="anchor" href="#logic"><span class="octicon octicon-link"></span></a>Logic</h3>
 
 <p>Using <code>#not</code> will negate the following where clause (one only), whatever it might be. So:</p>
 
@@ -216,6 +216,18 @@ Daodalus::Connection.register(conn, :name)
 
 # translates as { '$nor' : [ { 'paws' : 3 }, { 'name' : 'Terry' }] }
 </code></pre>
+
+<h3>
+<a name="matching-array-elements" class="anchor" href="#matching-array-elements"><span class="octicon octicon-link"></span></a>Matching array elements</h3>
+
+<p>You can also ensure a specific array element matches a number of conditions using the <code>elem_match</code> method.</p>
+
+<pre><code>dao.where(:foods).elem_match(
+  dao.where(:type).eq(:wet).and(:name).eq("Whiskas")
+)
+</code></pre>
+
+<p>This will match only documents with a <code>foods</code> array which contains an element with a <code>type</code> value of "wet" <em>and</em> a <code>name</code> value of "Whiskas".</p>
 
 <p>*
 *
