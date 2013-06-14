@@ -1,24 +1,13 @@
 module Daodalus
   module DSL
     class Where
+      include Clause
       include Queries
 
       def initialize(dao, query, field)
         @dao    = dao
         @query  = query
         @field = field
-      end
-
-      def to_query
-        query.wheres
-      end
-
-      def to_projection
-        query.selects
-      end
-
-      def to_update
-        query.updates
       end
 
       def eq value
@@ -76,14 +65,7 @@ module Daodalus
         exists false
       end
 
-      def where field=nil
-        Where.new(dao, query, field)
-      end
       alias_method :and, :where
-
-      def select *fields
-        Select.new(dao, query, fields)
-      end
 
       def not
         define_singleton_method :add_clause do |clause|

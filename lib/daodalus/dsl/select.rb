@@ -1,24 +1,13 @@
 module Daodalus
   module DSL
     class Select
+      include Clause
       include Queries
 
       def initialize(dao, query, fields)
         @dao   = dao
         @query = query
         @fields = fields
-      end
-
-      def to_query
-        query.wheres
-      end
-
-      def to_projection
-        query.selects
-      end
-
-      def to_update
-        query.updates
       end
 
       def select *fields
@@ -43,10 +32,6 @@ module Daodalus
 
       def elem_match clause
         Select.new(dao, @query.select(fields.first.to_s => { '$elemMatch' => clause.to_query}), [])
-      end
-
-      def where field=nil
-        Where.new(dao, query, field)
       end
 
       private
