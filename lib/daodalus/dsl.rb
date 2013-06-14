@@ -1,8 +1,8 @@
 module Daodalus
   module DSL
 
-    def where field=nil
-      Where.new(self, query, field)
+    def where *fields
+      Where.new(self, query, fields)
     end
 
     def select *fields
