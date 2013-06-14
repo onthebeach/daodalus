@@ -22,6 +22,31 @@ module Daodalus
         dao.where(:name).eq('Terry').and(:paws).eq(77).find_one.should be_none
       end
 
+      it 'can test for inequality' do
+        dao.where(:name).ne('Jennifer').find_one.should be_some
+        dao.where(:name).ne('Terry').find_one.should be_none
+      end
+
+      it 'implements #lt' do
+        dao.where(:paws).lt(4).find_one.should be_some
+        dao.where(:paws).lt(3).find_one.should be_none
+      end
+
+      it 'implements #gt' do
+        dao.where(:paws).gt(4).find_one.should be_none
+        dao.where(:paws).gt(2).find_one.should be_some
+      end
+
+      it 'implements #lte' do
+        dao.where(:paws).lte(3).find_one.should be_some
+        dao.where(:paws).lte(2).find_one.should be_none
+      end
+
+      it 'implements #gte' do
+        dao.where(:paws).gte(3).find_one.should be_some
+        dao.where(:paws).gte(4).find_one.should be_none
+      end
+
     end
   end
 end
