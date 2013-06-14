@@ -46,6 +46,12 @@ module Daodalus
         dao.select(:lives).slice(-3, 3).find_one.value.fetch('lives').should eq [7,8,9]
         dao.select(:lives).slice(6, 5).find_one.value.fetch('lives').should eq [7,8,9]
       end
+
+      it 'implements #elem_match' do
+        dao.select(:foods).elem_match(
+          dao.where(:type).eq(:wet)
+        ).find_one.value.fetch('foods').first.fetch('name').should eq 'whiskas'
+      end
     end
   end
 end

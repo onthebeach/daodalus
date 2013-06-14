@@ -41,6 +41,10 @@ module Daodalus
         end
       end
 
+      def elem_match clause
+        Select.new(dao, @query.select(fields.first.to_s => { '$elemMatch' => clause.to_query}), [])
+      end
+
       def where field=nil
         Where.new(dao, query, field)
       end
