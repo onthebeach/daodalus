@@ -69,6 +69,16 @@ module Daodalus
       end
       alias_method :and, :where
 
+      def not
+        define_singleton_method :add_clause do |clause|
+          Where.new(dao, query.where(field.to_s => { '$not' => clause}), field)
+        end
+        define_singleton_method :eq do |value|
+          Where.new(dao, query.where(field.to_s => { '$ne' => value}), field)
+        end
+        self
+      end
+
       private
 
       def add_clause clause

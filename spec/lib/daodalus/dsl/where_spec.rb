@@ -77,6 +77,10 @@ module Daodalus
         dao.where(:paws).does_not_exist.find_one.should be_none
       end
 
+      it 'implements #not' do
+        dao.where(:paws).not.less_than(3).find_one.should be_some
+        dao.where(:paws).not.eq(3).find_one.should be_none
+      end
     end
   end
 end
