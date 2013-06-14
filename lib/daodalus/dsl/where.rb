@@ -48,6 +48,22 @@ module Daodalus
       end
       alias_method :not_in, :nin
 
+      def all *values
+        add_clause '$all' => values
+      end
+
+      def size value
+        add_clause '$size' => value
+      end
+
+      def exists value=true
+        add_clause '$exists' => value
+      end
+
+      def does_not_exist *values
+        exists false
+      end
+
       def where field
         Where.new(dao, query, field)
       end
