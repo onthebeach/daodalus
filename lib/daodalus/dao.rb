@@ -2,6 +2,7 @@ require 'delegate'
 
 module Daodalus
   class DAO
+    include DSL
     extend Forwardable
 
     def initialize(db, collection, connection=:default)
