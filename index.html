@@ -304,7 +304,11 @@ dao.select(:favourite_foods).slice(-10, 4) # get four, starting with the 10th fr
 <p>Updating can be done using the various update methods listed below, followed by the <code>update</code>, <code>upsert</code>, or <code>find_and_modify</code> methods to end the chain (in the same way that we've used <code>find</code> and <code>find_and_modify</code> up to now). So you end up with something like this:</p>
 
 <pre><code>dao.set(name: 'Poor Terry', paws: 3).where(:name).eq('Terry').update
+dao.set(name: 'Poor Terry', paws: 3).where(:name).eq('Terry').upsert
+dao.set(name: 'Poor Terry', paws: 3).where(:name).eq('Terry').find_and_modify
 </code></pre>
+
+<p>Each method also accepts an optional hash of options to pass to the respective Mongo driver method. See Mongo docs for details.</p>
 
 <p>Here's the list of all currently implemented update methods you can use and how to use them:</p>
 
