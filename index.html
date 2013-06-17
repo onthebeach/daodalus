@@ -386,6 +386,26 @@ dao.set(name: 'Poor Terry', paws: 3).where(:name).eq('Terry').find_and_modify
 </table><p>NB. <code>#push</code>, <code>#add_to_set</code>, and <code>#pull</code> can all accept multiple arguments - they will be converted to the appropriate array based <code>all</code> or <code>each</code> command under the hood. So you can write <code>dao.push(:likes, 'Marxist political economy', 'cake')</code> for example.</p>
 
 <h2>
+<a name="aggregation-framework" class="anchor" href="#aggregation-framework"><span class="octicon octicon-link"></span></a>Aggregation Framework</h2>
+
+<p>Using the aggregation framework involves simply chaining together a series of pipeline operators to build the query you want, finishing the (arbitrarily long) chain with a call to <code>aggregate</code>. Let's look at the different pipeline operators in turn.</p>
+
+<h3>
+<a name="match" class="anchor" href="#match"><span class="octicon octicon-link"></span></a>Match</h3>
+
+<p>Match allows you to query for a subset of documents in exactly the same way as you do with <code>where</code> - except as part of the aggregation pipeline. All the same methods are supported. This is what it looks like:</p>
+
+<pre><code>dao.match(:paws).gt(3).aggregate
+
+dao.match.any(
+  dao.where(:name).eq('Terry'),
+  dao.where(likes: 'tuna')
+).aggregate
+</code></pre>
+
+<p>Ok, not that exciting yet. But it becomes exciting when you start combining it with the other operators!</p>
+
+<h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>Daodalus is Copyright © 2012-2013 On The Beach Ltd.
