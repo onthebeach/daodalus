@@ -10,9 +10,6 @@ module Daodalus
         @fields = fields
       end
 
-      def select *fields
-        Select.new(dao, query.select(fields.reduce({}) { |acc, f| acc.merge(f.to_s => 1) }), fields)
-      end
       alias_method :and, :select
 
       def by_position

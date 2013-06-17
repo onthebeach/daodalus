@@ -124,6 +124,10 @@ module Daodalus
         dao.where(:name).eq('Terry').select(:paws).find_one.value.fetch('paws').should eq 3
       end
 
+      it 'can be passed a hash directly' do
+        dao.where(name: 'Terry', paws: 3).find_one.should be_some
+      end
+
     end
   end
 end

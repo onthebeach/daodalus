@@ -3,7 +3,11 @@ module Daodalus
     module Clause
 
       def where field=nil
-        Where.new(dao, query, field)
+        if field.is_a? Hash
+          Where.new(dao, query.where(field), nil)
+        else
+          Where.new(dao, query, field)
+        end
       end
 
       def select *fields

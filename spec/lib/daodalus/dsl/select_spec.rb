@@ -40,6 +40,7 @@ module Daodalus
           dao.where(:type).eq(:wet)
         ).find_one.value.fetch('foods').first.fetch('name').should eq 'whiskas'
       end
+
     end
   end
 end
