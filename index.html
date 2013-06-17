@@ -395,7 +395,7 @@ dao.set(name: 'Poor Terry', paws: 3).where(:name).eq('Terry').find_and_modify
 
 <p>Match allows you to query for a subset of documents in exactly the same way as you do with <code>where</code> - except as part of the aggregation pipeline. All the same methods are supported. This is what it looks like:</p>
 
-<pre><code>dao.match(:paws).gt(3).aggregate
+<pre><code>dao.match(:paws).gt(3).and(:name).in("Jemima", "Terry").aggregate
 
 dao.match.any(
   dao.where(:name).eq('Terry'),
@@ -405,7 +405,47 @@ dao.match.any(
 
 <p>Ok, not that exciting yet. But it becomes exciting when you start combining it with the other operators!</p>
 
-<h2>
+<h3>
+<a name="group" class="anchor" href="#group"><span class="octicon octicon-link"></span></a>Group</h3>
+
+<p>This works very similar to a <code>GROUP BY</code> in SQL. As such Daodalus adds an alias for the method <code>group_by</code> - which you may find makes your code read a bit nicer. You can group by a single key like this:</p>
+
+<pre><code>dao.group_by(:'$name').aggregate
+</code></pre>
+
+<p>which will give you result documents of the form <code>{ '_id' : 'whatever the name is' }</code>. You can also group by multiple keys like this (you need to provide a name, or alias, for each one):</p>
+
+<pre><code>dao.group_by(name: '$name', paws: '$paws').aggregate
+</code></pre>
+
+<p>which will produce result documents of the form <code>{ '_id' : { 'name' : 'whatever the name is', 'paws' : 'no of paws' } }</code>.</p>
+
+<p>The <code>$</code>s are required to indicate that you want the value of the specified field, rather than just the string literal you're passing. For more info see the Mongo docs.</p>
+
+<p>Group also allows you to build aggregates of fields in various ways. Here are the ones supported by Daodalus:</p>
+
+<table>
+<tr>
+<th>Clause</th>
+<th>Alias</th>
+<th>Usage</th>
+</tr>
+<tr>
+<td><code>#sum</code></td>
+<td><code>#total</code></td>
+<td><code>dao.group_by('$breed').sum('$paws).as(:total_paws)</code></td>
+</tr>
+<tr>
+<td><code>#add_to_set</code></td>
+<td><code>#distinct</code></td>
+<td><code>dao.group_by(1).distinct('$breeds).as(:breeds)</code></td>
+</tr>
+<tr>
+<td><code>#push</code></td>
+<td><code>#collect</code></td>
+<td><code>dao.group_by(1).collect('$names).as(:names)</code></td>
+</tr>
+</table><h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>Daodalus is Copyright © 2012-2013 On The Beach Ltd.
