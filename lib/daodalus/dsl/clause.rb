@@ -30,6 +30,42 @@ module Daodalus
         Update.new(dao, query).dec(field, amount)
       end
 
+      def rename(field, value)
+        Update.new(dao, query).rename(field, value)
+      end
+
+      def push(field, *values)
+        Update.new(dao, query).push(field, values)
+      end
+
+      def push_all(field, values)
+        Update.new(dao, query).push_all(field, values)
+      end
+
+      def add_to_set(field, *values)
+        Update.new(dao, query).add_to_set(field, values)
+      end
+
+      def add_each_to_set(field, values)
+        Update.new(dao, query).add_each_to_set(field, values)
+      end
+
+      def pop_first(field)
+        Update.new(dao, query).pop_first(field)
+      end
+
+      def pop_last(field)
+        Update.new(dao, query).pop_last(field)
+      end
+
+      def pull(field, *values)
+        Update.new(dao, query).pull(field, values)
+      end
+
+      def pull_all(field, values)
+        Update.new(dao, query).pull_all(field, values)
+      end
+
       def to_query
         query.wheres
       end

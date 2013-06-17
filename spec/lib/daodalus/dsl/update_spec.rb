@@ -37,6 +37,56 @@ module Daodalus
         dao.find_one.value.fetch('paws').should eq 1
       end
 
+      it 'implements #rename' do
+        dao.rename(:paws, :feet).update
+        dao.find_one.value.fetch('feet').should eq 3
+      end
+
+      it 'implements #push' do
+        dao.push(:likes, 'food').update
+        dao.push(:likes, 'Marxist political economics', 'cake').update
+        dao.find_one.value.fetch('likes').should include 'Marxist political economics'
+        dao.find_one.value.fetch('likes').should include 'cake'
+        dao.find_one.value.fetch('likes').should include 'food'
+      end
+
+      it 'implements #pushAll' do
+        dao.push_all(:likes, ['Marxist political economics', 'cake']).update
+        dao.find_one.value.fetch('likes').should include 'Marxist political economics'
+        dao.find_one.value.fetch('likes').should include 'cake'
+      end
+
+      it 'implements #add_to_set' do
+        dao.add_to_set(:likes, 'cake').update
+        dao.add_to_set(:likes, 'tuna', 'cake', 'cake').update
+        dao.find_one.value.fetch('likes').should eq ['tuna', 'catnip', 'cake']
+      end
+
+      it 'implements #add_each_to_set' do
+        dao.add_each_to_set(:likes, ['tuna', 'cake', 'cake']).update
+        dao.find_one.value.fetch('likes').should eq ['tuna', 'catnip', 'cake']
+      end
+
+      it 'implements #pop_first' do
+        dao.pop_first(:likes).update
+        dao.find_one.value.fetch('likes').should eq ['catnip']
+      end
+
+      it 'implements #pop_last' do
+        dao.pop_last(:likes).update
+        dao.find_one.value.fetch('likes').should eq ['tuna']
+      end
+
+      it 'implements #pull' do
+        dao.pull(:likes, 'tuna').update
+        dao.find_one.value.fetch('likes').should eq ['catnip']
+      end
+
+      it 'implements #pull_all' do
+        dao.pull_all(:likes, ['catnip', 'tuna']).update
+        dao.find_one.value.fetch('likes').should eq []
+      end
+
     end
   end
 end
