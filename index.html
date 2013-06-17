@@ -337,7 +337,17 @@ dao.select(:favourite_foods).slice(-10, 4) # get four, starting with the 10th fr
 <tr>
 <td><code>#rename</code></td>
 <td><code>dao.rename(:paws, :feet)</code></td>
-<td>`{ '$rename' : { 'paws' : 'feet' } }</td>
+<td><code>{ '$rename' : { 'paws' : 'feet' } }</code></td>
+</tr>
+<tr>
+<td><code>#pop_first</code></td>
+<td><code>dao.pop_first(:likes)</code></td>
+<td><code>{ '$pop' : { 'likes' : -1 } }</code></td>
+</tr>
+<tr>
+<td><code>#pop_last</code></td>
+<td><code>dao.pop_last(:likes)</code></td>
+<td><code>{ '$pop' : { 'likes' : 1 } }</code></td>
 </tr>
 <tr>
 <td><code>#push</code></td>
@@ -349,7 +359,29 @@ dao.select(:favourite_foods).slice(-10, 4) # get four, starting with the 10th fr
 <td><code>dao.push_all(:likes, ['bananas', 'crisps'])</code></td>
 <td><code>{ '$pushAll' : { 'likes' : ['bananas', 'crisps'] } }</code></td>
 </tr>
-</table><h2>
+<tr>
+<td><code>#add_to_set</code></td>
+<td><code>dao.add_to_set(:likes, 'bananas')</code></td>
+<td><code>{ '$addToSet' : { 'likes' : 'bananas' } }</code></td>
+</tr>
+<tr>
+<td><code>#add_each_to_set</code></td>
+<td><code>dao.add_each_to_set(:likes, ['bananas', 'crisps'])</code></td>
+<td><code>{ '$addToSet' : { 'likes' : { '$each' : ['bananas', 'crisps'] } } }</code></td>
+</tr>
+<tr>
+<td><code>#pull</code></td>
+<td><code>dao.pull(:likes, 'Marxist political economy')</code></td>
+<td><code>{ '$pull' : { 'likes' : 'Marxist political economy' } }</code></td>
+</tr>
+<tr>
+<td><code>#pull_all</code></td>
+<td><code>dao.pull_all(:likes, ['bananas', 'crisps'])</code></td>
+<td><code>{ '$pullAll' : { 'likes' : ['bananas', 'crisps'] } }</code></td>
+</tr>
+</table><p>NB. <code>#push</code>, <code>#add_to_set</code>, and <code>#pull</code> can all accept multiple arguments - they will be converted to the appropriate array based <code>all</code> or <code>each</code> command under the hood. So you can write <code>dao.push(:likes, 'Marxist political economy', 'cake')</code> for example.</p>
+
+<h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>Daodalus is Copyright © 2012-2013 On The Beach Ltd.
