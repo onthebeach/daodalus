@@ -427,20 +427,55 @@ dao.match.any(
 <pre><code>dao.group_by('$breed').sum(1).as(:total).aggregate
 </code></pre>
 
-<p>Here are the aggregate group functions supported by Daodalus:
-§
-| Function      | Alias          | Usage                                                |
-| ------------- | -------------- | ---------------------------------------------------- |
-| <code>#sum</code>        | <code>#total</code>       | <code>dao.group_by('$breed').sum('$paws).as(:total_paws)</code> | 
-| <code>#add_to_set</code> | <code>#distinct</code>    | <code>dao.group_by(1).distinct('$breeds).as(:breeds)</code>     | 
-| <code>#push</code>       | <code>#collect</code>     | <code>dao.group_by(1).collect('$names).as(:names)</code>        |
-| <code>#first</code>       | -            | <code>dao.group_by(1).first('$names).as(:name)</code>        |
-| <code>#last</code>       | -             | <code>dao.group_by(1).last('$names).as(:name)</code>        |
-| <code>#max</code>       | -              | <code>dao.group_by(1).max('$paws).as(:max_paws)</code>        |
-| <code>#min</code>       | -              | <code>dao.group_by(1).min('$paws).as(:min_paws)</code>        |
-| <code>#avg</code>       | <code>#average</code>     | <code>dao.group_by(1).average('$paws).as(:average_paws)</code>        |</p>
+<p>Here are the aggregate group functions supported by Daodalus:</p>
 
-<h2>
+<table>
+<tr>
+<th>Function</th>
+<th>Alias</th>
+<th>Usage</th>
+</tr>
+<tr>
+<td><code>#sum</code></td>
+<td><code>#total</code></td>
+<td><code>dao.group_by('$breed').sum('$paws).as(:total_paws)</code></td>
+</tr>
+<tr>
+<td><code>#add_to_set</code></td>
+<td><code>#distinct</code></td>
+<td><code>dao.group_by(1).distinct('$breeds).as(:breeds)</code></td>
+</tr>
+<tr>
+<td><code>#push</code></td>
+<td><code>#collect</code></td>
+<td><code>dao.group_by(1).collect('$names).as(:names)</code></td>
+</tr>
+<tr>
+<td><code>#first</code></td>
+<td>-</td>
+<td><code>dao.group_by(1).first('$names).as(:name)</code></td>
+</tr>
+<tr>
+<td><code>#last</code></td>
+<td>-</td>
+<td><code>dao.group_by(1).last('$names).as(:name)</code></td>
+</tr>
+<tr>
+<td><code>#max</code></td>
+<td>-</td>
+<td><code>dao.group_by(1).max('$paws).as(:max_paws)</code></td>
+</tr>
+<tr>
+<td><code>#min</code></td>
+<td>-</td>
+<td><code>dao.group_by(1).min('$paws).as(:min_paws)</code></td>
+</tr>
+<tr>
+<td><code>#avg</code></td>
+<td><code>#average</code></td>
+<td><code>dao.group_by(1).average('$paws).as(:average_paws)</code></td>
+</tr>
+</table><h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>Daodalus is Copyright © 2012-2013 On The Beach Ltd.
