@@ -14,6 +14,10 @@ module Daodalus
         Select.new(dao, query, fields)
       end
 
+      def set(fields)
+        Update.new(dao, query).set(fields)
+      end
+
       def to_query
         query.wheres
       end

@@ -9,5 +9,6 @@ module Daodalus
     def dao
       self
     end
+
   end
 end
