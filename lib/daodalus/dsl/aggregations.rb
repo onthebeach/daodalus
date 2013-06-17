@@ -15,6 +15,10 @@ module Daodalus
       end
       alias_method :group_by, :group
 
+      def project(*keys)
+        Aggregation::Project.new(dao, pipeline, keys)
+      end
+
       def pipeline
         aggregations + [to_aggregation]
       end
