@@ -310,7 +310,10 @@ dao.select(:favourite_foods).slice(-10, 4) # get four, starting with the 10th fr
 
 <p>| Method   | Usage                         | Translation                    |
 | ---------- ----------------------------- | ------------------------------ |
-| <code>#set</code>   | <code>dao.set(paws: 3)</code>            | <code>{ '$set' : { 'paws' : 3 } }</code>  |</p>
+| <code>#set</code>   | <code>dao.set(paws: 3)</code>            | <code>{ '$set' : { 'paws' : 3 } }</code>  |
+| <code>#unset</code>   | <code>dao.unset(:name, :paws)</code>   | <code>{ '$unset' : { 'name' : 1, 'paws' : 1 } }</code>  |
+| <code>#inc</code>   | <code>dao.inc(:paws, 2) #default is 1</code>            | <code>{ '$inc' : { 'paws' : 2 } }</code>  |
+| <code>#dec</code>   | <code>dao.dec(:paws) #default is 1</code>            | <code>{ '$inc' : { 'paws' : -1 } }</code>  |</p>
 
 <h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
