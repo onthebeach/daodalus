@@ -18,6 +18,10 @@ module Daodalus
         Update.new(dao, query).set(fields)
       end
 
+      def unset(*fields)
+        Update.new(dao, query).unset(fields)
+      end
+
       def to_query
         query.wheres
       end

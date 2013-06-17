@@ -21,6 +21,12 @@ module Daodalus
         dao.find_one.value.fetch('name').should eq 'Terrence'
       end
 
+      it 'implements #unset' do
+        dao.unset(:name, :likes).update
+        dao.find_one.value.fetch('names', nil).should be_nil
+        dao.find_one.value.fetch('likes', nil).should be_nil
+      end
+
     end
   end
 end

@@ -13,6 +13,10 @@ module Daodalus
         with_clause '$set' => fields
       end
 
+      def unset(fields)
+        with_clause '$unset' => fields.reduce({}) { |acc, f| acc.merge(f => 1) }
+      end
+
       private
 
       def with_clause clause
