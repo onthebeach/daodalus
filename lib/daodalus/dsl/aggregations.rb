@@ -10,6 +10,11 @@ module Daodalus
         Aggregation::Match.new(dao, pipeline, Query.new, field)
       end
 
+      def group(keys)
+        Aggregation::Group.new(dao, pipeline, keys, {})
+      end
+      alias_method :group_by, :group
+
       def pipeline
         aggregations + [to_aggregation]
       end

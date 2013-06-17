@@ -16,7 +16,7 @@ module Daodalus
         end
 
         it 'allows queries to be made on the pipeline' do
-          dao.match(:name).eq('Terry').aggregate.should have(1).item
+          dao.match(:name).eq('Terry').and(paws: 3).aggregate.should have(1).item
           dao.match(:name).eq('Terry').aggregate.first.fetch('paws').should eq 3
         end
 
