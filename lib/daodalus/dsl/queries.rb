@@ -2,12 +2,12 @@ module Daodalus
   module DSL
     module Queries
 
-      def find
-        dao.find(query.wheres, fields: query.selects)
+      def find(options = {})
+        dao.find(query.wheres, options.merge(fields: query.selects))
       end
 
-      def find_one
-        dao.find_one(query.wheres, fields: query.selects)
+      def find_one(options = {})
+        dao.find_one(query.wheres, options.merge(fields: query.selects))
       end
 
     end
