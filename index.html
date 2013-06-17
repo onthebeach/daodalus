@@ -236,6 +236,16 @@ Daodalus::Connection.register(conn, :name)
 
 <p>This will match only documents with a <code>foods</code> array which contains an element with a <code>type</code> value of "wet" <em>and</em> a <code>name</code> value of "Whiskas".</p>
 
+<h3>
+<a name="the-hard-way" class="anchor" href="#the-hard-way"><span class="octicon octicon-link"></span></a>The hard way</h3>
+
+<p>If you want to just pass a hash as a where clause just as you would if you were using the driver directly, you can do that too, like this:</p>
+
+<pre><code>dao.where(name: 'Terry', paws: 3)
+</code></pre>
+
+<p>This can be more readable for simple equality matching over a number of fields.</p>
+
 <h2>
 <a name="selecting-fields-to-be-returned-projection" class="anchor" href="#selecting-fields-to-be-returned-projection"><span class="octicon octicon-link"></span></a>Selecting Fields to be Returned (Projection)</h2>
 
@@ -262,6 +272,8 @@ Daodalus::Connection.register(conn, :name)
 <pre><code>dao.select(:cats).by_position.where(:'cats.paws').gt(3) # select and return only the first cat with &gt; 3 paws
 </code></pre>
 
+<p>(You could also have specified the positional operator manually as part of the field name like this: <code>:'cats.paws.$'</code>)</p>
+
 <h3>
 <a name="slice" class="anchor" href="#slice"><span class="octicon octicon-link"></span></a>Slice</h3>
 
@@ -281,84 +293,6 @@ dao.select(:favourite_foods).slice(-10, 4) # get four, starting with the 10th fr
 <pre><code>dao.select(:favourite_foods).elem_match(
   dao.where(:price).lte(5_00)
 )
-</code></pre>
-
-<p>*
-*
-*
-*
-*
-*</p>
-
-<h3>
-<a name="old-readme-below-this-line" class="anchor" href="#old-readme-below-this-line"><span class="octicon octicon-link"></span></a>Old README below this line</h3>
-
-<h3>
-<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration:</h3>
-
-<pre><code># config/mongo.yml
-development:
-  animals:
-    database: animals_development
-    host: localhost
-    pool_size: 5
-    timeout: 5
-    replicate_set_name: animals_development
-    servers:
-      - { host: localhost, port: 27017 }
-</code></pre>
-
-<h3>
-<a name="initialisation" class="anchor" href="#initialisation"><span class="octicon octicon-link"></span></a>Initialisation:</h3>
-
-<pre><code># config/initializers/daodalus.rb
-Daodalus::Configuration.load('config/mongo.yml', Rails.env)
-</code></pre>
-
-<h5>
-<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples:</h5>
-
-<pre><code>#!ruby
-class CatDAO
-  extend Daodalus::DAO # or `include` if you want an instance of a DAO
-  target :animals, :cats # or overide `connection` to supply your own
-
-  def self.example_find
-    select(:name).where(:paws).less_than(4).find
-  end
-
-  def self.example_find_one
-    where(:collar_id).eq("aochc986").find_one
-  end
-
-  def self.example_update
-    set(:stray, true).where(:address).does_not_exist.update
-  end
-
-  def self.example_find_and_modify
-    dec(:lives).
-      push(:names, "Kitty").
-      where(:stray).eq(true).
-      and(:cuteness).gt(8).
-      find_and_modify(new: true)
-  end
-
-  def self.example_remove
-    where(:lives).eq(0).remove
-  end
-
-  def self.example_aggregation
-    match(:lives).gt(3).
-      and(:address).exists.
-      unwind(:favourite_foods).
-      group(:favourite_foods).
-      min(min_paws: 'paws').
-      sort(:_id).
-      limit(10).
-      project(:_id).as(:food).and(:min_paws).
-      aggregate
-  end
-end
 </code></pre>
 
 <h2>
