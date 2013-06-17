@@ -272,7 +272,10 @@ Daodalus::Connection.register(conn, :name)
 <pre><code>dao.select(:cats).by_position.where(:'cats.paws').gt(3) # select and return only the first cat with &gt; 3 paws
 </code></pre>
 
-<p>(You could also have specified the positional operator manually as part of the field name like this: <code>:'cats.paws.$'</code>)</p>
+<p>You could also have specified the positional operator manually as part of the field name like this:</p>
+
+<pre><code>dao.select(:'cats.$').where(:'cats.paws').gt(3)
+</code></pre>
 
 <h3>
 <a name="slice" class="anchor" href="#slice"><span class="octicon octicon-link"></span></a>Slice</h3>
