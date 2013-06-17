@@ -299,6 +299,20 @@ dao.select(:favourite_foods).slice(-10, 4) # get four, starting with the 10th fr
 </code></pre>
 
 <h2>
+<a name="updating" class="anchor" href="#updating"><span class="octicon octicon-link"></span></a>Updating</h2>
+
+<p>Updating can be done using the various update methods listed below, followed by the <code>update</code>, <code>upsert</code>, or <code>find_and_modify</code> methods to end the chain (in the same way that we've used <code>find</code> and <code>find_and_modify</code> up to now). So you end up with something like this:</p>
+
+<pre><code>dao.set(name: 'Poor Terry', paws: 3).where(:name).eq('Terry').and(:paws).eq(4).update
+</code></pre>
+
+<p>Here's the list of all currently implemented update methods you can use and how to use them:</p>
+
+<p>| Method   | Usage                         | Translation                    |
+| ---------- ----------------------------- | ------------------------------ |
+| <code>#set</code>   | <code>dao.set(paws: 3)</code>            | <code>{ '$set' : { 'paws' : 3 } }</code>  |</p>
+
+<h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>Daodalus is Copyright © 2012-2013 On The Beach Ltd.
