@@ -52,6 +52,40 @@ module Daodalus
             {"_id"=>3, "cats"=>["Terry", "Jemima", "Terry"]}
           ]
         end
+
+        it 'can get the first value for an aggregate field' do
+          dao.group_by(1).first('$name').as(:name).aggregate.should eq [
+            {"_id"=>1, "name"=>"Terry"}
+          ]
+        end
+
+        it 'can get the last value for an aggregate field' do
+          dao.group_by(1).last('$name').as(:name).aggregate.should eq [
+            {"_id"=>1, "name"=>"Jemima"}
+          ]
+        end
+
+        it 'can get the min value for an aggregate field' do
+          dao.insert('name'  => 'Terry', 'paws' => 7)
+          dao.group_by(1).min('$paws').as(:paws).aggregate.should eq [
+            {"_id"=>1, "paws"=>3}
+          ]
+        end
+
+        it 'can get the max value for an aggregate field' do
+          dao.insert('name'  => 'Terry', 'paws' => 7)
+          dao.group_by(1).max('$paws').as(:paws).aggregate.should eq [
+            {"_id"=>1, "paws"=>7}
+          ]
+        end
+
+        it 'can get the average value for an aggregate field' do
+          dao.insert('name'  => 'Terry', 'paws' => 24)
+          dao.group_by(1).average('$paws').as(:paws).aggregate.should eq [
+            {"_id"=>1, "paws"=>10}
+          ]
+        end
+
       end
     end
   end

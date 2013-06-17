@@ -31,6 +31,27 @@ module Daodalus
         end
         alias_method :collect, :push
 
+        def first(field)
+          aliased '$first' => field
+        end
+
+        def last(field)
+          aliased '$last' => field
+        end
+
+        def max(field)
+          aliased '$max' => field
+        end
+
+        def min(field)
+          aliased '$min' => field
+        end
+
+        def avg(field)
+          aliased '$avg' => field
+        end
+        alias_method :average, :avg
+
         private
 
         def id
