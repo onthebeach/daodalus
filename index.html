@@ -303,9 +303,9 @@ dao.select(:favourite_foods).slice(-10, 4) # get four, starting with the 10th fr
 
 <p>Updating can be done using the various update methods listed below, followed by the <code>update</code>, <code>upsert</code>, or <code>find_and_modify</code> methods to end the chain (in the same way that we've used <code>find</code> and <code>find_and_modify</code> up to now). So you end up with something like this:</p>
 
-<pre><code>dao.set(name: 'Poor Terry', paws: 3).where(:name).eq('Terry').update
-dao.set(name: 'Poor Terry', paws: 3).where(:name).eq('Terry').upsert
-dao.set(name: 'Poor Terry', paws: 3).where(:name).eq('Terry').find_and_modify
+<pre><code>dao.set(name: 'Poor Terry').dec(:paws).where(:name).eq('Terry').update
+dao.set(name: 'Poor Terry').dec(:paws).where(:name).eq('Terry').upsert
+dao.set(name: 'Poor Terry').where(:name).eq('Terry').find_and_modify
 </code></pre>
 
 <p>Each method also accepts an optional hash of options to pass to the respective Mongo driver method. See Mongo docs for details.</p>
@@ -475,7 +475,10 @@ dao.match.any(
 <td><code>#average</code></td>
 <td><code>dao.group_by(1).average('$paws).as(:average_paws)</code></td>
 </tr>
-</table><h2>
+</table><h3>
+<a name="project" class="anchor" href="#project"><span class="octicon octicon-link"></span></a>Project</h3>
+
+<h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>Daodalus is Copyright © 2012-2013 On The Beach Ltd.
