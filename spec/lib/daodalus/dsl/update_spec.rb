@@ -82,6 +82,11 @@ module Daodalus
         dao.find_one.value.fetch('likes').should eq ['catnip']
       end
 
+      it 'allows passing multipl values to #pull' do
+        dao.pull(:likes, 'tuna', 'catnip').update
+        dao.find_one.value.fetch('likes').should eq []
+      end
+
       it 'implements #pull_all' do
         dao.pull_all(:likes, ['catnip', 'tuna']).update
         dao.find_one.value.fetch('likes').should eq []
