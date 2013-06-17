@@ -303,7 +303,7 @@ dao.select(:favourite_foods).slice(-10, 4) # get four, starting with the 10th fr
 
 <p>Updating can be done using the various update methods listed below, followed by the <code>update</code>, <code>upsert</code>, or <code>find_and_modify</code> methods to end the chain (in the same way that we've used <code>find</code> and <code>find_and_modify</code> up to now). So you end up with something like this:</p>
 
-<pre><code>dao.set(name: 'Poor Terry', paws: 3).where(:name).eq('Terry').and(:paws).eq(4).update
+<pre><code>dao.set(name: 'Poor Terry', paws: 3).where(:name).eq('Terry').update
 </code></pre>
 
 <p>Here's the list of all currently implemented update methods you can use and how to use them:</p>
@@ -333,6 +333,21 @@ dao.select(:favourite_foods).slice(-10, 4) # get four, starting with the 10th fr
 <td><code>#dec</code></td>
 <td><code>dao.dec(:paws) #default is 1</code></td>
 <td><code>{ '$inc' : { 'paws' : -1 } }</code></td>
+</tr>
+<tr>
+<td><code>#rename</code></td>
+<td><code>dao.rename(:paws, :feet)</code></td>
+<td>`{ '$rename' : { 'paws' : 'feet' } }</td>
+</tr>
+<tr>
+<td><code>#push</code></td>
+<td><code>dao.push(:likes, 'Marxist political economy')</code></td>
+<td><code>{ '$push' : { 'likes' : 'Marxist political economy' } }</code></td>
+</tr>
+<tr>
+<td><code>#push_all</code></td>
+<td><code>dao.push_all(:likes, ['bananas', 'crisps'])</code></td>
+<td><code>{ '$pushAll' : { 'likes' : ['bananas', 'crisps'] } }</code></td>
 </tr>
 </table><h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
