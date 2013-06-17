@@ -2,6 +2,7 @@ module Daodalus
   module DSL
     class Update
       include Clause
+      include Queries
       include Updates
 
       def initialize(dao, query)
