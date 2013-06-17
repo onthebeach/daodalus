@@ -17,6 +17,14 @@ module Daodalus
         with_clause '$unset' => fields.reduce({}) { |acc, f| acc.merge(f => 1) }
       end
 
+      def inc(field, amount)
+        with_clause '$inc' => { field => amount }
+      end
+
+      def dec(field, amount)
+        with_clause '$inc' => { field => -amount }
+      end
+
       private
 
       def with_clause clause

@@ -22,6 +22,14 @@ module Daodalus
         Update.new(dao, query).unset(fields)
       end
 
+      def inc(field, amount=1)
+        Update.new(dao, query).inc(field, amount)
+      end
+
+      def dec(field, amount=1)
+        Update.new(dao, query).dec(field, amount)
+      end
+
       def to_query
         query.wheres
       end

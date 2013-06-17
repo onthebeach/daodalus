@@ -27,6 +27,16 @@ module Daodalus
         dao.find_one.value.fetch('likes', nil).should be_nil
       end
 
+      it 'implements #inc' do
+        dao.inc(:paws).update
+        dao.find_one.value.fetch('paws').should eq 4
+      end
+
+      it 'implements #dec' do
+        dao.dec(:paws, 2).update
+        dao.find_one.value.fetch('paws').should eq 1
+      end
+
     end
   end
 end
