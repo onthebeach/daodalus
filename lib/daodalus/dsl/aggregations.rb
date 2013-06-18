@@ -19,6 +19,22 @@ module Daodalus
         Aggregation::Project.new(dao, pipeline, keys)
       end
 
+      def limit(limit)
+        Aggregation::Limit.new(dao, pipeline, limit)
+      end
+
+      def skip(skip)
+        Aggregation::Skip.new(dao, pipeline, skip)
+      end
+
+      def sort(sort)
+        Aggregation::Sort.new(dao, pipeline, sort)
+      end
+
+      def unwind(field)
+        Aggregation::Unwind.new(dao, pipeline, field)
+      end
+
       def pipeline
         aggregations + [to_aggregation]
       end
