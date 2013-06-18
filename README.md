@@ -6,6 +6,8 @@ In Greek mythology, Daedalus tried to prevent Icarus from flying too close to th
 
 Originally conceived of as an implementation of the Data Access Object pattern, it has evolved since then into more of a DSL to simplify doing complicated things with Mongo. However, by separating your models from the object used to interact with their stored form, we hope Daodalus still encourages your application and data layers to keep their distance from each other.
 
+Find the docs [here](http://onthebeach.github.io/daodalus).
+
 ## Registering connections
 
 Before being able to use Daodalus you will need to create and register one or more connections to your instance (or instances) of MongoDB. Here's how you do it:
