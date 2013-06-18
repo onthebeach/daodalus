@@ -438,47 +438,120 @@ dao.match.any(
 <tr>
 <td><code>#sum</code></td>
 <td><code>#total</code></td>
-<td><code>dao.group_by('$breed').sum('$paws).as(:total_paws)</code></td>
+<td><code>dao.group_by('$breed').sum('$paws').as(:total_paws)</code></td>
 </tr>
 <tr>
 <td><code>#add_to_set</code></td>
 <td><code>#distinct</code></td>
-<td><code>dao.group_by(1).distinct('$breeds).as(:breeds)</code></td>
+<td><code>dao.group_by(1).distinct('$breeds').as(:breeds)</code></td>
 </tr>
 <tr>
 <td><code>#push</code></td>
 <td><code>#collect</code></td>
-<td><code>dao.group_by(1).collect('$names).as(:names)</code></td>
+<td><code>dao.group_by(1).collect('$names').as(:names)</code></td>
 </tr>
 <tr>
 <td><code>#first</code></td>
 <td>-</td>
-<td><code>dao.group_by(1).first('$names).as(:name)</code></td>
+<td><code>dao.group_by(1).first('$names').as(:name)</code></td>
 </tr>
 <tr>
 <td><code>#last</code></td>
 <td>-</td>
-<td><code>dao.group_by(1).last('$names).as(:name)</code></td>
+<td><code>dao.group_by(1).last('$names').as(:name)</code></td>
 </tr>
 <tr>
 <td><code>#max</code></td>
 <td>-</td>
-<td><code>dao.group_by(1).max('$paws).as(:max_paws)</code></td>
+<td><code>dao.group_by(1).max('$paws').as(:max_paws)</code></td>
 </tr>
 <tr>
 <td><code>#min</code></td>
 <td>-</td>
-<td><code>dao.group_by(1).min('$paws).as(:min_paws)</code></td>
+<td><code>dao.group_by(1).min('$paws').as(:min_paws)</code></td>
 </tr>
 <tr>
 <td><code>#avg</code></td>
 <td><code>#average</code></td>
-<td><code>dao.group_by(1).average('$paws).as(:average_paws)</code></td>
+<td><code>dao.group_by(1).average('$paws').as(:average_paws)</code></td>
 </tr>
 </table><h3>
 <a name="project" class="anchor" href="#project"><span class="octicon octicon-link"></span></a>Project</h3>
 
-<h2>
+<p>Return a subset of fields from an aggregation and perform simple calculations on the returned fields with <code>#project</code>.</p>
+
+<p>To simply return one or more fields as they are, pass them to <code>#project</code> like this:</p>
+
+<pre><code>dao.project(:name, :paws, :'food.type').aggregate
+# NB. as with #select, the '_id' field is excluded by default
+</code></pre>
+
+<p>To give aliases to your fields, pass a hash in the structure you want. You'll need to use the <code>$</code> operator to signify the fields you want your aliases to refer to.</p>
+
+<pre><code>dao.project(cat: "$name").aggregate
+</code></pre>
+
+<p>Another way to provide aliases is to use the <code>as</code> method like this:</p>
+
+<pre><code>dao.project("$paws").as(:feet).aggregate
+</code></pre>
+
+<p>You can chain <code>project</code> calls together using <code>and</code>, like this:</p>
+
+<pre><code>dao.project(:name, :likes).and(feet: "$paws").and("$foods.name").as(:foods).aggregate
+</code></pre>
+
+<p>You can build nested documents by using nested projects:</p>
+
+<pre><code>dao.project(
+  dao.project(:name, :paws)
+).as(:cat).aggregate
+</code></pre>
+
+<p>And finally, you can perform simple operations on the data, like this:</p>
+
+<pre><code>dao.project(4).minus("$paws").as(:accidents).aggregate
+</code></pre>
+
+<p>Here's the list of the currently supported <code>project</code> functions:</p>
+
+<table>
+<tr>
+<th>Function</th>
+<th>Alias</th>
+<th>Usage</th>
+</tr>
+<tr>
+<td><code>#eq</code></td>
+<td>-</td>
+<td><code>dao.project('$breed').eq('Tabby').as(:is_tabby)</code></td>
+</tr>
+<tr>
+<td><code>#add</code></td>
+<td><code>#plus</code></td>
+<td><code>dao.project('$paws').plus('$lives', 3).as(:a_number)</code></td>
+</tr>
+<tr>
+<td><code>#subtract</code></td>
+<td><code>#minus</code></td>
+<td><code>dao.project('$paws').minus(1).as(:less_paws)</code></td>
+</tr>
+<tr>
+<td><code>#divide</code></td>
+<td><code>#divided_by</code></td>
+<td><code>dao.project('$paws').divided_by(2).as(:half_my_paws)</code></td>
+</tr>
+<tr>
+<td><code>#multiply</code></td>
+<td><code>#multiplied_by</code></td>
+<td><code>dao.project('$paws').multiplied_by(2).as(:double_paws)</code></td>
+</tr>
+<tr>
+<td><code>#mod</code></td>
+<td>-</td>
+<td><code>dao.project('$paws').mod(2).as(:odd_paws)</code></td>
+</tr>
+</table><h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>Daodalus is Copyright © 2012-2013 On The Beach Ltd.
