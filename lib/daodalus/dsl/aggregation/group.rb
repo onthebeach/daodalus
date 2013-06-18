@@ -2,7 +2,6 @@ module Daodalus
   module DSL
     module Aggregation
       class Group
-        include Matchers
         include Aggregations
 
         def initialize(dao, aggregations, id, values)
