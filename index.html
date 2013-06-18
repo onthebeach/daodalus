@@ -551,7 +551,15 @@ dao.match.any(
 <td>-</td>
 <td><code>dao.project('$paws').mod(2).as(:odd_paws)</code></td>
 </tr>
-</table><h2>
+</table><h3>
+<a name="skip-and-limit" class="anchor" href="#skip-and-limit"><span class="octicon octicon-link"></span></a>Skip and Limit</h3>
+
+<p>Some very simple aggregation functions, analogous to the identically named methods you can use with a normal Mongo cursor. Skip an certain number of documents with <code>#skip</code> and limit the number returned with <code>#limit</code>.</p>
+
+<pre><code>dao.skip(100).limit(20).aggregate
+</code></pre>
+
+<h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>Daodalus is Copyright © 2012-2013 On The Beach Ltd.
