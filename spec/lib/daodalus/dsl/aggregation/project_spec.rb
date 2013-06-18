@@ -39,6 +39,7 @@ module Daodalus
         it 'implements the #eq function' do
           dao.project("$name").eq("$nickname").as(:thingy).aggregate.should eq [ 'thingy' => true ]
           dao.project("$name").eq("$breed").as(:thingy).aggregate.should eq [ 'thingy' => false ]
+          dao.project("$name").eq('Terry').as(:thingy).aggregate.should eq [ 'thingy' => true ]
         end
 
         it 'implements the #plus function' do
