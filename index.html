@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -16,18 +17,14 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1 class="header">Daodalus</h1>
-        <p class="header">DSL for building MongoDB queries, updates and aggregations</p>
-
+        <h1>Daodalus</h1>
+        <p>DSL for building MongoDB queries, updates and aggregations</p>
+        <p class="view"><a href="https://github.com/onthebeach/daodalus">View the Project on GitHub <small>onthebeach/daodalus</small></a></p>
         <ul>
-          <li class="download"><a class="buttons" href="https://github.com/onthebeach/daodalus/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/onthebeach/daodalus/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/onthebeach/daodalus">View On GitHub</a></li>
+          <li><a href="https://github.com/onthebeach/daodalus/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/onthebeach/daodalus/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/onthebeach/daodalus">View On <strong>GitHub</strong></a></li>
         </ul>
-
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/onthebeach">onthebeach</a></p>
-
-
       </header>
       <section>
         <h1>
@@ -115,79 +112,66 @@ Daodalus::Connection.register(conn, :name)
 <th>Clause</th>
 <th>Alias</th>
 <th>Usage</th>
-<th>Translation</th>
 </tr>
 <tr>
 <td><code>#eq</code></td>
 <td><code>#equals</code></td>
 <td><code>dao.where(:paws).eq(4)</code></td>
-<td><code>{ 'paws' : 4 }</code></td>
 </tr>
 <tr>
 <td><code>#ne</code></td>
 <td><code>#not_equal</code></td>
 <td><code>dao.where(:paws).ne(4)</code></td>
-<td><code>{ 'paws' : { '$ne' : 4 } }</code></td>
 </tr>
 <tr>
 <td><code>#lt</code></td>
 <td><code>#less_than</code></td>
 <td><code>dao.where(:paws).lt(4)</code></td>
-<td><code>{ 'paws' : { '$lt' : 4 } }</code></td>
 </tr>
 <tr>
 <td><code>#gt</code></td>
 <td><code>#greater_than</code></td>
 <td><code>dao.where(:paws).gt(4)</code></td>
-<td><code>{ 'paws' : { '$gt' : 4 } }</code></td>
 </tr>
 <tr>
 <td><code>#lte</code></td>
 <td><code>#less_than_or_equal</code></td>
 <td><code>dao.where(:paws).lte(4)</code></td>
-<td><code>{ 'paws' : { '$lte' : 4 } }</code></td>
 </tr>
 <tr>
 <td><code>#gte</code></td>
 <td><code>#greater_than_or_equal</code></td>
 <td><code>dao.where(:paws).gte(4)</code></td>
-<td><code>{ 'paws' : { '$gte' : 4 } }</code></td>
 </tr>
 <tr>
 <td><code>#in</code></td>
 <td>-</td>
 <td><code>dao.where(:paws).in(4, 3)</code></td>
-<td><code>{ 'paws' : { '$in' : [4, 3] } }</code></td>
 </tr>
 <tr>
 <td><code>#nin</code></td>
 <td><code>#not_in</code></td>
 <td><code>dao.where(:paws).gte(4)</code></td>
-<td><code>{ 'paws' : { '$nin' : [4, 3] } }</code></td>
 </tr>
 <tr>
 <td><code>#all</code></td>
 <td>-</td>
 <td><code>dao.where(:likes).all('tuna', 'catnip')</code></td>
-<td><code>{ 'likes' : { '$all' : ['tuna', 'catnip'] } }</code></td>
 </tr>
 <tr>
 <td><code>#size</code></td>
 <td>-</td>
 <td><code>dao.where(:likes).size(3)</code></td>
-<td><code>{ 'likes' : { '$size' : 3 } }</code></td>
 </tr>
 <tr>
 <td><code>#exists</code></td>
 <td>-</td>
 <td><code>dao.where(:tail).exists</code></td>
-<td><code>{ 'tail' : { '$exists' : true } }</code></td>
 </tr>
 <tr>
 <td><code>#does_not_exist</code></td>
 <td><code>#exists(false)</code></td>
 <td><code>dao.where(:tail).does_not_exist</code></td>
-<td><code>{ 'tail' : { '$exists' : false } }</code></td>
 </tr>
 </table><h3>
 <a name="logic" class="anchor" href="#logic"><span class="octicon octicon-link"></span></a>Logic</h3>
@@ -316,72 +300,58 @@ dao.set(name: 'Poor Terry').where(:name).eq('Terry').find_and_modify
 <tr>
 <th>Method</th>
 <th>Usage</th>
-<th>Translation</th>
 </tr>
 <tr>
 <td><code>#set</code></td>
 <td><code>dao.set(paws: 3)</code></td>
-<td><code>{ '$set' : { 'paws' : 3 } }</code></td>
 </tr>
 <tr>
 <td><code>#unset</code></td>
 <td><code>dao.unset(:name, :paws)</code></td>
-<td><code>{ '$unset' : { 'name' : 1, 'paws' : 1 } }</code></td>
 </tr>
 <tr>
 <td><code>#inc</code></td>
 <td><code>dao.inc(:paws, 2) #default is 1</code></td>
-<td><code>{ '$inc' : { 'paws' : 2 } }</code></td>
 </tr>
 <tr>
 <td><code>#dec</code></td>
 <td><code>dao.dec(:paws) #default is 1</code></td>
-<td><code>{ '$inc' : { 'paws' : -1 } }</code></td>
 </tr>
 <tr>
 <td><code>#rename</code></td>
 <td><code>dao.rename(:paws, :feet)</code></td>
-<td><code>{ '$rename' : { 'paws' : 'feet' } }</code></td>
 </tr>
 <tr>
 <td><code>#pop_first</code></td>
 <td><code>dao.pop_first(:likes)</code></td>
-<td><code>{ '$pop' : { 'likes' : -1 } }</code></td>
 </tr>
 <tr>
 <td><code>#pop_last</code></td>
 <td><code>dao.pop_last(:likes)</code></td>
-<td><code>{ '$pop' : { 'likes' : 1 } }</code></td>
 </tr>
 <tr>
 <td><code>#push</code></td>
 <td><code>dao.push(:likes, 'Marxist political economy')</code></td>
-<td><code>{ '$push' : { 'likes' : 'Marxist political economy' } }</code></td>
 </tr>
 <tr>
 <td><code>#push_all</code></td>
 <td><code>dao.push_all(:likes, ['bananas', 'crisps'])</code></td>
-<td><code>{ '$pushAll' : { 'likes' : ['bananas', 'crisps'] } }</code></td>
 </tr>
 <tr>
 <td><code>#add_to_set</code></td>
 <td><code>dao.add_to_set(:likes, 'bananas')</code></td>
-<td><code>{ '$addToSet' : { 'likes' : 'bananas' } }</code></td>
 </tr>
 <tr>
 <td><code>#add_each_to_set</code></td>
 <td><code>dao.add_each_to_set(:likes, ['bananas', 'crisps'])</code></td>
-<td><code>{ '$addToSet' : { 'likes' : { '$each' : ['bananas', 'crisps'] } } }</code></td>
 </tr>
 <tr>
 <td><code>#pull</code></td>
 <td><code>dao.pull(:likes, 'Marxist political economy')</code></td>
-<td><code>{ '$pull' : { 'likes' : 'Marxist political economy' } }</code></td>
 </tr>
 <tr>
 <td><code>#pull_all</code></td>
 <td><code>dao.pull_all(:likes, ['bananas', 'crisps'])</code></td>
-<td><code>{ '$pullAll' : { 'likes' : ['bananas', 'crisps'] } }</code></td>
 </tr>
 </table><p>NB. <code>#push</code>, <code>#add_to_set</code>, and <code>#pull</code> can all accept multiple arguments - they will be converted to the appropriate array based <code>all</code> or <code>each</code> command under the hood. So you can write <code>dao.push(:likes, 'Marxist political economy', 'cake')</code> for example.</p>
 
@@ -559,17 +529,34 @@ dao.match.any(
 <pre><code>dao.skip(100).limit(20).aggregate
 </code></pre>
 
+<h3>
+<a name="sort" class="anchor" href="#sort"><span class="octicon octicon-link"></span></a>Sort</h3>
+
+<p>Again, analogous to the method on <code>MongoCursor</code>. Pass a hash with the fields you want to sort by as keys and either <code>1</code> for ascending order or <code>-1</code> for descending order. If you like, instead of <code>1</code> and <code>-1</code> you can also use the symbols <code>:asc</code> and <code>:desc</code> like this:</p>
+
+<pre><code>dao.sort(breed: :asc, paws: :desc).aggregate
+</code></pre>
+
+<h3>
+<a name="unwind" class="anchor" href="#unwind"><span class="octicon octicon-link"></span></a>Unwind</h3>
+
+<p>If you have an array field and you want to unwind the document into one copy for each array element ('unwinding' them out of the array) use <code>#unwind</code>. Using it is simple, just pass it the field name you want to unwind. Remember it has to be an array field!</p>
+
+<pre><code>dao.unwind(:likes).aggregate
+</code></pre>
+
 <h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>Daodalus is Copyright © 2012-2013 On The Beach Ltd.
 It is free software, and may be redistributed under the terms specified in the LICENSE file.</p>
       </section>
-      <footer>
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
-      </footer>
     </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/onthebeach">onthebeach</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
+    
   </body>
 </html>
