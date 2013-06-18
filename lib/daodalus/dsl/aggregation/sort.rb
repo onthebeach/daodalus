@@ -18,7 +18,7 @@ module Daodalus
 
         def keys
           @keys.reduce({}) do |acc, (k,v)|
-            acc.merge(k => ([-1, :desc, :descending].include?(v) ? -1 : 1))
+            acc.merge(k => ([-1, :desc, 'desc'].include?(v) ? -1 : 1))
           end
         end
 
