@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    daodalus (2.0.0)
+    daodalus (0.1.0)
       bson_ext
       id
       mongo

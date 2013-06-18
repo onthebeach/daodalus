@@ -24,7 +24,7 @@ module Daodalus
         end
 
         it 'accepts symbols for sort order' do
-          dao.sort(paws: :descending).project(:name).aggregate.should eq [
+          dao.sort(paws: :desc).project(:name).aggregate.should eq [
             {"name"=>"Jemima"},
             {"name"=>"Terry"}
           ]
