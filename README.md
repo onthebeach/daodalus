@@ -312,4 +312,5 @@ If you have an array field and you want to unwind the document into one copy for
 ## License
 
 Daodalus is Copyright © 2012-2013 On The Beach Ltd.
+
 It is free software, and may be redistributed under the terms specified in the LICENSE file.
