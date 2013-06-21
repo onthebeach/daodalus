@@ -22,7 +22,11 @@ module Daodalus
       end
 
       def selects
-        { '_id' => 0 }.merge(@selects)
+        @selects.empty? ? @selects : {'_id' => 0}.merge(@selects)
+      end
+
+      def has_selects?
+        !selects.empty?
       end
 
       private

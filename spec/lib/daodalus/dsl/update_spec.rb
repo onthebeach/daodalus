@@ -17,14 +17,16 @@ module Daodalus
 
       it 'can perform upserts' do
         dao.set(paws: 3).where(:name).eq('Charlie').upsert
-        dao.where(:name).eq('Charlie').find_one.value.should eq ({
+        dao.where(:name).eq('Charlie').find_one.value.merge('_id' => 1).should eq ({
+          '_id' => 1,
           "name"=>"Charlie", "paws"=>3
         })
       end
 
       it 'can perform find_and_modifys' do
         dao.inc(:paws).where(:name).eq('Terry').find_and_modify
-        dao.where(:name).eq('Terry').find_one.value.should eq ({
+        dao.where(:name).eq('Terry').find_one.value.merge('_id' => 1).should eq ({
+          '_id' => 1,
           "name"=>"Terry", "paws"=>4, "likes"=>["tuna", "catnip"], "lives"=>[1, 2, 3, 4, 5, 6, 7, 8, 9], "foods"=>[{"type"=>"dry", "name"=>"go cat"}, {"type"=>"wet", "name"=>"whiskas"}]
         })
       end
