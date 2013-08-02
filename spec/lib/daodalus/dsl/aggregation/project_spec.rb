@@ -92,6 +92,15 @@ module Daodalus
             should eq ({'pets' => { 'cats' => '$animals.cats', 'dogs' => {'$add' => ['$animals.dogs', 1]}}})
         end
 
+        it 'can match case insensitive strings' do
+          dao.project("$breed").strcasecmp("taBBy").
+            as(:suggest_original).aggregate.should eq [{"suggest_original" => true}]
+        end
+
+        it 'doesn\'t match string if it is incorrect' do
+          dao.project("$breed").strcasecmp("taby").
+            as(:suggest_original).aggregate.should eq [{"suggest_original" => false}]
+        end
       end
     end
   end

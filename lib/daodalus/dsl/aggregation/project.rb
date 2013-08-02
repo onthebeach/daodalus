@@ -32,6 +32,26 @@ module Daodalus
           with_array_operator('$eq', [arg])
         end
 
+        def strcasecmp(other)
+          Project.new(dao, aggregations, @projection,
+            [
+              '$eq' => [
+                {
+                  '$strcasecmp' => [
+                    keys.first,
+                    other
+                  ]
+                },
+                0
+              ]
+            ]
+          )
+        end
+
+        def add(*others)
+          Project.new(dao, aggregations, @projection, ['$add' => keys + others])
+        end
+
         def plus(*args)
           with_array_operator('$add', args)
         end
