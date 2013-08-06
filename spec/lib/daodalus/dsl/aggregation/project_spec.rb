@@ -43,6 +43,20 @@ module Daodalus
           end
         end
 
+        describe "#strcmpcase" do
+          it 'can match case insensitive strings' do
+            query.project(:breed).strcasecmp("taBBy").
+              as(:suggest_original).projection.should eq (
+                {"suggest_original"=>{"$eq"=>[{"$strcasecmp"=>["$breed", "taBBy"]}, 0]}})
+          end
+
+          it 'can match case insensitive strings with option' do
+            query.project(:breed).strcasecmp("taBBy", -1).
+              as(:suggest_original).projection.should eq (
+                {"suggest_original"=>{"$eq"=>[{"$strcasecmp"=>["$breed", "taBBy"]}, -1]}})
+          end
+        end
+
         describe "#plus" do
           it 'builds an add operator' do
             query.project(:cats).plus(:dogs, 3).as(:pets).projection.
@@ -91,7 +105,6 @@ module Daodalus
             ).as(:pets).projection.
             should eq ({'pets' => { 'cats' => '$animals.cats', 'dogs' => {'$add' => ['$animals.dogs', 1]}}})
         end
-
       end
     end
   end

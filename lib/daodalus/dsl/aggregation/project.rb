@@ -32,6 +32,18 @@ module Daodalus
           with_array_operator('$eq', [arg])
         end
 
+        def strcasecmp(other, compare=0)
+          without_array_operator('$eq', [
+            {
+              '$strcasecmp' => [
+                field_as_operator(fields.first),
+                other
+              ]
+            },
+            compare
+          ])
+        end
+
         def plus(*args)
           with_array_operator('$add', args)
         end
@@ -76,6 +88,10 @@ module Daodalus
 
         def with_array_operator(op, args)
           Project.new(dao, {op => arg_array(args)}, nil, @projection, query)
+        end
+
+        def without_array_operator(op, args)
+          Project.new(dao, {op => args}, nil, @projection, query)
         end
 
         def arg_array(args)
