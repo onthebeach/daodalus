@@ -36,7 +36,7 @@ module Daodalus
           without_array_operator('$eq', [
             {
               '$strcasecmp' => [
-                "$#{fields.first}",
+                field_as_operator(fields.first),
                 other
               ]
             },
